@@ -83,11 +83,11 @@ services:
   # ------------------------------------------------------------
   #
   komorsan_web_frontend_development:
-    image: localhost:5000/komorsan_web_frontend_development:latest
+    image: localhost:5000/komorsan_web_frontend_development_vue:latest
     # build: frontend
-    container_name: komorsan_web_frontend_development
+    container_name: komorsan_web_frontend_development_vue
     ports: 
-    - "7070:80"
+    - "8080:80"
     # - "8085:80"
     restart: always
     #depends_on:
@@ -101,8 +101,9 @@ services:
         # BACKEND_PORT: 8081
     volumes:
     - ./frontend/tiles:/usr/share/nginx/html/tiles # Путь к тайлам для оффлайн карт. Первую часть можно менять на нужную папку в файловой системе
-    - /home/max/komorsan_2020/komorsan_web/frontend/:/usr/share/nginx/html
-     # - /home/max/komorsan_2020/komorsan_web/frontend/vuexy-vuejs-admin/full-version/:/usr/share/nginx/html
+    # - /home/max/komorsan_2020/komorsan_web/frontend/:/usr/share/nginx/html
+     - /home/max/vue_komorsan/full-version/:/usr/share/nginx/html
     # - /var/local/komorsan/frontend/nginx/conf.d:/etc/nginx/conf.d
 
 
+docker build -t komorsan_web_frontend_development_vue
