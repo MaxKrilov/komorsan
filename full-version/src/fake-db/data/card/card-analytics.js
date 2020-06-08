@@ -11,17 +11,17 @@ const data = {
   },
   productsOrders: {
     analyticsData: [
-        { 'orderType': 'Finished', 'counts': 23043, color: 'primary' },
-        { 'orderType': 'Pending', 'counts': 14658, color: 'warning' },
-        { 'orderType': 'Rejected ', 'counts': 4758, color: 'danger' },
+        { 'orderType': 'Не на связи', 'counts': 23043, color: 'primary' },
+        { 'orderType': 'Выходил на связь', 'counts': 14658, color: 'warning' },
+        { 'orderType': 'Он-лайн ', 'counts': 4758, color: 'danger' },
     ],
     series: [70, 52, 26],
   },
   customers: {
     analyticsData: [
-        { 'customerType': 'New', 'counts': 890, color: 'primary' },
-        { 'customerType': 'Returning', 'counts': 258, color: 'warning' },
-        { 'customerType': 'Referrals ', 'counts': 149, color: 'danger' },
+        { 'customerType': 'Добавлен', 'counts': 890, color: 'primary' },
+        { 'customerType': 'В списке на добавление', 'counts': 258, color: 'warning' },
+        { 'customerType': 'Удален', 'counts': 149, color: 'danger' },
     ],
     series: [690, 258, 149],
   },
@@ -38,9 +38,9 @@ const data = {
     analyticsData: {
         openTickets: 163,
         meta: {
-          "New Tickets": 29,
-          "Open Tickets": 63,
-          "Response Time": '1d',
+          "Значения от балды": 29,
+          "Угол наклона": 63,
+          "Событие": 'Украли',
         }
     },
     series: [83],

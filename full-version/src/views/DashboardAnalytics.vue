@@ -2,7 +2,7 @@
   File Name: DashboardAnalytics.vue
   Description: Dashboard Analytics
   ----------------------------------------------------------------------------------------
-  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+  Item Name: VVuejs, HTML  Template
   Author: Krylov
 ========================================================================================== -->
 
@@ -13,22 +13,24 @@
       <!-- CARD 1: CONGRATS -->
       <div class="vx-col w-full lg:w-1/2 mb-base">
         <vx-card slot="no-body" class="text-center bg-primary-gradient greet-user">
-                    <img src="@/assets/images/elements/decore-left.png" class="decore-left" alt="Decore Left" width="200" >
-                    <img src="@/assets/images/elements/decore-right.png" class="decore-right" alt="Decore Right" width="175">
+<!--                    <img src="@/assets/images/elements/decore-left.png" class="decore-left" alt="Decore Left" width="200" >-->
+<!--                    <img src="@/assets/images/elements/decore-right.png" class="decore-right" alt="Decore Right" width="175">-->
           <feather-icon icon="AwardIcon" class="p-6 mb-8 bg-primary inline-flex rounded-full text-white shadow" svgClasses="h-8 w-8"></feather-icon>
-          <h1 class="mb-6 text-white">Congratulations {{ checkpointReward.userName }},</h1>
-          <p class="xl:w-3/4 lg:w-4/5 md:w-2/3 w-4/5 mx-auto text-white">You have done <strong>{{ checkpointReward.progress }}</strong> more sales today. Check your new badge in your profile.</p>
+          <h1 class="mb-6 text-white"> {{ checkpointReward.userName }},</h1>
+          <p class="xl:w-3/4 lg:w-4/5 md:w-2/3 w-4/5 mx-auto text-white">Уважаемый, инженер Задротов ! У Вас есть какие-то небольшие права
+<!--            <strong>{{ checkpointReward.progress }}</strong> -->
+            на просмотр аналитики.</p>
         </vx-card>
       </div>
 
       <!-- CARD 2: SUBSCRIBERS GAINED -->
       <div class="vx-col w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4 mb-base">
-        <statistics-card-line icon="UsersIcon" statistic="92.6k" statisticTitle="Subscribers Gained" :chartData="subscribersGained.series" type='area'></statistics-card-line>
+        <statistics-card-line icon="UsersIcon_"  statistic="ИКЗ-ки" statisticTitle="Осциллограммы" :chartData="subscribersGained.series" type='area'></statistics-card-line>
       </div>
 
       <!-- CARD 3: ORDER RECIEVED -->
       <div class="vx-col w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4 mb-base">
-        <statistics-card-line icon="ShoppingBagIcon" statistic="97.5K" statisticTitle="Orders Received" :chartData="ordersRecevied.series" color='warning' type='area'></statistics-card-line>
+        <statistics-card-line icon="ShoppingBagIcon_" statistic="Еще хрень" statisticTitle="Графики" :chartData="ordersRecevied.series" color='warning' type='area'></statistics-card-line>
       </div>
     </div>
 
@@ -43,7 +45,7 @@
             <div class="vx-col w-full md:w-full sm:w-1/2 lg:w-1/2 xl:w-1/2 flex flex-col justify-between" v-if="salesBarSession.analyticsData">
               <div>
                 <h2 class="mb-1 font-bold">{{ salesBarSession.analyticsData.session | k_formatter }}</h2>
-                <span class="font-medium">Avg Sessions</span>
+                <span class="font-medium">ИНФОРМАЦИЯ О ПРИБОРЕ БСПИ</span>
 
                 <!-- Previous Data Comparison -->
                 <p class="mt-2 text-xl font-medium">
@@ -51,11 +53,12 @@
                     <span v-if="salesBarSession.analyticsData.comparison.result > 0">+</span>
                     <span>{{ salesBarSession.analyticsData.comparison.result }}</span>
                   </span>
-                  <span> vs </span>
-                  <span>{{ salesBarSession.analyticsData.comparison.str }}</span>
+                  <span> посмотреть </span>
+<!--                  <span>{{ salesBarSession.analyticsData.comparison.str }}</span>-->
+                  <span>{{ "за последние 7 дней"}}</span>
                 </p>
               </div>
-              <vs-button icon-pack="feather" icon="icon-chevrons-right" icon-after class="shadow-md w-full lg:mt-0 mt-4">View Details</vs-button>
+              <vs-button icon-pack="feather" icon="icon-chevrons-right" icon-after class="shadow-md w-full lg:mt-0 mt-4">Подробнее</vs-button>
             </div>
 
             <!-- RIGHT COL -->
@@ -68,19 +71,19 @@
           <vs-divider class="my-6"></vs-divider>
           <div class="vx-row">
             <div class="vx-col w-1/2 mb-3">
-              <p>Goal: $100000</p>
+              <p>Сеансов связи: 100000</p>
               <vs-progress class="block mt-1" :percent="50" color="primary"></vs-progress>
             </div>
             <div class="vx-col w-1/2 mb-3">
-              <p>Users: 100K</p>
+              <p>Длительность: 100</p>
               <vs-progress class="block mt-1" :percent="60" color="warning"></vs-progress>
             </div>
             <div class="vx-col w-1/2 mb-3">
-              <p>Retention: 90%</p>
+              <p>Кол-во не выходово: 90%</p>
               <vs-progress class="block mt-1" :percent="70" color="danger"></vs-progress>
             </div>
             <div class="vx-col w-1/2 mb-3">
-              <p>Duration: 1yr</p>
+              <p>Продолжительность: 1yr</p>
               <vs-progress class="block mt-1" :percent="90" color="success"></vs-progress>
             </div>
           </div>
@@ -89,7 +92,7 @@
 
       <!-- CARD 5: SUPPORT TRACKER -->
       <div class="vx-col w-full md:w-1/2 lg:w-1/2 xl:w-1/2 mb-base">
-          <vx-card title="Support Tracker">
+          <vx-card title="Заряд батареи">
               <!-- CARD ACTION -->
               <template slot="actions">
                   <change-time-duration-dropdown />
@@ -102,7 +105,7 @@
                       <div class="vx-col w-full lg:w-1/5 md:w-full sm:w-1/5 flex flex-col justify-between mb-4 lg:order-first md:order-last sm:order-first order-last">
                           <div class="lg:ml-6 lg:mt-6 md:mt-0 md:ml-0 sm:ml-6 sm:mt-6">
                               <h1 class="font-bold text-5xl">{{ supportTracker.analyticsData.openTickets }}</h1>
-                              <small>Tickets</small>
+                              <small>Данные</small>
                           </div>
                       </div>
 
@@ -127,7 +130,7 @@
         <div class="vx-row">
             <!-- CARD 6: Product Orders -->
             <div class="vx-col w-full lg:w-1/3 mb-base">
-                <vx-card title="Product Orders">
+                <vx-card title="Всего приборов">
                     <!-- CARD ACTION -->
                     <template slot="actions">
                         <change-time-duration-dropdown />
@@ -152,13 +155,13 @@
 
             <!-- CARD 7: Sales Stats -->
             <div class="vx-col w-full lg:w-1/3 mb-base">
-              <vx-card title="Sales Stats" subtitle="Last 6 Months">
+              <vx-card title="Выходов на связь" subtitle="За последние 6 месяцев">
                 <template slot="actions">
                   <feather-icon icon="MoreVerticalIcon" svgClasses="w-6 h-6 text-grey"></feather-icon>
                 </template>
                 <div class="flex">
-                  <span class="flex items-center"><div class="h-3 w-3 rounded-full mr-1 bg-primary"></div><span>Sales</span></span>
-                  <span class="flex items-center ml-4"><div class="h-3 w-3 rounded-full mr-1 bg-success"></div><span>Visits</span></span>
+                  <span class="flex items-center"><div class="h-3 w-3 rounded-full mr-1 bg-primary"></div><span>Был на связи</span></span>
+                  <span class="flex items-center ml-4"><div class="h-3 w-3 rounded-full mr-1 bg-success"></div><span>Сдох</span></span>
                 </div>
                 <div slot="no-body-bottom">
                   <vue-apex-charts type=radar height=385 :options="analyticsData.statisticsRadar.chartOptions" :series="salesRadar.series" />
@@ -166,68 +169,95 @@
               </vx-card>
             </div>
 
+
+          <!-- CUSTOMERS CHART -->
+          <div class="vx-col w-full lg:w-1/3 lg:mt-0 mt-base">
+            <vx-card title="Приборы на карте">
+              <!-- SLOT = ACTIONS -->
+              <template slot="actions">
+                <change-time-duration-dropdown />
+              </template>
+
+              <div slot="no-body">
+                <!-- CHART -->
+                <vue-apex-charts type=pie height=345 class="mt-10 mb-10" :options="analyticsData.customersPie.chartOptions" :series="customersData.series" />
+
+                <!-- CHART DATA -->
+                <ul class="mb-1">
+                  <li v-for="customerData in customersData.analyticsData" :key="customerData.customerType" class="flex justify-between py-3 px-6 border d-theme-border-grey-light border-solid border-r-0 border-l-0 border-b-0">
+                                <span class="flex items-center">
+                                    <span class="inline-block h-3 w-3 rounded-full mr-2" :class="`bg-${customerData.color}`"></span>
+                                    <span class="font-semibold">{{ customerData.customerType }}</span>
+                                </span>
+                    <span>{{ customerData.counts }}</span>
+                  </li>
+                </ul>
+              </div>
+
+            </vx-card>
+          </div>
             <!-- CARD 8: Activity Timeline -->
-            <div class="vx-col w-full lg:w-1/3 mb-base">
-                <vx-card title="Activity Timeline">
-                    <vx-timeline :data="timelineData" />
-                </vx-card>
-            </div>
+<!--            <div class="vx-col w-full lg:w-1/3 mb-base">-->
+<!--                <vx-card title="Activity Timeline">-->
+<!--                    <vx-timeline :data="timelineData" />-->
+<!--                </vx-card>-->
+<!--            </div>-->
         </div>
 
-    <div class="vx-row">
-      <!-- CARD 9: DISPATCHED ORDERS -->
-      <div class="vx-col w-full">
-        <vx-card title="Dispatched Orders">
-          <div slot="no-body" class="mt-4">
-            <vs-table :data="dispatchedOrders" class="table-dark-inverted">
-              <template slot="thead">
-                <vs-th>ORDER NO.</vs-th>
-                <vs-th>STATUS</vs-th>
-                <vs-th>OPERATORS</vs-th>
-                <vs-th>LOCATION</vs-th>
-                <vs-th>DISTANCE</vs-th>
-                <vs-th>START DATE</vs-th>
-                <vs-th>EST DELIVERY DATE</vs-th>
-              </template>
+<!--    <div class="vx-row">-->
+<!--      &lt;!&ndash; CARD 9: DISPATCHED ORDERS &ndash;&gt;-->
+<!--      <div class="vx-col w-full">-->
+<!--        <vx-card title="Dispatched Orders">-->
+<!--          <div slot="no-body" class="mt-4">-->
+<!--            <vs-table :data="dispatchedOrders" class="table-dark-inverted">-->
+<!--              <template slot="thead">-->
+<!--                <vs-th>ORDER NO.</vs-th>-->
+<!--                <vs-th>STATUS</vs-th>-->
+<!--                <vs-th>OPERATORS</vs-th>-->
+<!--                <vs-th>LOCATION</vs-th>-->
+<!--                <vs-th>DISTANCE</vs-th>-->
+<!--                <vs-th>START DATE</vs-th>-->
+<!--                <vs-th>EST DELIVERY DATE</vs-th>-->
+<!--              </template>-->
 
-              <template slot-scope="{data}">
-                <vs-tr :key="indextr" v-for="(tr, indextr) in data">
-                  <vs-td :data="data[indextr].orderNo">
-                    <span>#{{data[indextr].orderNo}}</span>
-                  </vs-td>
-                  <vs-td :data="data[indextr].status">
-                    <span class="flex items-center px-2 py-1 rounded"><div class="h-3 w-3 rounded-full mr-2" :class="'bg-' + data[indextr].statusColor"></div>{{data[indextr].status}}</span>
-                  </vs-td>
-                  <vs-td :data="data[indextr].orderNo">
-                    <ul class="users-liked user-list">
-                        <li v-for="(user, userIndex) in data[indextr].usersLiked" :key="userIndex">
-                            <vx-tooltip :text="user.name" position="bottom">
-                                <vs-avatar :src="user.img" size="30px" class="border-2 border-white border-solid -m-1"></vs-avatar>
-                            </vx-tooltip>
-                        </li>
-                    </ul>
-                  </vs-td>
-                  <vs-td :data="data[indextr].orderNo">
-                    <span>{{data[indextr].location}}</span>
-                  </vs-td>
-                  <vs-td :data="data[indextr].orderNo">
-                    <span>{{data[indextr].distance}}</span>
-                    <vs-progress :percent="data[indextr].distPercent" :color="data[indextr].statusColor"></vs-progress>
-                  </vs-td>
-                  <vs-td :data="data[indextr].orderNo">
-                    <span>{{data[indextr].startDate}}</span>
-                  </vs-td>
-                  <vs-td :data="data[indextr].orderNo">
-                    <span>{{data[indextr].estDelDate}}</span>
-                  </vs-td>
-                </vs-tr>
-              </template>
-            </vs-table>
-          </div>
+<!--              <template slot-scope="{data}">-->
+<!--                <vs-tr :key="indextr" v-for="(tr, indextr) in data">-->
+<!--                  <vs-td :data="data[indextr].orderNo">-->
+<!--                    <span>#{{data[indextr].orderNo}}</span>-->
+<!--                  </vs-td>-->
+<!--                  <vs-td :data="data[indextr].status">-->
+<!--                    <span class="flex items-center px-2 py-1 rounded"><div class="h-3 w-3 rounded-full mr-2" :class="'bg-' + data[indextr].statusColor"></div>{{data[indextr].status}}</span>-->
+<!--                  </vs-td>-->
+<!--                  <vs-td :data="data[indextr].orderNo">-->
+<!--                    <ul class="users-liked user-list">-->
+<!--                        <li v-for="(user, userIndex) in data[indextr].usersLiked" :key="userIndex">-->
+<!--                            <vx-tooltip :text="user.name" position="bottom">-->
+<!--                                <vs-avatar :src="user.img" size="30px" class="border-2 border-white border-solid -m-1"></vs-avatar>-->
+<!--                            </vx-tooltip>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                  </vs-td>-->
+<!--                  <vs-td :data="data[indextr].orderNo">-->
+<!--                    <span>{{data[indextr].location}}</span>-->
+<!--                  </vs-td>-->
+<!--                  <vs-td :data="data[indextr].orderNo">-->
+<!--                    <span>{{data[indextr].distance}}</span>-->
+<!--                    <vs-progress :percent="data[indextr].distPercent" :color="data[indextr].statusColor"></vs-progress>-->
+<!--                  </vs-td>-->
+<!--                  <vs-td :data="data[indextr].orderNo">-->
+<!--                    <span>{{data[indextr].startDate}}</span>-->
+<!--                  </vs-td>-->
+<!--                  <vs-td :data="data[indextr].orderNo">-->
+<!--                    <span>{{data[indextr].estDelDate}}</span>-->
+<!--                  </vs-td>-->
+<!--                </vs-tr>-->
+<!--              </template>-->
+<!--            </vs-table>-->
+<!--          </div>-->
 
-        </vx-card>
-      </div>
-    </div>
+<!--        </vx-card>-->
+<!--      </div>-->
+<!--    </div>-->
 
   </div>
 </template>
@@ -239,6 +269,8 @@ import analyticsData from './ui-elements/card/analyticsData.js'
 import ChangeTimeDurationDropdown from '@/components/ChangeTimeDurationDropdown.vue'
 import VxTimeline from "@/components/timeline/VxTimeline"
 
+import EchartsPieChart from '@/views/charts-and-maps/charts/apex-charts/ApexCharts.vue'
+// full-version/src/views/charts-and-maps/charts/echarts/EchartsPieChart.vue:141
 export default {
     data() {
         return {
@@ -249,6 +281,7 @@ export default {
             supportTracker: {},
             productsOrder: {},
             salesRadar: {},
+           customersData: {},
 
             timelineData: [
               {
@@ -339,6 +372,10 @@ export default {
       this.$http.get("/api/table/dispatched-orders")
         .then((response) => { this.dispatchedOrders = response.data })
         .catch((error)   => { console.log(error) })
+      // Customers
+      this.$http.get("/api/card/card-analytics/customers")
+        .then((response) => { this.customersData = response.data })
+        .catch((error) => { console.log(error) })
     }
 }
 </script>

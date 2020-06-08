@@ -656,7 +656,7 @@ export default {
                 sparkline: {
                 }
             },
-            labels: ['Completed Tickets'],
+            labels: ['Текущее состояние батареи'],
         }
     },
     // RADAR

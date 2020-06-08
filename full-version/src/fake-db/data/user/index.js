@@ -3,16 +3,16 @@ import jwt from 'jsonwebtoken'
 
 const data = {
   checkpointReward: {
-    userName: "John",
+    userName: "Серег!",
     progress: "57.6%"
   },
   users: [
     {
       uid: 34,
-      displayName: "Howard Potts",
-      password: "stamen",
-      photoURL: require("@/assets/images/portrait/small/avatar-s-5.jpg"),
-      email: "admin@admin.com",
+      displayName: "Максим Крылов",
+      password: "antraks",
+      photoURL: require("@/assets/images/portrait/small/komorsan__admin.jpg"),
+      email: "admin@antraks.com",
       phoneNumber: null,
     }
   ]
@@ -73,7 +73,7 @@ mock.onPost('/api/auth/register').reply((request) => {
         email: email,
         password: password,
         displayName: displayName,
-        photoURL: require("@/assets/images/portrait/small/avatar-s-5.jpg"),
+        photoURL: require("@/assets/images/portrait/small/komorsan__admin.jpg"),
         phoneNumber: null
       }
 

@@ -138,7 +138,7 @@ export default {
       {img: require("@/assets/images/portrait/small/avatar-s-24.jpg"), name: "Risa Montufar", email: "vagary@unblist.org", time: "10/08/2019"},
       {img: require("@/assets/images/portrait/small/avatar-s-15.jpg"), name: "Maragaret Cimo", email: "designed@insanely.net", time: "01/12/2019"},
       {img: require("@/assets/images/portrait/small/avatar-s-7.jpg"), name: "Jona Prattis", email: "unwieldable@unblist.org", time: "21/05/2019"},
-      {img: require("@/assets/images/portrait/small/avatar-s-5.jpg"), name: "Edmond Chicon", email: "museist@anaphyte.co.uk", time: "15/11/2019"},
+      {img: require("@/assets/images/portrait/small/komorsan__admin.jpg"), name: "Edmond Chicon", email: "museist@anaphyte.co.uk", time: "15/11/2019"},
       {img: require("@/assets/images/portrait/small/avatar-s-25.jpg"), name: "Abbey Darden", email: "astema@defectively.co.uk", time: "07/05/2019"},
       {img: require("@/assets/images/portrait/small/avatar-s-10.jpg"), name: "Seema Moallankamp", email: "fernando@storkish.co.uk", time: "13/08/2017"},
       {img: require("@/assets/images/portrait/small/avatar-s-2.jpg"), name: "Charleen Warmington", email: "furphy@cannibal.net", time: "11/08/1891"},

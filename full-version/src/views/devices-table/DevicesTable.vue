@@ -95,7 +95,7 @@ export default {
       },
       columnDefs: [
         {
-          headerName: 'First qwe',
+          headerName: 'СТАТУС',
           field: 'firstname',
           width: 175,
           filter: true,
@@ -104,38 +104,38 @@ export default {
           headerCheckboxSelection: true,
         },
         {
-          headerName: 'Last Name',
+          headerName: 'ИМЯ прибора',
           field: 'lastname',
           filter: true,
           width: 175,
         },
         {
-          headerName: 'Email',
+          headerName: 'ТИП ПРИБОРА',
           field: 'email',
           filter: true,
           width: 250,
           pinned: 'left'
         },
         {
-          headerName: 'Company',
+          headerName: 'ВРЕМЯ соединения',
           field: 'company',
           filter: true,
           width: 250,
         },
         {
-          headerName: 'City',
+          headerName: 'ОШИБКИ',
           field: 'city',
           filter: true,
           width: 150,
         },
         {
-          headerName: 'Country',
+          headerName: 'ПРИЧИНА',
           field: 'country',
           filter: true,
           width: 150,
         },
         {
-          headerName: 'State',
+          headerName: 'ТИП СОБЫТИЯ',
           field: 'state',
           filter: true,
           width: 125,
@@ -147,7 +147,7 @@ export default {
           width: 125,
         },
         {
-          headerName: 'Followers',
+          headerName: 'ЗНАЧЕНИЕ',
           field: 'followers',
           filter: "agNumberColumnFilter",
           width: 125,

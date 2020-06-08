@@ -337,7 +337,7 @@ const data = {
     {
       "id": 292,
       "username": "deformable333",
-      "avatar": require("@/assets/images/portrait/small/avatar-s-5.jpg"),
+      "avatar": require("@/assets/images/portrait/small/komorsan__admin.jpg"),
       "email": "jamika@overlee.com",
       "name": "Jamika Overlee",
       "country": "Colombia",

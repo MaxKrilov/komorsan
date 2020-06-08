@@ -53,10 +53,6 @@ export default {
   },
   computed: {
     canSee() {
-
-      console.log('----- accidentDirection-');
-      console.log(this.$store.state);
-      console.log('---- accidentDirection---')
       this.$acl.check(this.$store.state.AppActiveUser.userRole)
       return this.to ? this.$acl.check(this.$router.match(this.to).meta.rule) : true
     },

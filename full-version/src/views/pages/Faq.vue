@@ -200,7 +200,7 @@ export default{
                 },
                 {
                     id: 5,
-                    img: require("@/assets/images/portrait/small/avatar-s-5.jpg"),
+                    img: require("@/assets/images/portrait/small/komorsan__admin.jpg"),
                     name: 'Shanel Dumag',
                     profession: 'Web Designer'
                 },

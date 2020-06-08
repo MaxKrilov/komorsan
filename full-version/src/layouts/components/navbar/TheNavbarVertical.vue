@@ -3,9 +3,8 @@
   Description: Navbar component
   Component Name: TheNavbar
   ----------------------------------------------------------------------------------------
-  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-  Author: Pixinvent
-  Author URL: http://www.themeforest.net/user/pixinvent
+  Item Name: Vuejs, HTML Template
+  Author: Krylov
 ========================================================================================== -->
 
 
@@ -25,9 +24,9 @@
 
         <i18n />
 
-        <search-bar />
+        <search-bar class="mr-5" />
 
-        <cart-drop-down />
+<!--        <cart-drop-down />-->
 
         <notification-drop-down />
 

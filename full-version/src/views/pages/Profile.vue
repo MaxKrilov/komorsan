@@ -307,7 +307,7 @@ export default {
       },
       mediaExtensions: { img: ['jpg', 'jpeg', 'png', 'bmp', 'gif', 'exif', 'tiff'], video: ['avi', 'flv', 'wmv', 'mov', 'mp4', '3gp'] },
       suggestedFriends: [
-        { name: 'Carissa Dolle', avatar: require("@/assets/images/portrait/small/avatar-s-5.jpg"),  mutualFriends: 6 },
+        { name: 'Carissa Dolle', avatar: require("@/assets/images/portrait/small/komorsan__admin.jpg"),  mutualFriends: 6 },
         { name: 'Liliana Pecor', avatar: require("@/assets/images/portrait/small/avatar-s-6.jpg"),  mutualFriends: 3 },
         { name: 'Isidra Strunk', avatar: require("@/assets/images/portrait/small/avatar-s-7.jpg"),  mutualFriends: 2 },
         { name: 'Gerald Licea',  avatar: require("@/assets/images/portrait/small/avatar-s-8.jpg"),  mutualFriends: 1 },
