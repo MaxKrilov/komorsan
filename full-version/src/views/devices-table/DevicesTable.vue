@@ -221,14 +221,20 @@ export default {
       .then(result =>
       {
 
-
+        // this.rowData = result.data;
         console.log('----- .button-ritz');
-        console.log(  result);
+        // console.log(this.rowData);
         console.log('---- .button-ritz---');
-        result.json()
+        return result.data;
       }
         )
-      .then(rowData => this.rowData = rowData);
+      .then(rowData => {
+        this.rowData = rowData;
+          console.log('----- rowData');
+          console.log(rowData);
+          console.log('---- rowData-');
+      }
+      );
   },
 }
 

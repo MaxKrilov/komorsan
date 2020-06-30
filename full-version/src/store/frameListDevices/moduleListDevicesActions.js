@@ -19,16 +19,13 @@ export default {
     // var axiosCrossDomain = axios;
     // delete axiosCrossDomain.defaults.headers.common["X-CSRF-TOKEN"];
     return new Promise((resolve, reject) => {
-      axios.defaults.withCredentials = true;
-      const path = 'http://10.10.20.12:8081/api/v1/devices';
+      const path = '/api/v1/devices';
       axios.get(path, {headers: {"Content-Type": "application/json"}})
         .then((response) => {
-
-          // console.log('----- response.json()');
-          // console.log(response.json());
-          // console.log('---- response.json()---');
-          commit('SET_DEVICES_FROM_API', response)
-          resolve(response)
+          if(response.status === 200) {
+            commit('SET_DEVICES_FROM_API', response)
+            resolve(response)
+          }
         })
         .catch((error) => {
           reject(error)

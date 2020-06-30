@@ -8,24 +8,16 @@
 
 
 module.exports = {
+  devServer: {
+    proxy: {
+      "/api/v1/*": {
+        target: "http://10.10.20.12:8081",
+        secure: false,
+        changeOrigin: true,
+        ws: true,
+      }
+    }
+  }
+};
 
-//   devServer: {
-//     host: "localhost"
-//     // host: "127.0.0.1"
-//
-//   }
-// ,
-//   publicPath: '/',
-//   transpileDependencies: [
-//     'vue-echarts',
-//     'resize-detector'
-//   ],
-//   configureWebpack: {
-//     optimization: {
-//       splitChunks: {
-//         chunks: 'all'
-//       }
-//     }
-//   }
-}
 
