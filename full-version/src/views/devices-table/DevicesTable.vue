@@ -52,7 +52,7 @@
         class="ag-theme-material w-100 my-4 ag-grid-table"
         :columnDefs="columnDefs"
         :defaultColDef="defaultColDef"
-        :rowData="contacts"
+        :rowData="rowData"
         rowSelection="multiple"
         colResizeDefault="shift"
         :animateRows="true"
@@ -72,17 +72,23 @@
 </template>
 
 <script>
+import moduleListDevices from '@/store/frameListDevices/moduleListDevices.js'
 import { AgGridVue } from "ag-grid-vue"
 import contacts from './data.json'
-
+import axios from 'axios'
 import '@/assets/scss/vuexy/extraComponents/agGridStyleOverride.scss'
-
+import {mapActions, mapGetters} from 'vuex'
 export default {
+  name: "DevicesTable.vue",
+  props: {
+      devices: []
+  },
   components: {
     AgGridVue
   },
   data() {
     return {
+      rowData: null,
       searchQuery: '',
       gridOptions: {},
       maxPageNumbers: 7,
@@ -182,50 +188,21 @@ export default {
       set(val) {
         this.gridApi.paginationGoToPage(val - 1)
       }
-    }
+    },
+    ...mapGetters([
+      'DEVICES_LIST'
+    ])
   },
   methods: {
     updateSearchQuery(val) {
       this.gridApi.setQuickFilter(val)
-    }
-  },
-   beforeMount() {
-     let antraksHost = document.location.href.split('/', 3);
-     antraksHost = antraksHost[0] + '//' + antraksHost[2] + '/api/v1';
-     fetch(antraksHost + '/devices?' , {
-       credentials: "same-origin"
-     })
-     // fetch('http://localhost:8081/api/v1/devices')
-       .then(response => response.json())
-       .then(json => console.log(json))
-    // let antraksHost = document.location.href.split('/', 3);
-    // antraksHost = antraksHost[0] + '//' + antraksHost[2] + '/api/v1';
-    //
-    //  fetch(antraksHost + '/devices?', {
-    //   method: 'GET',
-    //   headers : {
-    //     'Content-Type': 'application/json'
-    //
-    //   }
-    // })
-    // .then(response => response)
-    // .then(result => {
-    //   console.log('-----   res.json() --');
-    //   console.log( JSON.stringify(result) );
-    //   console.log('---   res.json() ---');
-    // })
-
-    // const get_Dev = res.json();
-    // console.log('-----   res.json() --');
-    // console.log( get_Dev);
-    // console.log('---   res.json() ---');
+    },
+    ...mapActions([
+      'GET_DEVICES_FROM_API'
+    ])
   },
   mounted() {
-
-
     this.gridApi = this.gridOptions.api
-
-
     /* =================================================================
       NOTE:
       Header is not aligned properly in RTL version of agGrid table.
@@ -235,7 +212,24 @@ export default {
       const header = this.$refs.agGridTable.$el.querySelector(".ag-header-container")
       header.style.left = "-" + String(Number(header.style.transform.slice(11,-3)) + 9) + "px"
     }
-  }
+  },
+  created() {
+
+    // Fetch
+    // this.$store.registerModule('frameListDevices', moduleListDevices)
+    this.$store.dispatch("frameListDevices/GET_DEVICES_FROM_API")
+      .then(result =>
+      {
+
+
+        console.log('----- .button-ritz');
+        console.log(  result);
+        console.log('---- .button-ritz---');
+        result.json()
+      }
+        )
+      .then(rowData => this.rowData = rowData);
+  },
 }
 
 </script>

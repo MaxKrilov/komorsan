@@ -2,18 +2,31 @@
   File Name: moduleAuthState.js
   Description: Auth Module State
   ----------------------------------------------------------------------------------------
-  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-  Author: Pixinvent
-  Author URL: http://www.themeforest.net/user/pixinvent
+  Item Name: Vuejs, HTML Template
+  Author: Krylov
 ==========================================================================================*/
 
 
 import auth from "@/auth/authService";
 import firebase from 'firebase/app'
 import 'firebase/auth'
+import axios from "../../axios";
 
 export default {
     isUserLoggedIn: () => {
+      // axios.defaults.withCredentials = true;
+      // const path1 = 'http://10.10.20.12:8081/api/v1/devices';
+      // axios({
+      //   method: 'GET',
+      //   url: path1,
+      //   headers: {"Content-Type" : "application/json"},
+      // });
+      //   const path = 'http://10.10.20.12:8081/api/v1/auth_status';
+      //   axios({
+      //     method: 'GET',
+      //     url: path,
+      //   });
+
         let isAuthenticated = false
 
         // get firebase current user

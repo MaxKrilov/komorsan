@@ -1,21 +1,18 @@
 /*=========================================================================================
-  File Name: moduleTodo.js
-  Description: Todo Module
+  File Name:  moduleListDevicesMutations.js
+  Description: frameListDevices Module Mutations
   ----------------------------------------------------------------------------------------
   Item Name: Vuejs, HTML Template
   Author: Krylov
 ==========================================================================================*/
 
 
-import state from './moduleTodoState.js'
-import mutations from './moduleTodoMutations.js'
-import actions from './moduleTodoActions.js'
-import getters from './moduleTodoGetters.js'
 
 export default {
-	namespaced: true,
-    state: state,
-    mutations: mutations,
-    actions: actions,
-    getters: getters
+
+  // API
+  SET_DEVICES_FROM_API(state, devices) {
+      state.devices = devices
+    }
+
 }

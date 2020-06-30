@@ -3,7 +3,7 @@
   "version": "4.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --port 8080",
+    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -35,6 +35,7 @@
     "vue-chartjs": "^3.4.2",
     "vue-clipboard2": "^0.3.0",
     "vue-context": "4.0.0",
+    "vue-cookies": "^1.7.0",
     "vue-echarts": "^4.0.3",
     "vue-feather-icons": "^5.0.0",
     "vue-flatpickr-component": "^8.1.2",
@@ -48,6 +49,7 @@
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.6",
     "vue-select": "^3.1.0",
+    "vue-sessionstorage": "^1.0.0",
     "vue-simple-calendar": "^4.2.2",
     "vue-simple-suggest": "^1.9.5",
     "vue-star-rating": "^1.6.1",

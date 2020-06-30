@@ -2,9 +2,8 @@
   File Name: store.js
   Description: Vuex store
   ----------------------------------------------------------------------------------------
-  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-  Author: Pixinvent
-  Author URL: http://www.themeforest.net/user/pixinvent
+  Item Name: Vuejs, HTML Template
+  Author: Krylov
 ==========================================================================================*/
 
 
@@ -22,6 +21,7 @@ Vue.use(Vuex)
 // import moduleCalendar from './calendar/moduleCalendar.js'
 // import moduleChat from './chat/moduleChat.js'
 // import moduleEmail from './email/moduleEmail.js'
+import moduleListDevices from './frameListDevices/moduleListDevices.js'
 import moduleAuth from './auth/moduleAuth.js'
 import moduleECommerce from './eCommerce/moduleECommerce.js'
 
@@ -36,6 +36,7 @@ export default new Vuex.Store({
         // calendar: moduleCalendar,
         // chat: moduleChat,
         // email: moduleEmail,
+        frameListDevices: moduleListDevices,
         auth: moduleAuth,
         eCommerce: moduleECommerce,
     },

@@ -1,7 +1,7 @@
 // axios
 import axios from 'axios'
 
-const domain = "127.0.0.1:8080"
+const domain = " "
 
 export default axios.create({
   domain

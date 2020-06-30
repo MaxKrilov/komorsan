@@ -2,9 +2,8 @@
   File Name: moduleAuthActions.js
   Description: Auth Module Actions
   ----------------------------------------------------------------------------------------
-  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-  Author: Pixinvent
-  Author URL: http://www.themeforest.net/user/pixinvent
+  Item Name: Vuejs, HTML Template
+  Author: Krylov
 ==========================================================================================*/
 
 import jwt from "../../http/requests/auth/jwt/index.js"
@@ -13,6 +12,7 @@ import jwt from "../../http/requests/auth/jwt/index.js"
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import router from '@/router'
+import axios from "../../axios";
 
 export default {
     loginAttempt({ dispatch }, payload) {
@@ -297,6 +297,95 @@ export default {
             })
         })
     },
+    // getDevices() {
+    //   axios.defaults.withCredentials = true;
+    //   const path = 'http://10.10.20.12:8081/api/v1/devices';
+    //   axios.get(path).then(function (response) {
+    //     console.log(response);
+    //   });
+    // },
+
+  // Cookie
+   loginCookie({ commit }, payload) {
+    axios.defaults.withCredentials = false;
+    return new Promise((resolve,reject) => {
+      // const headers = {
+      //   'Content-Type': 'application/x-www-form-urlencoded'
+      // };
+      const path = 'http://10.10.20.12:8081/api/v1/login';
+      const data = 'username=' + payload.userDetails.email + '&' + 'password=' +  payload.userDetails.password;
+
+        axios.post(path, data, {headers: {"Content-Type" : "application/x-www-form-urlencoded"}})
+        .then(response => {
+
+          // If there's user data in response
+           router.push(router.currentRoute.query.to || '/')
+                console.log('---- accidentDirection---');
+                console.log( response);
+                console.log('---- accidentDirection---');
+          if(response.status == 200 || response.status == "Already logged in") {
+          // if(response.data.userData) {
+            // Navigate User to homepage
+            // axios.defaults.withCredentials = true;
+            // const path = 'http://10.10.20.12:8081/api/v1/devices';
+            // axios.get(path).then(function (response) {
+            //   console.log(response);
+            // });
+            // router.push(router.currentRoute.query.to || '/')
+            //
+            // // Set accessToken
+            // localStorage.setItem("accessToken", response.data.accessToken)
+            //
+            // // Update user details
+            // commit('UPDATE_USER_INFO', response.data.userData, {root: true})
+            //
+            // // Set bearer token in axios
+            // commit("SET_BEARER", response.data.accessToken)
+            //
+            // resolve(response)
+          }else {
+            reject({message: "Wrong Email or Password"})
+          }
+
+        })
+        .catch(error => { reject(error) })
+    })
+
+
+      // return new Promise((resolve, reject) => {
+      //   commit('auth_request')
+      //   const path = 'http://10.10.20.12:8081/api/v1/login';
+      //   axios({
+      //     method: 'post',
+      //     url: path,
+      //     data: {
+      //       username: 'q',
+      //       password: 'q',
+      //     },
+      //   })
+      //     .then(resp => {
+      //       const token = resp.data.token
+      //       const user = resp.data.user
+      //       localStorage.setItem('token', token)
+      //       axios.defaults.headers.common['Authorization'] = token
+      //       commit('auth_success', token, user)
+      //       resolve(resp)
+      //       // let username = response.data.username;
+      //       console.log('---- accidentDirection---');
+      //       console.log(resp.data );
+      //       console.log( resp);
+      //       console.log('---- accidentDirection---');
+      //       router.push(router.currentRoute.query.to || '/dashboard/ag-grid-table')
+      //     })
+      //     .catch(err => {
+      //       commit('auth_error')
+      //       localStorage.removeItem('token')
+      //       reject(err)
+      //     })
+      // })
+
+  },
+
 
 
     // JWT

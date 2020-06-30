@@ -1,23 +1,21 @@
 /*=========================================================================================
-  File Name: moduleDataList.js
-  Description: Calendar Module
+  File Name: moduleListDevices.js
+  Description: frameListDevices Module
   ----------------------------------------------------------------------------------------
   Item Name: Vuejs, HTML Template
   Author: Krylov
 ==========================================================================================*/
 
 
-import state from './moduleDataListState.js'
-import mutations from './moduleDataListMutations.js'
-import actions from './moduleDataListActions.js'
-import getters from './moduleDataListGetters.js'
+import state from './moduleListDevicesState.js'
+import mutations from './moduleListDevicesMutations.js'
+import actions from './moduleListDevicesActions.js'
+import getters from './moduleListDevicesGetters.js'
 
 export default {
-  isRegistered: false,
   namespaced: true,
   state: state,
   mutations: mutations,
   actions: actions,
   getters: getters
 }
-

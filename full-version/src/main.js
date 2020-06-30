@@ -14,6 +14,8 @@ import App from './App.vue'
 import Vuesax from 'vuesax'
 import 'material-icons/iconfont/material-icons.css' //Material Icons
 import 'vuesax/dist/vuesax.css'; // Vuesax
+import VueSessionStorage from 'vue-sessionstorage'
+Vue.use(VueSessionStorage)
 Vue.use(Vuesax)
 
 

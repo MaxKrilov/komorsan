@@ -44,9 +44,14 @@ export default {
       return Promise.reject(error)
     })
   },
-  login(email, pwd) {
-    return axios.post("/api/auth/login", {email: email, password: pwd})
-  },
+  // login(email, pwd) {
+  //   return axios.post("/api/auth/login", {email: email, password: pwd})
+  // },
+  // login(email, pwd) {
+  //   // return axios.post("http://10.10.20.12:8081/api/v1/login", "username=antrax_eng_&password=pa$$F0_r-AntraXEngeneeR")
+  //    return axios.post("http://10.10.20.12:8081/api/v1/login", '"' + 'username=' + email + '&' + 'password=' + pwd, {headers: {"Content-Type" : "application/x-www-form-urlencoded"}})
+  //
+  // },
   registerUser(name, email, pwd) {
     return axios.post("/api/auth/register", {displayName: name, email: email, password: pwd})
   },
