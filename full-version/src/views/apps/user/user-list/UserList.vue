@@ -252,7 +252,7 @@ export default {
         },
         {
           headerName: 'Status',
-          field: 'status',
+          field: 'status_id',
           filter: true,
           width: 150,
           cellRendererFramework: 'CellRendererStatus'
@@ -293,7 +293,7 @@ export default {
       this.setColumnFilter("role", obj.value)
     },
     statusFilter(obj) {
-      this.setColumnFilter("status", obj.value)
+      this.setColumnFilter("status_id", obj.value)
     },
     isVerifiedFilter(obj) {
       let val = obj.value === "all" ? "all" : obj.value == "yes" ? "true" : "false"
@@ -365,6 +365,7 @@ export default {
     }
   },
   created() {
+
     if(!moduleUserManagement.isRegistered) {
       this.$store.registerModule('userManagement', moduleUserManagement)
       moduleUserManagement.isRegistered = true

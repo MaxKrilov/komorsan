@@ -54,11 +54,37 @@ export default [
       },
     ]
   },
-  // {
-  //   header: "Apps",
-  //   icon: "PackageIcon",
-  //   i18n: "Apps",
-  //   items: [
+  {
+    header: "Apps",
+    icon: "PackageIcon",
+    i18n: "Apps",
+    items: [
+      {
+        url: null,
+        name: "Monitoring",
+        icon: "UserIcon",
+        i18n: "Monitoring",
+        submenu: [
+          {
+            url: '/apps/monitoring/monitoring-list',
+            name: "List",
+            slug: "app-monitoring-list",
+            i18n: "List",
+          },
+          {
+            url: '/apps/monitoring/monitoring-view/268',
+            name: "View",
+            slug: "app-monitoring-view'",
+            i18n: "View",
+          },
+          {
+            url: '/apps/monitoring/monitoring-edit/268',
+            name: "Edit",
+            slug: "app-monitoring-edit",
+            i18n: "Edit",
+          },
+        ]
+      },
   //     {
   //       url: "/apps/email",
   //       name: "Email",
@@ -146,8 +172,8 @@ export default [
   //         },
   //       ]
   //     },
-  //   ]
-  // },
+    ]
+  },
   /* ==="UI" === */
   // {
   //   header: "UI",

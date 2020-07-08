@@ -80,6 +80,48 @@ const router = new Router({
         // Application Routes
         // =============================================================================
                 {
+                  path: '/apps/monitoring/monitoring-list',
+                  name: 'app-monitoring-list',
+                  component: () => import('@/views/apps/monitoring/monitoring-list/MonitoringList.vue'),
+                  meta: {
+                    breadcrumb: [
+                      { title: 'Home', url: '/' },
+                      { title: 'Devices' },
+                      { title: 'List', active: true },
+                    ],
+                    pageTitle: 'Monitoring List',
+                    rule: 'editor'
+                  },
+                },
+                {
+                  path: '/apps/monitoring/monitoring-view/:userId',
+                  name: 'app-monitoring-view',
+                  component: () => import('@/views/apps/monitoring/MonitoringView.vue'),
+                  meta: {
+                    breadcrumb: [
+                      { title: 'Home', url: '/' },
+                      { title: 'Devices' },
+                      { title: 'View', active: true },
+                    ],
+                    pageTitle: 'Monitoring View',
+                    rule: 'editor'
+                  },
+                },
+                {
+                  path: '/apps/monitoring/monitoring-edit/:userId',
+                  name: 'app-monitoring-edit',
+                  component: () => import('@/views/apps/monitoring/monitoring-edit/MonitoringEdit.vue'),
+                  meta: {
+                    breadcrumb: [
+                      { title: 'Home', url: '/' },
+                      { title: 'Devices' },
+                      { title: 'Edit', active: true },
+                    ],
+                    pageTitle: 'Monitoring Edit',
+                    rule: 'editor'
+                  },
+                },
+                {
                     path: '/apps/todo',
                     redirect: '/apps/todo/all',
                     name: 'todo',

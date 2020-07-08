@@ -111,53 +111,18 @@ export default {
         },
         {
           headerName: 'ИМЯ прибора',
-          field: 'lastname',
+          field: 'device_info.name',
           filter: true,
           width: 175,
         },
         {
           headerName: 'ТИП ПРИБОРА',
-          field: 'email',
-          filter: true,
+          field: 'device_description.device_type',
+          filter: "agNumberColumnFilter",
           width: 250,
           pinned: 'left'
         },
-        {
-          headerName: 'ВРЕМЯ соединения',
-          field: 'company',
-          filter: true,
-          width: 250,
-        },
-        {
-          headerName: 'ОШИБКИ',
-          field: 'city',
-          filter: true,
-          width: 150,
-        },
-        {
-          headerName: 'ПРИЧИНА',
-          field: 'country',
-          filter: true,
-          width: 150,
-        },
-        {
-          headerName: 'ТИП СОБЫТИЯ',
-          field: 'state',
-          filter: true,
-          width: 125,
-        },
-        {
-          headerName: 'Zip',
-          field: 'zip',
-          filter: true,
-          width: 125,
-        },
-        {
-          headerName: 'ЗНАЧЕНИЕ',
-          field: 'followers',
-          filter: "agNumberColumnFilter",
-          width: 125,
-        },
+
       ],
       contacts: contacts,
     }
@@ -206,7 +171,7 @@ export default {
     /* =================================================================
       NOTE:
       Header is not aligned properly in RTL version of agGrid table.
-      However, we given fix to this issue. If you want more robust solution please contact them at gitHub
+
     ================================================================= */
     if(this.$vs.rtl) {
       const header = this.$refs.agGridTable.$el.querySelector(".ag-header-container")
@@ -218,16 +183,7 @@ export default {
     // Fetch
     // this.$store.registerModule('frameListDevices', moduleListDevices)
     this.$store.dispatch("frameListDevices/GET_DEVICES_FROM_API")
-      .then(result =>
-      {
-
-        // this.rowData = result.data;
-        console.log('----- .button-ritz');
-        // console.log(this.rowData);
-        console.log('---- .button-ritz---');
-        return result.data;
-      }
-        )
+      .then(result => result.data)
       .then(rowData => {
         this.rowData = rowData;
           console.log('----- rowData');
