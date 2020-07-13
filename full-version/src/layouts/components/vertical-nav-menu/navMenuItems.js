@@ -817,6 +817,13 @@ export default [
         slug: "extra-component-maps-google-map",
         i18n: "GoogleMap",
       },
+      {
+        url: '/charts-and-maps/maps/leaflet-map',
+        name: "Leaflet Map",
+        icon: "MapIcon",
+        slug: "extra-component-maps-leaflet-map",
+        i18n: "LeafleteMap",
+      },
     ]
   },
   /* ==="Others" === */

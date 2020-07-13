@@ -1102,6 +1102,20 @@ const router = new Router({
                         rule: 'editor'
                     },
                 },
+                {
+                  path: '/charts-and-maps/maps/leaflet-map',
+                  name: 'extra-component-maps-leaflet-map',
+                  component: () => import('@/views/charts-and-maps/maps/leaflet-map/LeafletMap.vue'),
+                  meta: {
+                    breadcrumb: [
+                      { title: 'Home', url: '/' },
+                      { title: 'Charts & Maps' },
+                      { title: 'Leaflet Map', active: true },
+                    ],
+                    pageTitle: 'Leaflet Map',
+                    rule: 'editor'
+                  },
+                },
 
 
 
