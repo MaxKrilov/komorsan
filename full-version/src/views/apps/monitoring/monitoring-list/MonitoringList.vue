@@ -306,9 +306,9 @@ export default {
       .then(result => result.data)
       .then(rowData => {
           this.rowData = rowData;
-          console.log('----- rowData');
-          console.log(rowData);
-          console.log('---- rowData-');
+          // console.log('----- rowData');
+          // console.log(rowData);
+          // console.log('---- rowData-');
         }
       );
   },

@@ -21,6 +21,7 @@ Vue.use(Vuex)
 // import moduleCalendar from './calendar/moduleCalendar.js'
 // import moduleChat from './chat/moduleChat.js'
 // import moduleEmail from './email/moduleEmail.js'
+import moduleMapLeaflet from './map/moduleMapLeaflet.js'
 import moduleListDevices from './frameListDevices/moduleListDevices.js'
 import moduleAuth from './auth/moduleAuth.js'
 import moduleECommerce from './eCommerce/moduleECommerce.js'
@@ -36,6 +37,7 @@ export default new Vuex.Store({
         // calendar: moduleCalendar,
         // chat: moduleChat,
         // email: moduleEmail,
+        map: moduleMapLeaflet,
         frameListDevices: moduleListDevices,
         auth: moduleAuth,
         eCommerce: moduleECommerce,

@@ -1,25 +1,140 @@
 <template>
-  <svg viewBox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <defs>
-          <linearGradient x1="100%" y1="10.5120544%" x2="50%" y2="89.4879456%" id="linearGradient-1">
-              <stop stop-color="#000000" offset="0%"></stop>
-              <stop stop-color="#FFFFFF" offset="100%"></stop>
-          </linearGradient>
-          <linearGradient x1="64.0437835%" y1="46.3276743%" x2="37.373316%" y2="100%" id="linearGradient-2">
-              <stop stop-color="#EEEEEE" stop-opacity="0" offset="0%"></stop>
-              <stop stop-color="#FFFFFF" offset="100%"></stop>
-          </linearGradient>
-      </defs>
-      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-          <g id="Artboard" transform="translate(-400.000000, -178.000000)">
-              <g id="Group" transform="translate(400.000000, 178.000000)">
-                  <path d="M-5.68434189e-14,2.84217094e-14 L39.1816085,2.84217094e-14 L69.3453773,32.2519224 L101.428699,2.84217094e-14 L138.784583,2.84217094e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L6.71554594,44.4188507 C2.46876683,39.9813776 0.345377275,35.1089553 0.345377275,29.8015838 C0.345377275,24.4942122 0.230251516,14.560351 -5.68434189e-14,2.84217094e-14 Z" id="Path" class="text-primary fill-current"></path>
-                  <path d="M69.3453773,32.2519224 L101.428699,1.42108547e-14 L138.784583,1.42108547e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L32.8435758,70.5039241 L69.3453773,32.2519224 Z" id="Path" fill="url(#linearGradient-1)" opacity="0.2"></path>
-                  <polygon id="Path-2" fill="#000000" opacity="0.049999997" points="69.3922914 32.4202615 32.8435758 70.5039241 54.0490008 16.1851325"></polygon>
-                  <polygon id="Path-2" fill="#000000" opacity="0.099999994" points="69.3922914 32.4202615 32.8435758 70.5039241 58.3683556 20.7402338"></polygon>
-                  <polygon id="Path-3" fill="url(#linearGradient-2)" opacity="0.099999994" points="101.428699 0 83.0667527 94.1480575 130.378721 47.0740288"></polygon>
-              </g>
-          </g>
+  <div class="container">
+    <svg width="55px" height="55px"  viewBox="0 0 139 95"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+                <linearGradient x1="100%" y1="10.5120544%" x2="50%" y2="89.4879456%" id="linearGradient-1">
+                    <stop stop-color="#000000" offset="0%"></stop>
+                    <stop stop-color="#FFFFFF" offset="100%"></stop>
+                </linearGradient>
+                <linearGradient x1="64.0437835%" y1="46.3276743%" x2="37.373316%" y2="100%" id="linearGradient-2">
+                    <stop stop-color="#EEEEEE" stop-opacity="0" offset="0%"></stop>
+                    <stop stop-color="#FFFFFF" offset="100%"></stop>
+                </linearGradient>
+            </defs>
+      <sodipodi:namedview
+        id="base"
+        pagecolor="#ffffff"
+        bordercolor="#666666"
+        borderopacity="1.0"
+        inkscape:pageopacity="0.0"
+        inkscape:pageshadow="2"
+        inkscape:zoom="1.4422836"
+        inkscape:cx="-73.537593"
+        inkscape:cy="34.503052"
+        inkscape:document-units="mm"
+        inkscape:current-layer="svg895"
+        showgrid="false"
+        inkscape:window-width="1920"
+        inkscape:window-height="1017"
+        inkscape:window-x="-8"
+        inkscape:window-y="-8"
+        inkscape:window-maximized="1"
+        fit-margin-top="0"
+        fit-margin-left="0"
+        fit-margin-right="0"
+        fit-margin-bottom="0" />
+      <g
+        inkscape:label="Layer 1"
+        inkscape:groupmode="layer"
+        id="Page-1"
+        transform="translate(-40.203894,-55.805083)">
+        <g
+          id="Artboard"
+          transform="translate(-14.498521,-2.8348214)"
+          style="stroke-width:5.56699991;stroke-miterlimit:4;stroke-dasharray:none">
+          <path  id="Path" class="text-primary fill-current"></path>
+          <path  id="Path" fill="url(#linearGradient-1)" opacity="0.2"></path>
+          <path
+            inkscape:connector-curvature="0"
+            id="Path-2"
+            class="text-primary fill-current"
+            fill="url(#linearGradient-2)"
+            style="fill-rule:evenodd;stroke-width:5.56699991;stroke-miterlimit:4;stroke-dasharray:none"
+            d="m 79.319505,128.97295 h -6.76656 L 87.392366,96.122281 h 6.76656 z" />
+          <path
+            inkscape:connector-curvature="0"
+            id="Path-3"
+            class="text-primary fill-current"
+            fill="url(#linearGradient-2)"
+            style="fill-rule:evenodd;stroke-width:5.56699991;stroke-miterlimit:4;stroke-dasharray:none"
+            d="M 102.22811,120.00273 96.17013,106.6204 h -6.761322 l 6.047185,13.38233 H 91.34667 l 10.46393,8.96593 4.04122,-8.96593 z" />
+        </g>
+        <circle
+
+          id="rect1" fill="url(#linearGradient-1)" opacity="0.2"
+          stroke="url(#linearGradient-2)"
+          style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#006b37;stroke-width:5.56699991;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+
+          cx="74.703865"
+          cy="112.30505"
+          r="24.716471" />
       </g>
-  </svg>
+    </svg>
+  </div>
 </template>
+
+
+<style scoped>
+  .container {
+    width:35%;
+    height:35%;
+  }
+
+  #Path-2,  #Path-3,  #rect1 {
+    fill-opacity:0;
+    fill:#008080;
+
+  }
+  #Path-2 {
+    animation:anLeft  0.3s ease forwards;
+    animation-iteration-count: 3;
+    animation-delay: 0.1s;
+  }
+
+  @keyframes anLeft {
+    100% {
+      fill-opacity:1;
+
+    }
+  }
+  #Path-3{
+    animation:anRight  0.3s ease forwards;
+    animation-delay: 1.9s;
+  }
+
+  @keyframes anRight {
+    /*100% {*/
+    /*  fill-opacity:1;*/
+    /*}*/
+    from {
+      fill-opacity: .3;
+    }
+    50% {
+      fill-opacity: .7;
+    }
+    to {
+      fill-opacity: 1;
+    }
+
+  }
+
+  #rect1 {
+    animation:anRect  0.3s ease forwards;
+    animation-delay:1.4s;
+  }
+
+  @keyframes anRect {
+    /*100% {*/
+    /*  fill-opacity:1;*/
+    /*}*/
+    from {
+      fill-opacity: .3;
+    }
+    50% {
+      fill-opacity: .7;
+    }
+    to {
+      fill-opacity: 1;
+    }
+  }
+</style>
