@@ -7,14 +7,14 @@
 <script>
   import { mapState, mapMutations } from 'vuex'
 
-  import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
-
   import 'leaflet/dist/leaflet.css'
   import L from 'leaflet'
   // BUG https://github.com/Leaflet/Leaflet/issues/4968
   import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png'
   import iconUrl from 'leaflet/dist/images/marker-icon.png'
   import shadowUrl from 'leaflet/dist/images/marker-shadow.png'
+
+
   export default {
     name: 'LMap',
     props: {
@@ -32,10 +32,10 @@
       }
     },
     computed: {
-      ...mapState('mapModule', ['mapInstance', 'locations'])
+      ...mapState(['mapInstance', 'locations'])
     },
     methods: {
-      ...mapMutations('mapModule', ['SET_MAP_INSTANCE']),
+      ...mapMutations( 'mapModule', ['SET_MAP_INSTANCE']),
       fixBug () {
         // https://github.com/Leaflet/Leaflet/issues/4968
         L.Marker.prototype.options.icon = L.icon({
@@ -55,11 +55,17 @@
           maxZoom: 18,
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         })
+
         map.addLayer(mapLayer)
         return map
       },
       renderMap () {
+        console.log('----- marker');
+        console.log(this.$store.state.map.mapInstance);
+        console.log('---- marker');
         this.SET_MAP_INSTANCE(this.createMapInstance())
+        // this.createMapInstance()
+        // return this.$store.state.mapModule.SET_MAP_INSTANCE(this.createMapInstance())
       },
       removeMarkers () {
         if (this.mapInstance) {
@@ -76,9 +82,9 @@
               const marker = L.marker(new L.LatLng(loc.lat, loc.lon), { title: loc.title })
               this.mapInstance.addLayer(marker)
               this.markers.push(marker)
-              console.log('----- marker');
-              console.log(marker);
-              console.log('---- marker');
+              // console.log('----- marker');
+              // console.log(marker);
+              // console.log('---- marker');
             }
           }
         }
@@ -101,6 +107,7 @@
     },
     watch: {
       locations (inTo, inFrom) {
+
         this.removeMarkers()
         this.addMarkers()
         this.fitAllMarkers()

@@ -9,7 +9,7 @@
 
 export default {
   // Instance
-  SET_MAP_INSTANCE (state, mapInstance) {
+  SET_MAP_INSTANCE(state, mapInstance) {
     state.mapInstance = mapInstance
   },
   SET_FETCHING_LOCATIONS (state, fetching) {
