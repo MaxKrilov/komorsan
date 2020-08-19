@@ -321,9 +321,7 @@ export default {
 
           // If there's user data in response
            router.push(router.currentRoute.query.to || '/')
-                console.log('---- accidentDirection---');
-                console.log( response);
-                console.log('---- accidentDirection---');
+
           if(response.status == 200 || response.status == "Already logged in") {
           // if(response.data.userData) {
             // Navigate User to homepage

@@ -15,6 +15,10 @@
   import shadowUrl from 'leaflet/dist/images/marker-shadow.png'
 
 
+
+  import moduleMapLeaflet from '../../../../store/map/moduleMapLeaflet.js'
+  import store from '../../../../store/store.js'
+  store.registerModule('mapModule', moduleMapLeaflet)
   export default {
     name: 'LMap',
     props: {
@@ -32,7 +36,7 @@
       }
     },
     computed: {
-      ...mapState(['mapInstance', 'locations'])
+      ...mapState('mapModule', ['locations'])
     },
     methods: {
       ...mapMutations( 'mapModule', ['SET_MAP_INSTANCE']),
@@ -61,11 +65,17 @@
       },
       renderMap () {
         console.log('----- marker');
-        console.log(this.$store.state.map.mapInstance);
+        console.log(this.$store.state.mapModule);
         console.log('---- marker');
-        this.SET_MAP_INSTANCE(this.createMapInstance())
+
+        // this.$store.dispatch('mapModule/SET_MAP_INSTANCE')
+
+        // this.$store.dispatch('mapModule', 'SET_MAP_INSTANCE')
+        // this.SET_MAP_INSTANCE( this.createMapInstance())
         // this.createMapInstance()
         // return this.$store.state.mapModule.SET_MAP_INSTANCE(this.createMapInstance())
+        this.createMapInstance()
+        this.$store._modulesNamespaceMap['mapModule/'].context.dispatch('SET_MAP_INSTANCE')
       },
       removeMarkers () {
         if (this.mapInstance) {
@@ -97,6 +107,7 @@
       }
     },
     mounted () {
+      // this.$store.registerModule('mapModule',  moduleMapLeaflet)
       this.renderMap()
     },
     beforeDestroy () {
@@ -106,7 +117,7 @@
       }
     },
     watch: {
-      locations (inTo, inFrom) {
+      locations () {
 
         this.removeMarkers()
         this.addMarkers()

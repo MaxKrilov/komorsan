@@ -11,7 +11,7 @@
 //   locations: [],
 // }
 export default {
-  mapInstance : "",
+  mapInstance : null,
   fetchingLocations: null,
   locations: [],
 }

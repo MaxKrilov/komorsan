@@ -38,6 +38,7 @@
 import LOCATIONS from "@/views/charts-and-maps/maps/leaflet-map/LOCATIONS.json";
 
 export default {
+
   FETCH_LOCATIONS ({commit, state}) {
     if (state.fetchingLocations) {
       return state.fetchingLocations

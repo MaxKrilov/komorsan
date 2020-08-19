@@ -14,7 +14,6 @@ import actions from './moduleMapLeafletActions.js'
 import getters from './moduleMapLeafletGetters.js'
 
 export default {
-  mapInstance             : "",
   locations               : [],
   namespaced: true,
   state: state,
