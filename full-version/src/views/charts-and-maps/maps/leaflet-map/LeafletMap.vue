@@ -42,9 +42,10 @@
 
   import LMap from './LMap.vue'
   // import store from '@/store/store.js'
-  // store.registerModule('mapModule', moduleMapLeaflet)
-  // import store from '../../../../store/store.js'
-  import {mapActions} from 'vuex'
+  import store from '../../../../store/store.js'
+  // store.registerModule('map', moduleMapLeaflet)
+
+  import {mapActions, mapGetters, mapState} from 'vuex'
   // Store Module
   // import mapModule from './map.js';
   // store.registerModule('mapModule', mapModule)
@@ -66,27 +67,52 @@
         },
         rightStyle: {
           gridArea: '1 / 2 / 1 / 2'
-        }
+        },
       }
     },
+    // methods: {
+    //   ...mapActions('mapModule', ['FETCH_LOCATIONS']),
+    //
+    // },
+    // methods: {
+    //   ...mapActions( ['map/FETCH_LOCATIONS'])
+    // },
     methods: {
-      ...mapActions('mapModule', ['FETCH_LOCATIONS']),
+      ...mapActions( ['map/FETCHING_DEFAULT'])
+    },
 
+    computed: {
+      ...mapGetters( ['map/locationAll']),
+      // ...mapState('map', ['mapInstance', 'locations'])
     },
     // created () {
     //
     // },
-    mounted () {
-      console.log('----- .1');
-      // console.log(this.$store._modulesNamespaceMap);
-      console.log('---- 1---');
+    async mounted () {
+      console.log('----- GETTER');
+      // console.log(state.locations);
+      console.log('----  GETTER');
       // this.$store.registerModule('mapModule',  moduleMapLeaflet)
 
       // console.log(this.$store._modulesNamespaceMap.mapModule)
-      this.FETCH_LOCATIONS()
-      // this.$store._modulesNamespaceMap['mapModule/'].context.dispatch('FETCH_LOCATIONS')
+
+      // this.FETCH_LOCATIONS()
+
+      // this.$store.dispatch('map/FETCH_LOCATIONS')
+      // this.$store.dispatch('map/FETCH_LOCATIONS')
+      this.$store.dispatch('map/FETCHING_DEFAULT')
+        .then(() => {
+
+          console.log('----- _LOCATIONS');
+          console.log("locations");
+          console.log('----_LOCATIONS');
+
+        })
+
+        // this.$store._modulesNamespaceMap['mapModule/'].context.dispatch('FETCH_LOCATIONS')
       // this.$store.dispatch('mapModule', 'FETCH_LOCATIONS')
       // this.$store.dispatch('mapModule/FETCH_LOCATIONS')
+
     }
   }
 </script>

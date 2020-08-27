@@ -16,6 +16,7 @@ import mutations from "./mutations"
 import actions from "./actions"
 
 Vue.use(Vuex)
+export const strict = false
 
 // import moduleTodo from './todo/moduleTodo.js'
 // import moduleCalendar from './calendar/moduleCalendar.js'
