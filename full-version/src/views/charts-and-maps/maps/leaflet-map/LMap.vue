@@ -174,9 +174,6 @@
       },
       addMarkers () {
         if (this.mapInstance) {
-          // console.log('----- 1 marker');
-          // console.log(this.locations);
-          // console.log('---- 1 marker');
 
           for (const loc of this.locations) {
             if (loc.graph_node_describe.gps_lat && loc.graph_node_describe.gps_lng) {
