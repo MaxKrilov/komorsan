@@ -6,12 +6,8 @@
  Author: Krylov
 ==========================================================================================*/
 
-// export default {
-//   fetchingLocations: null,
-//   locations: [],
-// }
 export default {
   mapInstance : null,
-  fetchingLocations: null,
+  fetchingLocations: '',
   locations: [],
 }

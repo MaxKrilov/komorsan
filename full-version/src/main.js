@@ -32,6 +32,9 @@ Icon.Default.mergeOptions({
 Vue.use(VueSessionStorage)
 Vue.use(Vuesax)
 
+// map-leaflet
+// import Vue2Leaflet from 'vue2-leaflet';
+
 
 // axios
 import axios from "./axios.js"

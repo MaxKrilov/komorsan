@@ -16,7 +16,7 @@ import mutations from "./mutations"
 import actions from "./actions"
 
 Vue.use(Vuex)
-export const strict = false
+// export const strict = false
 
 // import moduleTodo from './todo/moduleTodo.js'
 // import moduleCalendar from './calendar/moduleCalendar.js'
@@ -48,5 +48,5 @@ export default new Vuex.Store({
         auth: moduleAuth,
         eCommerce: moduleECommerce,
     },
-    strict: process.env.NODE_ENV !== 'production'
+    // strict: process.env.NODE_ENV !== 'production'
 })

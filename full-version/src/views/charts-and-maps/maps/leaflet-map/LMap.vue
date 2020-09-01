@@ -1,18 +1,36 @@
+<!-- =========================================================================================
+    File Name: LMap.vue
+    Description: Leaflet Map (one-party) - Imports page portions
+    ----------------------------------------------------------------------------------------
+    Item Name: Vuejs, HTML Template
+    Author: Krylov
+========================================================================================== -->
+
 <template>
   <div :style="styleObj" class="rel">
     <div ref="mapContainer" :style="mapStyle" class="l-map"></div>
+
+<!--    <v-map  :zoom="zoom" :center="center">-->
+<!--      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>-->
+<!--      <v-marker :lat-lng="marker"></v-marker>-->
+<!--      <v-marker v-for="item in markers" :key="item.id" :lat-lng="item.latlng" @l-add="$event.target.openPopup()">-->
+<!--        <v-popup :content="item.content"></v-popup>-->
+<!--      </v-marker>-->
+<!--    </v-map>-->
+
   </div>
 </template>
 
 <script>
   import {mapState, mapMutations, mapGetters, mapActions} from 'vuex'
-
+  // import Vue2Leaflet from 'vue2-leaflet';
   import 'leaflet/dist/leaflet.css'
   import L from 'leaflet'
   // BUG https://github.com/Leaflet/Leaflet/issues/4968
   import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png'
   import iconUrl from 'leaflet/dist/images/marker-icon.png'
   import shadowUrl from 'leaflet/dist/images/marker-shadow.png'
+  import axios from "../../../../axios";
 
 
 
@@ -33,9 +51,34 @@
           height: '300px'
         },
         markers: [],
+        // locations: [],
+        // zoom: 6,
+        // center: [47.413220, -1.219482],
+        // url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+        // attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        // marker: L.latLng(47.413220, -1.219482),
+        //
+        // markers: [
+        //   {
+        //     id: 1,
+        //     latlng: L.latLng(47.417220, -1.222482),
+        //     content: 'Hi! this is my popup data'
+        //   },
+        //   {
+        //     id: 2,
+        //     latlng: L.latLng(47.417220, -1.25),
+        //     content: 'Another'
+        //   }
+        // ]
 
       }
     },
+    // components: {
+    //   'v-map': Vue2Leaflet.Map,
+    //   'v-tilelayer' :Vue2Leaflet.TileLayer,
+    //   'v-marker': Vue2Leaflet.Marker,
+    //   L
+    // },
     // computed: {
     //   ...mapState('mapModule', ['mapInstance', 'locations'])
     // },
@@ -45,8 +88,6 @@
   },
     methods: {
       ...mapMutations( 'map', ['SET_MAP_INSTANCE']),
-      // ...mapActions( ['map/GET_MAP_INSTANCE']),
-
       fixBug () {
         // https://github.com/Leaflet/Leaflet/issues/4968
         // L.Marker.prototype.options.icon = L.icon({
@@ -65,27 +106,27 @@
         let mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
           '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
           'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
-// подключаем слой карты mapbox.streets
+        // подключаем слой карты mapbox.streets
         let mapboxStreets = L.tileLayer(
           'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
           {id: 'mapbox.streets', attribution: mbAttr}
         );
-// подключаем слой карты mapbox.satellite
-        let mapboxSatellite = L.tileLayer(
-          'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
-          {id: 'mapbox.satellite', attribution: mbAttr}
-        );
-        let osm = L.tileLayer(
-          'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-          {
-            attribution: mbAttr,
-            // minNativeZoom: 6,
-            maxZoom: 15,
-            // maxNativeZoom: 15,
-            toggleDisplay: true,
-            zoomLevelFixed: true
-          }
-        );
+        // подключаем слой карты mapbox.satellite
+        //         let mapboxSatellite = L.tileLayer(
+        //           'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+        //           {id: 'mapbox.satellite', attribution: mbAttr}
+        //         );
+        //         let osm = L.tileLayer(
+        //           'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        //           {
+        //             attribution: mbAttr,
+        //             // minNativeZoom: 6,
+        //             maxZoom: 15,
+        //             // maxNativeZoom: 15,
+        //             toggleDisplay: true,
+        //             zoomLevelFixed: true
+        //           }
+        //         );
         let devices = L.layerGroup();
         let substations = L.layerGroup();
         let consumers = L.layerGroup();
@@ -106,7 +147,7 @@
         // добавляем слои на карту
         // L.control.layers(baseLayers, overlays).addTo(map);
 
-// добавляем шасштаб на карту
+      // добавляем шасштаб на карту
         L.control.scale().addTo(map);
 
         // const map = L.map(this.$refs.mapContainer, { preferCanvas: true }).setView([52.6325793, 4.7239896], 13)
@@ -119,24 +160,9 @@
         return map
       },
       renderMap () {
-        console.log('----- marker');
-        console.log(this.$store.state.map);
-        console.log('---- marker');
+        // this.SET_MAP_INSTANCE( this.createMapInstance())
+        this.$store.commit("map/SET_MAP_INSTANCE",this.createMapInstance())
 
-        // this.$store.dispatch('mapModule/SET_MAP_INSTANCE')
-        // this.createMapInstance()
-        // this.$store.dispatch('map/GET_MAP_INSTANCE',  this.createMapInstance())
-        // this.GET_MAP_INSTANCE( this.createMapInstance())
-        this.SET_MAP_INSTANCE( this.createMapInstance())
-        // this.$store.commit("SET_MAP_INSTANCE",this.createMapInstance())
-        // this.$store.dispatch("SET_MAP_INSTANCE",this.createMapInstance())
-        // this.createMapInstance()
-        // this.$store.dispatch('mapModule/SET_MAP_INSTANCE')
-        // this.createMapInstance()
-        // return this.$store.state.mapModule.SET_MAP_INSTANCE(this.createMapInstance())
-        // this.createMapInstance()
-        // this.$store._modulesNamespaceMap['mapModule/'].context.dispatch('SET_MAP_INSTANCE')
-        // this.$store.registerModule('mapLeaflet', moduleMapLeaflet)
       },
       removeMarkers () {
         if (this.mapInstance) {
@@ -151,6 +177,7 @@
           // console.log('----- 1 marker');
           // console.log(this.locations);
           // console.log('---- 1 marker');
+
           for (const loc of this.locations) {
             if (loc.graph_node_describe.gps_lat && loc.graph_node_describe.gps_lng) {
               // createDeviceIconOnMap()
@@ -295,28 +322,25 @@
       }
     },
     async mounted () {
-      // this.$store.registerModule('mapModule',  moduleMapLeaflet)
       this.renderMap()
+
     },
     beforeDestroy () {
       if (this.mapInstance) {
         this.mapInstance.remove()
-        // this.SET_MAP_INSTANCE(null)
+        this.SET_MAP_INSTANCE(null)
       }
     },
     watch: {
       locations () {
-        // console.log('----1- locations');
-        // console.log(this.locations);
-        // console.log('----1 locations');
         this.removeMarkers()
         this.addMarkers()
         this.fitAllMarkers()
+
       }
     },
     created () {
-
-      this.fixBug()
+      // this.fixBug()
     }
   }
 </script>

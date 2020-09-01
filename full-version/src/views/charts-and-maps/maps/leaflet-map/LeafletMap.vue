@@ -41,15 +41,9 @@
   import 'leaflet/dist/leaflet.css';
 
   import LMap from './LMap.vue'
-  // import store from '@/store/store.js'
-  import store from '../../../../store/store.js'
-  // store.registerModule('map', moduleMapLeaflet)
 
-  import {mapActions, mapGetters, mapState} from 'vuex'
-  // Store Module
-  // import mapModule from './map.js';
-  // store.registerModule('mapModule', mapModule)
-  // import moduleMapLeaflet from '@/store/map/moduleMapLeaflet.js'
+  import {mapActions, mapGetters} from 'vuex'
+
 
   export default {
     name: 'leafletMap',
@@ -70,49 +64,16 @@
         },
       }
     },
-    // methods: {
-    //   ...mapActions('mapModule', ['FETCH_LOCATIONS']),
-    //
-    // },
-    // methods: {
-    //   ...mapActions( ['map/FETCH_LOCATIONS'])
-    // },
     methods: {
-      ...mapActions( ['map/FETCHING_DEFAULT'])
+      ...mapActions( ['map/FETCHING_DEFAULT']),
     },
-
     computed: {
       ...mapGetters( ['map/locationAll']),
-      // ...mapState('map', ['mapInstance', 'locations'])
     },
-    // created () {
-    //
-    // },
-    async mounted () {
-      console.log('----- GETTER');
-      // console.log(state.locations);
-      console.log('----  GETTER');
-      // this.$store.registerModule('mapModule',  moduleMapLeaflet)
-
-      // console.log(this.$store._modulesNamespaceMap.mapModule)
-
-      // this.FETCH_LOCATIONS()
-
-      // this.$store.dispatch('map/FETCH_LOCATIONS')
-      // this.$store.dispatch('map/FETCH_LOCATIONS')
+    mounted () {
       this.$store.dispatch('map/FETCHING_DEFAULT')
-        .then(() => {
-
-          console.log('----- _LOCATIONS');
-          console.log("locations");
-          console.log('----_LOCATIONS');
-
+        .then(res => {
         })
-
-        // this.$store._modulesNamespaceMap['mapModule/'].context.dispatch('FETCH_LOCATIONS')
-      // this.$store.dispatch('mapModule', 'FETCH_LOCATIONS')
-      // this.$store.dispatch('mapModule/FETCH_LOCATIONS')
-
     }
   }
 </script>
