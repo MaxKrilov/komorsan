@@ -297,13 +297,6 @@ export default {
             })
         })
     },
-    // getDevices() {
-    //   axios.defaults.withCredentials = true;
-    //   const path = 'http://10.10.20.12:8081/api/v1/devices';
-    //   axios.get(path).then(function (response) {
-    //     console.log(response);
-    //   });
-    // },
 
   // Cookie
    loginCookie({ commit }, payload) {
@@ -385,11 +378,8 @@ export default {
 
   },
 
-
-
     // JWT
     loginJWT({ commit }, payload) {
-
       return new Promise((resolve,reject) => {
         jwt.login(payload.userDetails.email, payload.userDetails.password)
           .then(response => {
