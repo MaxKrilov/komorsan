@@ -229,70 +229,70 @@ export default {
 
       // cur_vals_uuid();
 
-      let cur_Vals = 0
+      let cur_Vals = 1
 
       if (loc.missed_connections.Valid == true) {
         colorDevice = loc.is_online;
       }
       colorDevice = loc.is_online;
-      if (Number.isNaN(colorDevice) == false) {  // прибор ещё не выходил на связь - серый цвет прибора
-        // серый цвет
-        if (colorDevice == '0') {  // прибор // серый фон
-          newElement.setAttribute('fill', 'lightgray');  // фон rect class="rect1"// newElement.setAttribute('stroke', 'gray');   // рамка rect class="rect1"
-          newElement.setAttribute('stroke', 'red');   // рамка2   g id="main_layer_1"
-          newPath_left.setAttribute('stroke', 'red');   // рамка path d="m15
-          newPath_right.setAttribute('stroke', 'red');   // рамка path d="m28
-          document.getElementById('closed').style.display = 'none'; // newPath_3 рамка closed
-          document.getElementById('locker_path').style.display = 'none'; // newPath_4 рамка locker
-          newPath_2.setAttribute('stroke', 'red');   // рамка opened
-        } else if (colorDevice > '0') {
-          if (Number.isNaN(cur_Vals.closed) == false) {
-            // undefined
-            if (cur_Vals.closed == '1') {
-              newElement.setAttribute('fill', '#fff');  // фон rect class="rect1"// newElement.setAttribute('stroke', 'gray');   // рамка rect class="rect1"
-              newElement.setAttribute('fill', '#fff');  // фон рамка2  g id="main_layer_1"
-              newElement.setAttribute('stroke', 'green');   // рамка2   g id="main_layer_1"
-              newPath_left.setAttribute('stroke', 'green');   // рамка path d="m15
-              newPath_right.setAttribute('stroke', 'green');   // рамка path d="m28
-              newPath_3.setAttribute('stroke', 'maroon');  // рамка closed
-              document.getElementById('opened').style.display = 'none';   // newPath_2 рамка opened
-              document.getElementById('locker_path').style.display = 'none'; // newPath_4 рамка locker
-            } else if (cur_Vals.closed == '0') {
-              newElement.setAttribute('fill', '#fff');  // фон rect class="rect1"// newElement.setAttribute('stroke', 'gray');   // рамка rect class="rect1"
-              newElement.setAttribute('fill', '#fff');  // фон рамка2  g id="main_layer_1"
-              newElement.setAttribute('stroke', 'green');   // рамка2   g id="main_layer_1"
-              newPath_left.setAttribute('stroke', 'green');   // рамка path d="m15
-              newPath_right.setAttribute('stroke', 'green');   // рамка path d="m28
-              document.getElementById('closed').style.display = 'none'; // newPath_3 рамка closed
-              newPath_2.setAttribute('stroke', 'green');   // рамка opened
-              document.getElementById('locker_path').style.display = 'none'; // newPath_4 рамка locker
-            } else {
-              if (cur_Vals.int_lock == 1) {
-                document.getElementById('locker_path').style.display = 'block'; // newPath_4 рамка locker
-              }
-            }
-          }
-          if (cur_Vals.alarm == 1 && cur_Vals.closed == 1) {
-            newElement.setAttribute('fill', 'red');  // фон rect class="rect1"
-            newElement.setAttribute('fill', '#fff');  // фон рамка2  g id="main_layer_1"
-            newElement.setAttribute('stroke', 'green');   // рамка2   g id="main_layer_1"
-            newPath_left.setAttribute('stroke', 'green');   // рамка path d="m15
-            newPath_right.setAttribute('stroke', 'green');   // рамка path d="m28
-            newPath_3.setAttribute('stroke', 'maroon');  // рамка closed
-            document.getElementById('opened').style.display = 'none';   // newPath_2 рамка opened
-            document.getElementById('locker_path').style.display = 'none'; // newPath_4 рамка locker
-          }
-        } else {
-          newElement.setAttribute('fill', 'lightgray');  // фон rect class="rect1"// newElement.setAttribute('stroke', 'gray');   // рамка rect class="rect1"
-          newElement.setAttribute('fill', 'gray');  // фон рамка2  g id="main_layer_1"
-          newElement.setAttribute('stroke', 'gray');   // рамка2   g id="main_layer_1"
-          newPath_left.setAttribute('stroke', 'gray');   // рамка path d="m15
-          newPath_right.setAttribute('stroke', 'gray');   // рамка path d="m28
-          newPath_2.setAttribute('stroke', 'gray');   // рамка opened
-          document.getElementById('closed').style.display = 'none'; // newPath_3 рамка closed
-          document.getElementById('locker_path').style.display = 'none'; // newPath_4 рамка locker
-        }
-      }
+      // if (Number.isNaN(colorDevice) == false) {  // прибор ещё не выходил на связь - серый цвет прибора
+      //   // серый цвет
+      //   if (colorDevice == '0') {  // прибор // серый фон
+      //     newElement.setAttribute('fill', 'lightgray');  // фон rect class="rect1"// newElement.setAttribute('stroke', 'gray');   // рамка rect class="rect1"
+      //     newElement.setAttribute('stroke', 'red');   // рамка2   g id="main_layer_1"
+      //     newPath_left.setAttribute('stroke', 'red');   // рамка path d="m15
+      //     newPath_right.setAttribute('stroke', 'red');   // рамка path d="m28
+      //     document.getElementById('closed').style.display = 'none'; // newPath_3 рамка closed
+      //     document.getElementById('locker_path').style.display = 'none'; // newPath_4 рамка locker
+      //     newPath_2.setAttribute('stroke', 'red');   // рамка opened
+      //   } else if (colorDevice > '0') {
+      //     if (Number.isNaN(cur_Vals.closed) == false) {
+      //       // undefined
+      //       if (cur_Vals.closed == '1') {
+      //         newElement.setAttribute('fill', '#fff');  // фон rect class="rect1"// newElement.setAttribute('stroke', 'gray');   // рамка rect class="rect1"
+      //         newElement.setAttribute('fill', '#fff');  // фон рамка2  g id="main_layer_1"
+      //         newElement.setAttribute('stroke', 'green');   // рамка2   g id="main_layer_1"
+      //         newPath_left.setAttribute('stroke', 'green');   // рамка path d="m15
+      //         newPath_right.setAttribute('stroke', 'green');   // рамка path d="m28
+      //         newPath_3.setAttribute('stroke', 'maroon');  // рамка closed
+      //         document.getElementById('opened').style.display = 'none';   // newPath_2 рамка opened
+      //         document.getElementById('locker_path').style.display = 'none'; // newPath_4 рамка locker
+      //       } else if (cur_Vals.closed == '0') {
+      //         newElement.setAttribute('fill', '#fff');  // фон rect class="rect1"// newElement.setAttribute('stroke', 'gray');   // рамка rect class="rect1"
+      //         newElement.setAttribute('fill', '#fff');  // фон рамка2  g id="main_layer_1"
+      //         newElement.setAttribute('stroke', 'green');   // рамка2   g id="main_layer_1"
+      //         newPath_left.setAttribute('stroke', 'green');   // рамка path d="m15
+      //         newPath_right.setAttribute('stroke', 'green');   // рамка path d="m28
+      //         document.getElementById('closed').style.display = 'none'; // newPath_3 рамка closed
+      //         newPath_2.setAttribute('stroke', 'green');   // рамка opened
+      //         document.getElementById('locker_path').style.display = 'none'; // newPath_4 рамка locker
+      //       } else {
+      //         if (cur_Vals.int_lock == 1) {
+      //           document.getElementById('locker_path').style.display = 'block'; // newPath_4 рамка locker
+      //         }
+      //       }
+      //     }
+      //     if (cur_Vals.alarm == 1 && cur_Vals.closed == 1) {
+      //       newElement.setAttribute('fill', 'red');  // фон rect class="rect1"
+      //       newElement.setAttribute('fill', '#fff');  // фон рамка2  g id="main_layer_1"
+      //       newElement.setAttribute('stroke', 'green');   // рамка2   g id="main_layer_1"
+      //       newPath_left.setAttribute('stroke', 'green');   // рамка path d="m15
+      //       newPath_right.setAttribute('stroke', 'green');   // рамка path d="m28
+      //       newPath_3.setAttribute('stroke', 'maroon');  // рамка closed
+      //       document.getElementById('opened').style.display = 'none';   // newPath_2 рамка opened
+      //       document.getElementById('locker_path').style.display = 'none'; // newPath_4 рамка locker
+      //     }
+      //   } else {
+      //     newElement.setAttribute('fill', 'lightgray');  // фон rect class="rect1"// newElement.setAttribute('stroke', 'gray');   // рамка rect class="rect1"
+      //     newElement.setAttribute('fill', 'gray');  // фон рамка2  g id="main_layer_1"
+      //     newElement.setAttribute('stroke', 'gray');   // рамка2   g id="main_layer_1"
+      //     newPath_left.setAttribute('stroke', 'gray');   // рамка path d="m15
+      //     newPath_right.setAttribute('stroke', 'gray');   // рамка path d="m28
+      //     newPath_2.setAttribute('stroke', 'gray');   // рамка opened
+      //     document.getElementById('closed').style.display = 'none'; // newPath_3 рамка closed
+      //     document.getElementById('locker_path').style.display = 'none'; // newPath_4 рамка locker
+      //   }
+      // }
       mysvg.append(newElement);
       mysvg.appendChild(newPath_left);
       mysvg.appendChild(newPath_right);
