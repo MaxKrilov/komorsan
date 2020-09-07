@@ -2,9 +2,8 @@
     File Name: ChangeTimeDurationDropdown.vue
     Description: Change duration dropdown component
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-      Author: Pixinvent
-    Author URL: http://www.themeforest.net/user/pixinvent
+    Item Name: Vue_komorsan - Vuejs, HTML &  Dashboard Template
+    Author : krylov
 ========================================================================================== -->
 
 <!-- :class="data.class" -->

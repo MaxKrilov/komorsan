@@ -10,9 +10,9 @@
 
 <template functional>
     <footer class="the-footer flex-wrap justify-between" :class="classes">
-        <span>COPYRIGHT &copy; {{ new Date().getFullYear() }} <a href="/" target="_blank" rel="nofollow"></a> Прав у Антракса еще нет!</span>
+        <span>COPYRIGHT &copy; {{ new Date().getFullYear() }} <a href="/" target="_blank" rel="nofollow"></a> Антракс!</span>
         <span class="md:flex hidden items-center">
-            <span>Hand-crafted & Made with</span>
+            <span></span>
             <feather-icon icon="HeartIcon" svgClasses="stroke-current text-danger w-6 h-6" class="ml-2" />
         </span>
 

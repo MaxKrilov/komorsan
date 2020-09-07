@@ -2,7 +2,7 @@
   File Name: FullPage.vue
   Description: Full page layout
   ----------------------------------------------------------------------------------------
- Item Name: Vue_komorsan - Vuejs, HTML &  Dashboard Template
+  Item Name: Vue_komorsan - Vuejs, HTML &  Dashboard Template
 	Author : krylov
 ========================================================================================== -->
 

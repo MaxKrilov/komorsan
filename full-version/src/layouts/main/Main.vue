@@ -2,8 +2,8 @@
     File Name: Main.vue
     Description: Main layout
     ----------------------------------------------------------------------------------------
-  Item Name: Vue_komorsan - Vuejs, HTML &  Dashboard Template
-	Author : krylov
+    Item Name: Vue_komorsan - Vuejs, HTML &  Dashboard Template
+    Author : krylov
 ========================================================================================== -->
 
 
