@@ -2,7 +2,8 @@
     File Name: AlertColor.vue
     Description: Change color alert
     ----------------------------------------------------------------------------------------
-
+    Item Name: Vue_komorsan - Vuejs, HTML &  Dashboard Template
+    Author : krylov
 ========================================================================================== -->
 
 

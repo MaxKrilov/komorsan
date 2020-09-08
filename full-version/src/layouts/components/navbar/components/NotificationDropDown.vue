@@ -67,7 +67,7 @@ export default {
             category : 'primary'
           },
           { index    : 1,
-            title    : 'New Order Recieved',
+            title    : '!!!!',
             msg      : 'Successful Alarm acknowledged ',
             icon     : 'PackageIcon',
             time     : this.randomDate({sec: 40}),

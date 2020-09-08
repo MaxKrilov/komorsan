@@ -56,14 +56,6 @@ const router = new Router({
                     }
                 },
                 {
-                    path: '/dashboard/ecommerce',
-                    name: 'dashboard-ecommerce',
-                    component: () => import('./views/DashboardECommerce.vue'),
-                    meta: {
-                        rule: 'admin'
-                    }
-                },
-                {
                   path: '/dashboard/ag-grid-table',
                   name: 'devices-table',
                   component: () => import('./views/devices-table/DevicesTable.vue'),
@@ -93,34 +85,7 @@ const router = new Router({
                     rule: 'editor'
                   },
                 },
-                {
-                  path: '/apps/monitoring/monitoring-view/:userId',
-                  name: 'app-monitoring-view',
-                  component: () => import('@/views/apps/monitoring/MonitoringView.vue'),
-                  meta: {
-                    breadcrumb: [
-                      { title: 'Home', url: '/' },
-                      { title: 'Devices' },
-                      { title: 'View', active: true },
-                    ],
-                    pageTitle: 'Monitoring View',
-                    rule: 'editor'
-                  },
-                },
-                {
-                  path: '/apps/monitoring/monitoring-edit/:userId',
-                  name: 'app-monitoring-edit',
-                  component: () => import('@/views/apps/monitoring/monitoring-edit/MonitoringEdit.vue'),
-                  meta: {
-                    breadcrumb: [
-                      { title: 'Home', url: '/' },
-                      { title: 'Devices' },
-                      { title: 'Edit', active: true },
-                    ],
-                    pageTitle: 'Monitoring Edit',
-                    rule: 'editor'
-                  },
-                },
+
 
         // =============================================================================
         // UI ELEMENTS
@@ -610,20 +575,7 @@ const router = new Router({
             // =============================================================================
             // FORM ELEMENTS
             // =============================================================================
-                {
-                    path: '/forms/form-elements/select',
-                    name: 'form-element-select',
-                    component: () => import('./views/forms/form-elements/select/Select.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Form Elements' },
-                            { title: 'Select', active: true },
-                        ],
-                        pageTitle: 'Select',
-                        rule: 'editor'
-                    },
-                },
+
                 {
                     path: '/forms/form-elements/switch',
                     name: 'form-element-switch',
@@ -951,90 +903,7 @@ const router = new Router({
         // =============================================================================
         // EXTENSIONS
         // =============================================================================
-                {
-                    path: '/extensions/select',
-                    name: 'extra-component-select',
-                    component: () => import('@/views/components/extra-components/select/Select.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Extra Components' },
-                            { title: 'Select', active: true },
-                        ],
-                        pageTitle: 'Select',
-                        rule: 'editor'
-                    },
-                },
-                {
-                    path: '/extensions/quill-editor',
-                    name: 'extra-component-quill-editor',
-                    component: () => import('@/views/components/extra-components/quill-editor/QuillEditor.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Extra Components' },
-                            { title: 'Quill Editor', active: true },
-                        ],
-                        pageTitle: 'Quill Editor',
-                        rule: 'editor'
-                    },
-                },
-                {
-                    path: '/extensions/drag-and-drop',
-                    name: 'extra-component-drag-and-drop',
-                    component: () => import('@/views/components/extra-components/drag-and-drop/DragAndDrop.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Extra Components' },
-                            { title: 'Drag & Drop', active: true },
-                        ],
-                        pageTitle: 'Drag & Drop',
-                        rule: 'editor'
-                    },
-                },
-                {
-                    path: '/extensions/datepicker',
-                    name: 'extra-component-datepicker',
-                    component: () => import('@/views/components/extra-components/datepicker/Datepicker.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Extra Components' },
-                            { title: 'Datepicker', active: true },
-                        ],
-                        pageTitle: 'Datepicker',
-                        rule: 'editor'
-                    },
-                },
-                {
-                    path: '/extensions/datetime-picker',
-                    name: 'extra-component-datetime-picker',
-                    component: () => import('@/views/components/extra-components/datetime-picker/DatetimePicker.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Extra Components' },
-                            { title: 'Datetime Picker', active: true },
-                        ],
-                        pageTitle: 'Datetime Picker',
-                        rule: 'editor'
-                    },
-                },
-                {
-                    path: '/extensions/access-control',
-                    name: 'extra-component-access-control',
-                    component: () => import('@/views/components/extra-components/access-control/AccessControl.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Extensions' },
-                            { title: 'Access Control', active: true },
-                        ],
-                        pageTitle: 'Access Control',
-                        rule: 'editor'
-                    },
-                },
+
                 {
                     path: '/extensions/i18n',
                     name: 'extra-component-i18n',
@@ -1046,135 +915,6 @@ const router = new Router({
                             { title: 'I18n', active: true },
                         ],
                         pageTitle: 'I18n',
-                        rule: 'editor'
-                    },
-                },
-                {
-                    path: '/extensions/carousel',
-                    name: 'extra-component-carousel',
-                    component: () => import('@/views/components/extra-components/carousel/Carousel.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Extensions' },
-                            { title: 'Carousel', active: true },
-                        ],
-                        pageTitle: 'Carousel',
-                        rule: 'editor'
-                    },
-                },
-                {
-                    path: '/extensions/clipboard',
-                    name: 'extra-component-clipboard',
-                    component: () => import('@/views/components/extra-components/clipboard/Clipboard.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Extensions' },
-                            { title: 'Clipboard', active: true },
-                        ],
-                        pageTitle: 'Clipboard',
-                        rule: 'editor'
-                    },
-                },
-                {
-                    path: '/extensions/context-menu',
-                    name: 'extra-component-context-menu',
-                    component: () => import('@/views/components/extra-components/context-menu/ContextMenu.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Extensions' },
-                            { title: 'Context Menu', active: true },
-                        ],
-                        pageTitle: 'Context Menu',
-                        rule: 'editor'
-                    },
-                },
-                {
-                    path: '/extensions/star-ratings',
-                    name: 'extra-component-star-ratings',
-                    component: () => import('@/views/components/extra-components/star-ratings/StarRatings.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Extensions' },
-                            { title: 'Star Ratings', active: true },
-                        ],
-                        pageTitle: 'Star Ratings',
-                        rule: 'editor'
-                    },
-                },
-                {
-                    path: '/extensions/autocomplete',
-                    name: 'extra-component-autocomplete',
-                    component: () => import('@/views/components/extra-components/autocomplete/Autocomplete.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Extensions' },
-                            { title: 'Autocomplete', active: true },
-                        ],
-                        pageTitle: 'Autocomplete',
-                        rule: 'editor'
-                    },
-                },
-                {
-                    path: '/extensions/tree',
-                    name: 'extra-component-tree',
-                    component: () => import('@/views/components/extra-components/tree/Tree.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Extensions' },
-                            { title: 'Tree', active: true },
-                        ],
-                        pageTitle: 'Tree',
-                        rule: 'editor'
-                    },
-                },
-                {
-                    path: '/import-export/import',
-                    name: 'import-excel',
-                    component: () => import('@/views/components/extra-components/import-export/Import.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Extensions' },
-                            { title: 'Import/Export' },
-                            { title: 'Import', active: true },
-                        ],
-                        pageTitle: 'Import Excel',
-                        rule: 'editor'
-                    },
-                },
-                {
-                    path: '/import-export/export',
-                    name: 'export-excel',
-                    component: () => import('@/views/components/extra-components/import-export/Export.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Extensions' },
-                            { title: 'Import/Export' },
-                            { title: 'Export', active: true },
-                        ],
-                        pageTitle: 'Export Excel',
-                        rule: 'editor'
-                    },
-                },
-                {
-                    path: '/import-export/export-selected',
-                    name: 'export-excel-selected',
-                    component: () => import('@/views/components/extra-components/import-export/ExportSelected.vue'),
-                    meta: {
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Extensions' },
-                            { title: 'Import/Export' },
-                            { title: 'Export Selected', active: true },
-                        ],
-                        pageTitle: 'Export Excel',
                         rule: 'editor'
                     },
                 },

@@ -2,9 +2,8 @@
 	File Name: ChartjsComponentBarChart.vue
 	Description: Chartjs component - Bar Chart
 	----------------------------------------------------------------------------------------
-	Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-	Author: Pixinvent
-	Author URL: http://www.themeforest.net/user/pixinvent
+  Item Name: Vuejs, HTML Template
+  Author: Krylov
 ========================================================================================== -->
 
 

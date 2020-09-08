@@ -2,9 +2,8 @@
     File Name: AlertExample.vue
     Description: Example of validation using alert
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-      Author: Pixinvent
-    Author URL: http://www.themeforest.net/user/pixinvent
+   Item Name: Vue_komorsan - Vuejs, HTML &  Dashboard Template
+    Author : krylov
 ========================================================================================== -->
 
 <template>
