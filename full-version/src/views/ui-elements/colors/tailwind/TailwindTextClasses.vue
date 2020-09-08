@@ -3,9 +3,8 @@
     Description: Text Colors classes
     Note: If you added more colors then you can use it using 'text-{colorName}'
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-      Author: Pixinvent
-    Author URL: http://www.themeforest.net/user/pixinvent
+    Item Name: Vuejs Template
+  Author: Krylov
 ========================================================================================== -->
 
 

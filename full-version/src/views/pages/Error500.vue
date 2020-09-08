@@ -2,9 +2,8 @@
     File Name: Error500.vue
     Description: 500 Page
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-      Author: Pixinvent
-    Author URL: http://www.themeforest.net/user/pixinvent
+    Item Name: Vuejs Template
+  Author: Krylov
 ========================================================================================== -->
 
 

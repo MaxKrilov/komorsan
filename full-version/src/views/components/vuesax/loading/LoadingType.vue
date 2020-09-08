@@ -2,9 +2,8 @@
 	File Name: LoadingType.vue
 	Description: Change the type of the animation
 	----------------------------------------------------------------------------------------
-	Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-	Author: Pixinvent
-	Author URL: http://www.themeforest.net/user/pixinvent
+  Item Name: Vuejs Template
+  Author: Krylov
 ========================================================================================== -->
 
 

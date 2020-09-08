@@ -3,9 +3,8 @@
     Description: Background Colors classes
     Note: If you added more colors then you can use it using 'bg-{colorName}'
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-      Author: Pixinvent
-    Author URL: http://www.themeforest.net/user/pixinvent
+    Item Name: Vuejs Template
+  Author: Krylov
 ========================================================================================== -->
 
 

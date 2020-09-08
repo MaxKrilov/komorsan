@@ -2,9 +2,8 @@
     File Name: PaginationGoTo.vue
     Description: with go to user can directly jump to that page
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-      Author: Pixinvent
-    Author URL: http://www.themeforest.net/user/pixinvent
+    Item Name: Vuejs Template
+  Author: Krylov
 ========================================================================================== -->
 
 

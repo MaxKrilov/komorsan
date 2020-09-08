@@ -2,9 +2,8 @@
     File Name: ListContent.vue
     Description: Add custom content to list items
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-      Author: Pixinvent
-    Author URL: http://www.themeforest.net/user/pixinvent
+  Item Name: Vuejs, HTML Template
+Author: Krylov
 ========================================================================================== -->
 
 

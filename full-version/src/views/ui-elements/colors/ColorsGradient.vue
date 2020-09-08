@@ -2,9 +2,8 @@
     File Name: ColorsGradient.vue.vue
     Description: Theme's main colors(primary, success etc.) with gradient
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-      Author: Pixinvent
-    Author URL: http://www.themeforest.net/user/pixinvent
+    Item Name: Vuejs Template
+  Author: Krylov
 ========================================================================================== -->
 
 
