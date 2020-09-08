@@ -74,7 +74,7 @@
 <script>
 import moduleListDevices from '@/store/frameListDevices/moduleListDevices.js'
 import { AgGridVue } from "ag-grid-vue"
-import contacts from './data.json'
+
 import axios from 'axios'
 import '@/assets/scss/vuexy/extraComponents/agGridStyleOverride.scss'
 import {mapActions, mapGetters} from 'vuex'
@@ -124,7 +124,6 @@ export default {
         },
 
       ],
-      contacts: contacts,
     }
   },
   watch: {
