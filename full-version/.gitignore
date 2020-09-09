@@ -3,6 +3,12 @@
 *.orig
 *./GitAhead/
 
+# dependencies
+/node_modules
+*/node_modules/*
+node_modules
+/.idea/vcs.xml
+/full-version/.idea/vcs.xml
 
 bin/
 dist/

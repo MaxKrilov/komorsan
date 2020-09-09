@@ -22,7 +22,7 @@
     "firebase": "^6.6.2",
     "instantsearch.css": "^7.4.2",
     "jsonwebtoken": "^8.5.1",
-    "leaflet": "^1.6.0",
+    "leaflet": "^1.7.1",
     "lodash": "^4.17.18",
     "material-icons": "^0.3.1",
     "perfect-scrollbar": "^1.5.0",
