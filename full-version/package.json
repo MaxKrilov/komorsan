@@ -25,6 +25,7 @@
     "leaflet": "^1.7.1",
     "lodash": "^4.17.18",
     "material-icons": "^0.3.1",
+    "node-modules": "^1.0.1",
     "perfect-scrollbar": "^1.5.0",
     "postcss-rtl": "^1.7.3",
     "prismjs": "^1.20.0",
@@ -60,7 +61,6 @@
     "vue-video-player": "^5.0.2",
     "vue2-google-maps": "^0.10.7",
     "vue2-hammer": "^2.1.2",
-    "vue2-leaflet": "^2.5.2",
     "vuedraggable": "^2.24.0",
     "vuejs-datepicker": "^1.6.2",
     "vuesax": "^3.11.1",
@@ -68,16 +68,21 @@
     "xlsx": "^0.15.6"
   },
   "devDependencies": {
+    "@babel/helper-create-regexp-features-plugin": "^7.10.4",
+    "@babel/plugin-transform-named-capturing-groups-regex": "^7.10.4",
+    "@babel/plugin-transform-regenerator": "^7.10.4",
     "@fullhuman/postcss-purgecss": "^1.2.0",
     "@vue/cli-plugin-babel": "^3.7.0",
     "@vue/cli-plugin-eslint": "^3.7.0",
     "@vue/cli-service": "^3.7.0",
     "axios-mock-adapter": "^1.17.0",
+    "babel-loader": "^8.1.0",
     "node-sass": "^4.12.0",
     "purgecss": "^1.3.0",
     "sass-loader": "^7.1.0",
     "script-loader": "0.7.2",
     "tailwindcss": "^1.0.1",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "vue2-leaflet": "^2.5.2"
   }
 }
