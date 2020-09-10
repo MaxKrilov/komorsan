@@ -16,21 +16,20 @@
 <!--                    <img src="@/assets/images/elements/decore-left.png" class="decore-left" alt="Decore Left" width="200" >-->
 <!--                    <img src="@/assets/images/elements/decore-right.png" class="decore-right" alt="Decore Right" width="175">-->
           <feather-icon icon="AwardIcon" class="p-6 mb-8 bg-primary inline-flex rounded-full text-white shadow" svgClasses="h-8 w-8"></feather-icon>
-          <h1 class="mb-6 text-white"> {{ checkpointReward.userName }},</h1>
-          <p class="xl:w-3/4 lg:w-4/5 md:w-2/3 w-4/5 mx-auto text-white">Уважаемый, инженер Задротов ! У Вас есть какие-то небольшие права
-<!--            <strong>{{ checkpointReward.progress }}</strong> -->
-            на просмотр аналитики.</p>
+          <h1 class="mb-6 text-white"> {{ checkpointReward.userName }}</h1>
+          <p class="xl:w-3/4 lg:w-4/5 md:w-2/3 w-4/5 mx-auto text-white">Здесь информационный блок с указанием прав на просмотр разрешенных страниц
+<!--            <strong>{{ checkpointReward.progress }}</strong> -->.</p>
         </vx-card>
       </div>
 
       <!-- CARD 2: SUBSCRIBERS GAINED -->
       <div class="vx-col w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4 mb-base">
-        <statistics-card-line icon="UsersIcon_"  statistic="ИКЗ-ки" statisticTitle="Осциллограммы" :chartData="subscribersGained.series" type='area'></statistics-card-line>
+        <statistics-card-line icon="UsersIcon_"  statistic="Фрейм 1" statisticTitle="с возмож перехода" :chartData="subscribersGained.series" type='area'></statistics-card-line>
       </div>
 
       <!-- CARD 3: ORDER RECIEVED -->
       <div class="vx-col w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4 mb-base">
-        <statistics-card-line icon="ShoppingBagIcon_" statistic="Еще хрень" statisticTitle="Графики" :chartData="ordersRecevied.series" color='warning' type='area'></statistics-card-line>
+        <statistics-card-line icon="ShoppingBagIcon_" statistic="Фрейм 2" statisticTitle="с предварит инфо-ией " :chartData="ordersRecevied.series" color='warning' type='area'></statistics-card-line>
       </div>
     </div>
 
@@ -161,7 +160,7 @@
                 </template>
                 <div class="flex">
                   <span class="flex items-center"><div class="h-3 w-3 rounded-full mr-1 bg-primary"></div><span>Был на связи</span></span>
-                  <span class="flex items-center ml-4"><div class="h-3 w-3 rounded-full mr-1 bg-success"></div><span>Сдох</span></span>
+                  <span class="flex items-center ml-4"><div class="h-3 w-3 rounded-full mr-1 bg-success"></div><span></span></span>
                 </div>
                 <div slot="no-body-bottom">
                   <vue-apex-charts type=radar height=385 :options="analyticsData.statisticsRadar.chartOptions" :series="salesRadar.series" />

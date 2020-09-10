@@ -2,9 +2,8 @@
 	File Name: SidebarStatic.vue
 	Description: Rendering of static sidebar
 	----------------------------------------------------------------------------------------
-	Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-	Author: Pixinvent
-	Author URL: http://www.themeforest.net/user/pixinvent
+  Item Name: Vuejs Template
+  Author: Krylov
 ========================================================================================== -->
 
 
@@ -22,7 +21,7 @@
 			<div class="parentx-static relative" style="height: 435px;">
 				<vs-sidebar static-position default-index="1" color="primary" class="sidebarx sidebarpage bordered-sidebar" spacer v-model="active">
 					<div class="header-sidebar" slot="header">
-						<vs-avatar size="70px" src="https://randomuser.me/api/portraits/men/85.jpg" />
+						<vs-avatar size="70px" src="" />
 						<h4>
 							My Name
 							<vs-button color="primary" icon="more_horiz" type="flat"></vs-button>

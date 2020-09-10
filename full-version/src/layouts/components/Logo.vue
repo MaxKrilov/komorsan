@@ -74,7 +74,7 @@
 </template>
 
 
-<style scoped>
+<style scoped >
   .container {
     width:35%;
     height:35%;

@@ -8,7 +8,7 @@
 ========================================================================================== -->
 
 <template functional>
-    <vs-button color="danger" type="filled" class="buy-now" target :href="{url: '/'}">Заплатите хоть что-нибудь!</vs-button>
+    <vs-button color="danger" type="filled" class="buy-now" target :href="{url: '/'}">Купить расширенную версию!</vs-button>
 </template>
 
 <style lang="scss">
