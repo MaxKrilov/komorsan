@@ -1,5 +1,6 @@
 import Vue from 'vue'
 
+
 Vue.filter('capitalize', function (value) {
 	if (!value) return ''
 	value = value.toString()
@@ -34,7 +35,7 @@ Vue.filter('tailing', function(value, tail) {
 })
 
 Vue.filter('time', function(value, is24HrFormat = false) {
-	if(value) {
+  if(value) {
 		const date = new Date(Date.parse(value));
 		let hours = date.getHours();
 		const min = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes()
@@ -43,8 +44,24 @@ Vue.filter('time', function(value, is24HrFormat = false) {
 			hours = hours % 12 || 12;
 			return hours + ':' + min + ' ' + time
 		}
-		return hours + ':' + min
+    return hours + ':' + min
 	}
+})
+Vue.filter('clock', function(value, format = 'date')  {
+  const options = {}
+
+  if (format.includes('date')) {
+    options.day = '2-digit'
+    options.month = 'long'
+    options.year = 'numeric'
+  }
+
+  if (format.includes('time')) {
+    options.hour = '2-digit'
+    options.minute = '2-digit'
+    options.second = '2-digit'
+  }
+  return new Intl.DateTimeFormat('ru-RU', options).format(new Date(value))
 })
 
 Vue.filter('date', function(value, fullDate = false) {

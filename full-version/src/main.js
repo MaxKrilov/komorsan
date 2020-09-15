@@ -53,7 +53,6 @@ import '../themeConfig.js'
 // Firebase
 import '@/firebase/firebaseConfig'
 
-
 // Auth0 Plugin
 import AuthPlugin from "./plugins/auth";
 Vue.use(AuthPlugin);
@@ -87,7 +86,7 @@ import store from './store/store'
 import i18n from './i18n/i18n'
 
 
-// Vuexy Admin Filters
+// Vue Admin Filters
 import './filters/filters'
 
 
