@@ -20,6 +20,13 @@
 
         <bookmarks :navbarColor="navbarColor" v-if="windowWidth >= 992" />
 
+<!--        <div id="clock">-->
+<!--          <p class="date">{{date | clock('datetime')}}</p>-->
+
+<!--          <p class="text">DIGITAL CLOCK with Vue.js</p>-->
+<!--        </div>-->
+        <clock />
+
         <vs-spacer />
 
         <i18n />
@@ -39,12 +46,15 @@
 
 
 <script>
+
 import Bookmarks            from "./components/Bookmarks.vue"
 import I18n                 from "./components/I18n.vue"
 import SearchBar            from "./components/SearchBar.vue"
 import CartDropDown         from "./components/CartDropDown.vue"
 import NotificationDropDown from "./components/NotificationDropDown.vue"
 import ProfileDropDown      from "./components/ProfileDropDown.vue"
+import Clock                from "./components/Clock.vue"
+
 
 export default {
   name: "the-navbar-vertical",
@@ -61,6 +71,7 @@ export default {
     CartDropDown,
     NotificationDropDown,
     ProfileDropDown,
+    Clock,
   },
   computed: {
     navbarColorLocal() {
@@ -87,7 +98,7 @@ export default {
     showSidebar() {
       this.$store.commit('TOGGLE_IS_VERTICAL_NAV_MENU_ACTIVE', true);
     }
-  }
+  },
 }
 </script>
 
