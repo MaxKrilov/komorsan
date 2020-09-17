@@ -33,7 +33,7 @@
 
         <search-bar class="mr-5" />
 
-<!--        <cart-drop-down />-->
+        <cart-drop-down />
 
         <notification-drop-down />
 

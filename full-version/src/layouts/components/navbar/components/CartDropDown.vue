@@ -1,59 +1,52 @@
 <template>
   <!-- CART DROPDOWN -->
   <vs-dropdown vs-custom-content vs-trigger-click class="cursor-pointer">
-    <feather-icon icon="ShoppingCartIcon" class="cursor-pointer ml-4 mr-6 mt-1" :badge="cartItems.length" />
-    <vs-dropdown-menu class="cart-dropdown vx-navbar-dropdown" :class="{'dropdown-custom': cartItems.length}">
+    <feather-icon icon="SettingsIcon" class="cursor-pointer ml-4 mr-6 mt-1" :badge="null" />
+<!--    <vs-dropdown-menu class="cart-dropdown vx-navbar-dropdown" :class="{'dropdown-custom': null }">-->
+      <vs-dropdown-menu class="vx-navbar-dropdown">
+        <ul style="min-width: 9rem">
 
-      <!-- IF CART HAVE ITEMS: HEADER -->
-      <template v-if="cartItems.length">
-        <div class="notification-header text-center p-5 bg-primary text-white">
-          <h3 class="text-white">{{ cartItems.length }} Item<span v-show="cartItems.length > 1">s</span></h3>
-          <p class="opacity-75">In Your Cart</p>
-        </div>
+          <li
+            class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+            @click="isOpen = !isOpen"
+           >
+            <feather-icon icon="UserIcon" svgClasses="w-4 h-4" />
+            <span class="ml-2" >Admmin</span>
+<!--                <ul style="min-width: 9rem" >-->
+<!--                  <li-->
+<!--                    class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"-->
+<!--                    :class="{ isOpen }"-->
+<!--                      >-->
+<!--                    <feather-icon icon="UserIcon" svgClasses="w-4 h-4" />-->
+<!--                    <span class="ml-2">Admmin</span>-->
+<!--                  </li>-->
+<!--                </ul>-->
+<!--            <vs-sidebar >-->
+            <vs-sidebar-group title="Store">
+              <vs-sidebar-item index="2.1" icon="store"> Store </vs-sidebar-item>
+              <vs-sidebar-item index="2.2" icon="nature_people"> Nature </vs-sidebar-item>
+              <vs-sidebar-item index="2.3" icon="style"> Style </vs-sidebar-item>
+            </vs-sidebar-group>
+<!--            </vs-sidebar>-->
+          </li>
 
-        <!-- CART ITEMS -->
-        <VuePerfectScrollbar ref="mainSidebarPs" class="scroll-area--cart-items-dropdowm p-0 mb-10" :settings="settings" :key="$vs.rtl">
-          <ul class="bordered-items">
-            <li
-              v-for="item in cartItems"
-              :key="item.objectID"
-              class="vx-row no-gutter cart-item cursor-pointer"
-              @click="$router.push({name: 'ecommerce-item-detail-view', params: {item_id: item.objectID }}).catch(() => {})">
+          <li
+            class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+            @click="$router.push('/pages/profile').catch(() => {})">
+            <feather-icon icon="UserIcon" svgClasses="w-4 h-4" />
+            <span class="ml-2">Settings</span>
+          </li>
 
-              <!-- IMG COL -->
-              <div class="vx-col w-1/5 item-img-container bg-white flex items-center justify-center">
-                <img :src="item.image" alt="item" class="cart-dropdown-item-img p-4">
-              </div>
+          <vs-divider class="m-1" />
 
-              <!-- INFO COL -->
-              <div class="vx-col w-4/5 pr-4 pl-2 py-4 flex flex-col justify-center">
-                <span class="font-medium block cart-item-title truncate">{{ item.name }}</span>
-                <small class="truncate mb-2">{{ item.description }}</small>
-                <div class="flex items-center justify-between">
-                  <span class="text-sm font-medium">{{ item.quantity }} <small>x</small> ${{ item.price }}</span>
-                  <feather-icon icon="XIcon" svgClasses="h-4 w-4 cursor-pointer text-danger" class="hover:text-danger" @click.stop="removeItemFromCart(item)" />
-                </div>
-              </div>
-            </li>
-          </ul>
-        </VuePerfectScrollbar>
-        <div
-          class=" checkout-footer fixed bottom-0 rounded-b-lg text-primary font-semibold w-full p-2 text-center border border-b-0 border-l-0 border-r-0 border-solid d-theme-border-grey-light cursor-pointer"
-          @click="$router.push('/apps/eCommerce/checkout').catch(() => {})">
-
-                <span class="flex items-center justify-center">
-                  <feather-icon icon="ShoppingCartIcon" svgClasses="h-4 w-4" />
-                  <span class="ml-2">Checkout</span>
-                </span>
-
-        </div>
-      </template>
-
-      <!-- IF CART IS EMPTY -->
-      <template v-else>
-        <p class="p-4">Your Cart Is Empty.</p>
-      </template>
-    </vs-dropdown-menu>
+          <li
+            class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
+            @click="logout">
+            <feather-icon icon="LogOutIcon" svgClasses="w-4 h-4" />
+            <span class="ml-2">Logout</span>
+          </li>
+        </ul>
+      </vs-dropdown-menu>
   </vs-dropdown>
 </template>
 
@@ -66,6 +59,7 @@
     },
     data() {
       return {
+        isOpen : false,
         settings: { // perfectscrollbar settings
           maxScrollbarLength: 60,
           wheelSpeed: .60,
