@@ -8,7 +8,7 @@
 
 
 export default {
-  allDataBasesGetters (state) {
-    return  state.allDataBases
-  }
+  allDataBasesGetters: s =>  s.allDataBases,
+  statusAuthorization: s => s.isResponseAuthStatus
+
 }

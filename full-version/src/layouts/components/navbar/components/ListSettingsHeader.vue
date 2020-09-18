@@ -22,7 +22,7 @@
 
       </vs-sidebar-group>
 
-      <vs-divider icon="person" position="left"> BD_12345 </vs-divider>
+      <vs-divider icon="person" position="left">  </vs-divider>
 
       <vs-sidebar-item index="5" icon="verified_user"> Configurations </vs-sidebar-item>
       <vs-sidebar-item index="6" icon="account_box"> Profile </vs-sidebar-item>
@@ -69,15 +69,23 @@
     },
     computed: {
 
-      ...mapGetters( 'cartSettingsHeader', ['allDataBasesGetters']),
+      ...mapGetters( 'cartSettingsHeader', ['allDataBasesGetters', 'statusAuthorization']),
       // LIST DB
       // allDataBases() {
       //   return this.$store.getters.allDataBasesGetters;
       // },
     },
-    methods: mapActions( 'cartSettingsHeader', ['GET_DATA_BASE_ALL_INSTANCE']),
+    methods: {
+       ...mapActions( 'cartSettingsHeader', ['GET_DATA_BASE_ALL_INSTANCE', 'GET_STATUS_AUTH']
+    ),
+  },
+    // beforeCreate() {
+    //   // this.GET_DATA_BASE_ALL_INSTANCE()
+    // },
     mounted (){
       this.GET_DATA_BASE_ALL_INSTANCE()
+      this.GET_STATUS_AUTH()
+
       // this.$store.dispatch('GET_DATA_BASE_ALL_INSTANCE')
     }
   }

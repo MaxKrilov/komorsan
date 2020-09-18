@@ -436,5 +436,22 @@ export default {
       return new Promise((resolve) => {
         jwt.refreshToken().then(response => { resolve(response) })
       })
-    }
+    },
+  getStatusAuth ({ commit }) {
+    const newPromise = new Promise((resolve, reject) => {
+      const path = '/auth_status';
+      axios.get(path, {headers: {"Content-Type": "application/json"}})
+        .then((res) => {
+          if(res.status === 200) {
+            commit('auth_status', res.data)
+          }
+          return resolve()
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+    commit('auth_status', newPromise)
+    return newPromise
+  },
 }

@@ -15,5 +15,7 @@ export default {
     // state.allDataBases = mapInstance.slice()
     // state.allDataBases = JSON.parse(JSON.stringify(allDataBases))
   },
-
+  AUTH_STATUS(state, isResponseAuthStatus){
+    state.isResponseAuthStatus = isResponseAuthStatus
+  },
 }
