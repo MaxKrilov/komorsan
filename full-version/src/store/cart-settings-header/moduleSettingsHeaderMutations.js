@@ -8,5 +8,12 @@
 
 export default {
   // Instance
+  SET_DATABASE_INSTANCE (state, allDataBases) {
+    state.allDataBases = allDataBases
+
+    // state.allDataBases = Object.assign({}, allDataBases)
+    // state.allDataBases = mapInstance.slice()
+    // state.allDataBases = JSON.parse(JSON.stringify(allDataBases))
+  },
 
 }

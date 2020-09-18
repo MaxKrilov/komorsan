@@ -8,10 +8,7 @@
 
 
 export default {
-  // locationAll (state, locations) {
-  //   // console.log('----- GETTER');
-  //   // console.log(state.locations);
-  //   // console.log('----  GETTER');
-  //   return state.locations
-  // },
+  allDataBasesGetters (state) {
+    return  state.allDataBases
+  }
 }

@@ -55,6 +55,8 @@
 <script>
   import VuePerfectScrollbar from 'vue-perfect-scrollbar'
   import vSelect from 'vue-select'
+  import {mapGetters, mapActions} from 'vuex'
+
   export default {
     components: {
       VuePerfectScrollbar,
@@ -70,15 +72,17 @@
       }
     },
     computed: {
-      // LIST DB DROPDOWN
-      listSettingsItems() {
-        // return this.$store.state.cartItems.slice().reverse();
-      },
+
+      ...mapGetters( 'cartSettingsHeader', ['allDataBasesGetters']),
+      // LIST DB
+      // allDataBases() {
+      //   return this.$store.getters.allDataBasesGetters;
+      // },
     },
-    methods: {
-      removeItemFromListSettings(item) {
-        // this.$store.dispatch('e/toggleItemInCart', item)
-      },
+    methods: mapActions( 'cartSettingsHeader', ['GET_DATA_BASE_ALL_INSTANCE']),
+    mounted (){
+      this.GET_DATA_BASE_ALL_INSTANCE()
+      // this.$store.dispatch('GET_DATA_BASE_ALL_INSTANCE')
     }
   }
 
