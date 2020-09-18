@@ -12,19 +12,15 @@
 
       </div>
       <vs-sidebar-group title="DATABASE">
-        <vs-sidebar-item index="1" icon="question_answer"> BD_12345 </vs-sidebar-item>
+        <vs-sidebar-item
+          v-for="item in allDataBasesGetters"
+          :key="item.id"
+          :db_name="item.db_name"
+          :host="item.host"
+          :port="item.port"
+          icon="storage" > {{ `${item.id} ${item.db_name} ${item.host} : ${item.port}` }} </vs-sidebar-item>
 
-        <vs-sidebar-group title="Store">
-          <vs-sidebar-item index="2.1" icon="store"> BD_12345 </vs-sidebar-item>
-          <vs-sidebar-item index="2.2" icon="nature_people"> BD_12345 </vs-sidebar-item>
-          <vs-sidebar-item index="2.3" icon="style"> BD_12345 </vs-sidebar-item>
-        </vs-sidebar-group>
-
-        <vs-sidebar-item index="2" icon="gavel"> BD_12345 </vs-sidebar-item>
-        <vs-sidebar-item index="3" icon="https"> BD_12345 </vs-sidebar-item>
-        <vs-sidebar-item index="4" icon="help"> BD_12345 </vs-sidebar-item>
       </vs-sidebar-group>
-
 
       <vs-divider icon="person" position="left"> BD_12345 </vs-divider>
 
