@@ -14,4 +14,5 @@ export default {
     // console.log('----  GETTER');
     return state.locations
   },
+  getStatusAuthorization: s => s.isResponseAuthStatus,
 }

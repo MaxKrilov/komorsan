@@ -7,11 +7,8 @@
 ==========================================================================================*/
 
 
-export default {
-  // locationAll (state, locations) {
-  //   // console.log('----- GETTER');
-  //   // console.log(state.locations);
-  //   // console.log('----  GETTER');
-  //   return state.locations
-  // },
+export default { // checking the selected BD
+  allDataBasesGetters:    s =>  s.allDataBases,
+  statusAuthorization:    s =>  s.isResponseAuthStatus,
+  dataBaseCurrentOfName:  s =>  s.isDataBaseCurrentOfName,
 }

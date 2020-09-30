@@ -14,18 +14,6 @@ import axios from "../../axios";
 
 export default {
     isUserLoggedIn: () => {
-      // axios.defaults.withCredentials = true;
-      // const path1 = 'http://10.10.20.12:8081/api/v1/devices';
-      // axios({
-      //   method: 'GET',
-      //   url: path1,
-      //   headers: {"Content-Type" : "application/json"},
-      // });
-      //   const path = 'http://10.10.20.12:8081/api/v1/auth_status';
-      //   axios({
-      //     method: 'GET',
-      //     url: path,
-      //   });
 
         let isAuthenticated = false
 
@@ -37,4 +25,5 @@ export default {
 
         return (localStorage.getItem('userInfo') && isAuthenticated)
     },
+    isResponseAuthStatus: '',
 }

@@ -7,5 +7,7 @@
 ==========================================================================================*/
 
 export default {
-
+  allDataBases               : [],
+  isResponseAuthStatus       : '',
+  isDataBaseCurrentOfName    : '',
 }
