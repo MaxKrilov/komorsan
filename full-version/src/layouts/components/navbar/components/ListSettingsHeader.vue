@@ -1,10 +1,12 @@
 <template>
     <div id="parent-settings">
-      <vs-button @click="active=!active" color="primary" type="filled">Open Sidebar</vs-button>
+    <div @click="active=!active"  type="filled">
+      <feather-icon icon="SettingsIcon" class="cursor-pointer ml-4 mr-6 mt-1"  />
+    </div>
     <vs-sidebar position-right parent="body" default-index="1"  color="primary" class="sidebarx" spacer v-model="active">
 
-      <div class="header-sidebar" slot="header">
-        <vs-avatar  size="70px" src=""/>
+      <div class="header-sidebar mt-20" slot="header">
+        <vs-avatar  size="10px" src=""/>
         <h4>
           Dispatcher
           <vs-button color="primary" icon="more_horiz" type="flat"></vs-button>
