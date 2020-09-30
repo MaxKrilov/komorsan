@@ -11,14 +11,32 @@
         </h4>
 
       </div>
-      <vs-sidebar-group title="DATABASE">
-        <vs-sidebar-item
-          v-for="item in allDataBasesGetters"
-          :key="item.id"
-          :db_name="item.db_name"
-          :host="item.host"
-          :port="item.port"
-          icon="storage" > {{ `${item.id} ${item.db_name} ${item.host} : ${item.port}` }} </vs-sidebar-item>
+      <vs-sidebar-group :title="`DATABASE: ${ dataBaseCurrentOfName.db ? dataBaseCurrentOfName.db : statusAuthorization.database}`">
+
+          <li
+            v-for="(item, index) in allDataBasesGetters"
+            :key="item.id"
+            @click.capture="isActive = index"
+            :class="{ active_visible: index === isActive }"
+          >
+
+            <vs-sidebar-item
+               ref="dataBaseCurrentColor"
+              :db_name="item.db_name"
+              :host="item.host"
+              :port="item.port"
+              icon="storage"
+              :style="setCurrentlySelected(item.id)"
+              :class="{
+              'color-custom-blue': +item.id === +statusAuthorization.database,
+              'color-custom-black': +item.id !== +statusAuthorization.database
+              }"
+               @click="getCurrentlySelectedBase(item.id)"
+            >
+              <VuePerfectScrollbar >{{ `${item.id} ${item.db_name} ${item.host} : ${item.port}` }}</VuePerfectScrollbar>
+            </vs-sidebar-item>
+
+          </li>
 
       </vs-sidebar-group>
 
@@ -34,24 +52,14 @@
 
     </vs-sidebar>
     </div>
-
-<!--      </template>-->
-
-      <!-- IF DB IS EMPTY -->
-      <!--      <template v-else>-->
-      <!--        <p class="p-4"> List DB Is Empty.</p>-->
-      <!--      </template>-->
-<!--    </vs-dropdown-menu>-->
-<!--  </vs-dropdown>-->
 </template>
-
-
-
 
 <script>
   import VuePerfectScrollbar from 'vue-perfect-scrollbar'
   import vSelect from 'vue-select'
   import {mapGetters, mapActions} from 'vuex'
+
+
 
   export default {
     components: {
@@ -60,7 +68,8 @@
     },
     data() {
       return {
-        active:false,
+        active: null,
+        isActive : false,
         settings: { // perfectscrollbar settings
           maxScrollbarLength: 60,
           wheelSpeed: .60,
@@ -68,31 +77,55 @@
       }
     },
     computed: {
+      // checking the selected BD
+      ...mapGetters( 'cartSettingsHeader', ['allDataBasesGetters', 'statusAuthorization', 'dataBaseCurrentOfName']),
 
-      ...mapGetters( 'cartSettingsHeader', ['allDataBasesGetters', 'statusAuthorization']),
+
+
       // LIST DB
       // allDataBases() {
       //   return this.$store.getters.allDataBasesGetters;
       // },
     },
     methods: {
-       ...mapActions( 'cartSettingsHeader', ['GET_DATA_BASE_ALL_INSTANCE', 'GET_STATUS_AUTH']
+       ...mapActions( 'cartSettingsHeader', ['GET_DATA_BASE_ALL_INSTANCE', 'GET_STATUS_AUTH', 'SET_CURRENT_USER_DATABASE'],
     ),
+     async getCurrentlySelectedBase (itemBaseCurrent) {  // get the currently selected base
+        	await this.SET_CURRENT_USER_DATABASE(itemBaseCurrent)
+      },
+      setCurrentlySelected(id) {
+        // let vm = this;
+        // vm.$refs.dataBaseCurrentColor[index].$el.style.color = 'red'
+        return {
+            'color': id === this.statusAuthorization.database ? 'red' : 'black'
+        }
+      },
   },
-    // beforeCreate() {
-    //   // this.GET_DATA_BASE_ALL_INSTANCE()
-    // },
-    mounted (){
-      this.GET_DATA_BASE_ALL_INSTANCE()
-      this.GET_STATUS_AUTH()
-
+    async mounted (){
+      await this.GET_DATA_BASE_ALL_INSTANCE()
+      await this.GET_STATUS_AUTH()
       // this.$store.dispatch('GET_DATA_BASE_ALL_INSTANCE')
     }
   }
 
 </script>
-
+<style lang="scss" src='../../../../assets/scss/vuexy/_mainCustomClasses.scss'></style>
 <style lang="scss" scoped>
+
+  .active_visible {
+    color: white;
+    background: #6cc89c82;
+  }
+  .vs-sidebar-item-active {
+    font-weight: 400;
+  }
+
+  .color-custom-blue a :active, .color-custom-blue a:visited, {
+    color: blue  !important;
+  }
+  .color-custom-black a:visited, .color-custom-black a:visited, {
+    color: #6cc89c  !important;
+  }
   .header-sidebar {
     display: flex;
     align-items: center;

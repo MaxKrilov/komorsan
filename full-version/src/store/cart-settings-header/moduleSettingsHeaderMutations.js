@@ -8,14 +8,13 @@
 
 export default {
   // Instance
-  SET_DATABASE_INSTANCE (state, allDataBases) {
+  SET_DATABASE_INSTANCE (state, allDataBases) {  // get a list of all databases
     state.allDataBases = allDataBases
-
-    // state.allDataBases = Object.assign({}, allDataBases)
-    // state.allDataBases = mapInstance.slice()
-    // state.allDataBases = JSON.parse(JSON.stringify(allDataBases))
   },
-  AUTH_STATUS(state, isResponseAuthStatus){
+  AUTH_STATUS(state, isResponseAuthStatus){  // checking the current user database
     state.isResponseAuthStatus = isResponseAuthStatus
+  },
+  SWITCH_DATABASE(state, isDataBaseCurrentOfName){  // checking the current user database
+    state.isDataBaseCurrentOfName = isDataBaseCurrentOfName
   },
 }

@@ -7,8 +7,8 @@
 ==========================================================================================*/
 
 
-export default {
-  allDataBasesGetters: s =>  s.allDataBases,
-  statusAuthorization: s => s.isResponseAuthStatus
-
+export default { // checking the selected BD
+  allDataBasesGetters:    s =>  s.allDataBases,
+  statusAuthorization:    s =>  s.isResponseAuthStatus,
+  dataBaseCurrentOfName:  s =>  s.isDataBaseCurrentOfName,
 }

@@ -1,13 +1,13 @@
 /*=========================================================================================
-  File Name: moduleSettingsHeaderState.js
-  Description: SettingsHeader Module State
+  File Name: _mainCustomClasses.scss
+  Description: partial- this file containes custom helper classes
   ----------------------------------------------------------------------------------------
- Item Name: Vuejs, HTML Template
- Author: Krylov
+  Item Name: Vue_komorsan - Vuejs, HTML &  Dashboard Template
+	Author : krylov
 ==========================================================================================*/
 
-export default {
-  allDataBases               : [],
-  isResponseAuthStatus       : '',
-  isDataBaseCurrentOfName    : '',
+
+
+.vs-sidebar--item a{
+  color: black !important;
 }
