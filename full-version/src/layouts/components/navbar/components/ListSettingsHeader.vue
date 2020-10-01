@@ -81,10 +81,7 @@
     computed: {
       // checking the selected BD
       ...mapGetters( 'cartSettingsHeader', ['allDataBasesGetters', 'statusAuthorization', 'dataBaseCurrentOfName']),
-
-
-
-      // LIST DB
+            // LIST DB
       // allDataBases() {
       //   return this.$store.getters.allDataBasesGetters;
       // },
