@@ -8,10 +8,10 @@
 ==========================================================================================*/
 
 
-import state from './moduleSettingsHeaderState.js'
-import mutations from './moduleSettingsHeaderMutations.js'
-import actions from './moduleSettingsHeaderActions.js'
-import getters from './moduleSettingsHeaderGetters.js'
+import state from './moduleAlarmHeaderState.js'
+import mutations from './moduleAlarmHeaderMutations.js'
+import actions from './moduleAlarmHeaderActions.js'
+import getters from './moduleAlarmHeaderGetters.js'
 
 export default {
   namespaced: true,

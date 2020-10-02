@@ -81,16 +81,19 @@
     computed: {
       // checking the selected BD
       ...mapGetters( 'cartSettingsHeader', ['allDataBasesGetters', 'statusAuthorization', 'dataBaseCurrentOfName']),
-            // LIST DB
+      // LIST DB
       // allDataBases() {
       //   return this.$store.getters.allDataBasesGetters;
       // },
     },
     methods: {
-       ...mapActions( 'cartSettingsHeader', ['GET_DATA_BASE_ALL_INSTANCE', 'GET_STATUS_AUTH', 'SET_CURRENT_USER_DATABASE'],
-    ),
+       ...mapActions( 'cartSettingsHeader', ['GET_DATA_BASE_ALL_INSTANCE', 'GET_STATUS_AUTH', 'SET_CURRENT_USER_DATABASE']  ),
+       // ...mapActions( 'cartAlarmNotificationsHeader', ['GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS']  ),
+
+
      async getCurrentlySelectedBase (itemBaseCurrent) {  // get the currently selected base
         	await this.SET_CURRENT_USER_DATABASE(itemBaseCurrent)
+          await this.$store.dispatch('cartAlarmNotificationsHeader/GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS')  // await this.GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS()
       },
       setCurrentlySelected(id) {
         // let vm = this;
