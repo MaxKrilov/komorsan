@@ -97,3 +97,71 @@ Vue.filter('filter_tags', function(value) {
 Vue.filter('k_formatter', function(num) {
 	return num > 999 ? (num/1000).toFixed(1) + 'k' : num
 })
+
+// locale event type
+Vue.filter('localizeEventType_', function(value, devT) {
+  window.language = 'RU'
+  if ( value === 'Alarm: Angles sensor' ) {
+    if ( window.language === 'RU' ) {
+      value = 'Сработал датчик воровства';
+    } else if ( window.language === 'EN' ) {
+      value = 'Theft sensor has triggered';
+    }
+  } else {
+    if ( window.language === 'RU' ) {
+      value = value.split(' ');
+
+      for ( let val of value ) {
+        console.log(val)
+        if ( val === 'Transient' ) {
+          val = 'Неустойчивое';
+        } else if ( val === 'permanent' ) {
+          val = 'устойчивое';
+        } else if ( val === 'PtP' ) {
+
+          if (devT === 1592) {
+
+            val = 'КЗ';
+
+          } else {
+            val = 'МФЗ';
+          }
+
+        } else if ( val === 'PtG' ) {
+          val = 'ОЗЗ';
+        } else if ( val === 'forward' ) {
+          val = ' вперед';
+        } else if ( val === 'backward' ) {
+          val = ' назад';
+        } else if ( val === 'A(forward)' ) {
+          val = 'А(вперед)';
+        } else if ( val === 'B(forward)' ) {
+          val = 'В(вперед)';
+        } else if ( val === 'C(forward)' ) {
+          val = 'С(вперед)';
+        } else if ( val === 'A(backward)' ) {
+          val = 'А(назад)';
+        } else if ( val === 'B(backward)' ) {
+          val = 'В(назад)';
+        } else if ( val === 'C(backward)' ) {
+          val = 'С(назад)';
+        } else if ( val === 'to' ) {
+          val = ' к';
+        } else if ( val === 'feeder' ) {
+          val = 'фидеру';
+        } else if ( val === 'line' ) {
+          val = 'линии';
+        } else if ( val === 'damaged_line' ) {
+          val = 'поврежденная линия';
+        } else if ( val === 'IntLock' ) {
+          val = 'Блокировка';
+        }else if ( val === 'transient') {
+          val = 'неустойчивое';
+        }
+      }
+
+      value = value.join(' ');  // преобразуем в строку
+    } else if ( window.language === 'EN' ) {}
+  }
+  return value;
+})

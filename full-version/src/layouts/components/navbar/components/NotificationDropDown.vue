@@ -18,11 +18,11 @@
               <feather-icon  v-if="ntf.client_read === 0"  :key="unreadNotifications[1].index" :icon="unreadNotifications[1].icon" :svgClasses="[`text-success`, 'stroke-current mr-1 h-6 w-6']"></feather-icon>
               <feather-icon  v-else  :key="unreadNotifications[1].index" :icon="unreadNotifications[1].icon" :svgClasses="[`text-danger`, 'stroke-current mr-1 h-6 w-6']"></feather-icon>
               <div class="mx-2">
-                <span class="font-medium block notification-title" :class="[`text-${ntf.description.event_type}`]">{{ ntf.description.event_type }}</span>
-                <small>{{ ntf.description.event_type }}</small>
+                <span class="font-medium block notification-title" :class="[`text-${ntf.description.event_type}`]">{{ localizeEventTypeAll( ntf.description['event_type'] )  }}</span>
+                <small>{{ ntf.description.event_type  }}</small>
               </div>
             </div>
-            <small class="mt-1 whitespace-no-wrap">{{ elapsedTime(ntf.description.event_type) }}</small>
+            <small class="mt-1 whitespace-no-wrap">{{ localizeEventTypeAll( '' , ntf.first_event_time.String ) }}</small>
           </li>
         </ul>
       </VuePerfectScrollbar>
@@ -57,8 +57,12 @@
 </template>
 
 <script>
+
+import localizeEndType from './../../../../locales/localizeEventType.js'
 import VuePerfectScrollbar from 'vue-perfect-scrollbar'
 import {mapGetters, mapActions} from 'vuex'
+ import HNavMenuGroup from "../../horizontal-nav-menu/HorizontalNavMenuGroup";
+ import HNavMenuItem from "../../horizontal-nav-menu/HorizontalNavMenuItem";
 export default {
   components: {
     VuePerfectScrollbar
@@ -87,6 +91,7 @@ export default {
       },
     }
   },
+
   computed: {
     // proof -- all displayed unacknowledged
     ...mapGetters( 'cartAlarmNotificationsHeader', ['displayAllUnacknowledgedGetters']),
@@ -98,6 +103,12 @@ export default {
   methods: { // checking -- all displayed unacknowledged
     ...mapActions( 'cartAlarmNotificationsHeader', ['GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS']),
     async currentlyDisplayAllUnacknowledged () {
+
+    },
+    localizeEventTypeAll(val, time){
+      if (val) return localizeEndType.localizeEventType(val)
+      else if (time) return localizeEndType.changeLanguageTimeOption2(time).replace('<br>', ' ')
+      else return  'empty -- no time and events'
 
     },
     elapsedTime(startTime) {
