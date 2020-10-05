@@ -6,7 +6,9 @@
   Author: Krylov
 ==========================================================================================*/
 
-import axios from "../../axios.js"
+import axios from "./../../axios.js"
+
+// cart-alarm-notifications-header
 export default {
   // get a list of all databases
   GET_DATA_BASE_ALL_INSTANCE ({ commit }) {
@@ -23,7 +25,6 @@ export default {
           reject(error)
         })
     })
-    commit('SET_DATABASE_INSTANCE', newPromise)
     return newPromise
   },
   GET_STATUS_AUTH ({ commit }) {
@@ -41,17 +42,15 @@ export default {
           reject(error)
         })
     })
-    commit('AUTH_STATUS', newPromise)
     return newPromise
   },
   async CHECK_SELECT_DATA_BASE ({dispatch} ) {
     return await dispatch('GET_STATUS_AUTH').then(res => {
 
-      // commit('SET_FETCHING_LOCATIONS', res)
     })
   },
 
-  SET_CURRENT_USER_DATABASE ({ commit }, payload) {
+  SET_CURRENT_USER_DATABASE ({ commit, dispatch }, payload) {
     // changing the current user database
     const newPromise = new Promise((resolve, reject) => {
       const path = '/api/v1/database/switch/' + payload;
@@ -66,9 +65,9 @@ export default {
           reject(error)
         })
     })
-    commit('SWITCH_DATABASE', newPromise)
     return newPromise
   },
+
 }
 
 

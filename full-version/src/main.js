@@ -36,6 +36,7 @@ Vue.use(Vuesax)
 // import Vue2Leaflet from 'vue2-leaflet';
 
 
+
 // axios
 import axios from "./axios.js"
 Vue.prototype.$http = axios

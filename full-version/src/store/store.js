@@ -22,6 +22,7 @@ import moduleMapLeaflet from './map/moduleMapLeaflet.js'
 import moduleListDevices from './frameListDevices/moduleListDevices.js'
 import moduleAuth from './auth/moduleAuth.js'
 import moduleSettingsHeader from './cart-settings-header/moduleSettingsHeader.js'
+import moduleAlarmHeader from './cart-alarm -notifications-header/moduleAlarmHeader.js'
 //
 // import mapModule from '@/views/charts-and-maps/maps/leaflet-map/map.js'
 
@@ -37,6 +38,7 @@ export default new Vuex.Store({
         frameListDevices: moduleListDevices,
         auth: moduleAuth,
         cartSettingsHeader: moduleSettingsHeader,
+        cartAlarmNotificationsHeader: moduleAlarmHeader,
     },
     // strict: process.env.NODE_ENV !== 'production'
 })
