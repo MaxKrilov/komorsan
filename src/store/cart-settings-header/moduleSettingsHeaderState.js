@@ -1,13 +1,13 @@
 /*=========================================================================================
-  File Name: moduleAuthGetters.js
-  Description: Auth Module Getters
+  File Name: moduleSettingsHeaderState.js
+  Description: SettingsHeader Module State
   ----------------------------------------------------------------------------------------
-  Item Name: Vuejs Template
-  Author: Krylov
+ Item Name: Vuejs, HTML Template
+ Author: Krylov
 ==========================================================================================*/
 
-
-export default { // set the display of Name for User
-  // isDisplayAuthenticated:    s =>  s.isResponseDisplayAuthenticated,
+export default {
+  allDataBases               : [],
+  isResponseAuthStatus       : '',
+  isDataBaseCurrentOfName    : '',
 }
-

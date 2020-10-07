@@ -16,6 +16,12 @@ export default {
   auth_request(state){
     state.status = 'loading'
   },
+  auth_status(state, isResponseAuthStatus){
+    state.isResponseAuthStatus = isResponseAuthStatus
+  },
+  logout_Get(state, isLogoutGet){
+    state.isLogoutGet = isLogoutGet
+  },
   auth_success(state, token, user){
     state.status = 'success'
     state.token = token

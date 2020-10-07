@@ -7,7 +7,7 @@
 ==========================================================================================*/
 
 export default {
-  mapInstance : null,
-  fetchingLocations: '',
-  locations: [],
+  mapInstance        : null,
+  fetchingLocations  : '',
+  locations          : [],
 }

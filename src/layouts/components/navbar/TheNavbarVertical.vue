@@ -20,14 +20,20 @@
 
         <bookmarks :navbarColor="navbarColor" v-if="windowWidth >= 992" />
 
-        <vs-spacer />
+<!--        <div id="clock">-->
+<!--          <p class="date">{{date | clock('datetime')}}</p>-->
+
+<!--          <p class="text">DIGITAL CLOCK with Vue.js</p>-->
+<!--        </div>-->
         <clock />
+
+        <vs-spacer />
 
         <i18n />
 
         <search-bar class="mr-5" />
 
-<!--        <cart-drop-down />-->
+        <list-settings-header />
 
         <notification-drop-down />
 
@@ -41,14 +47,13 @@
 
 <script>
 
-  import Clock              from "./components/Clock.vue"
 import Bookmarks            from "./components/Bookmarks.vue"
 import I18n                 from "./components/I18n.vue"
 import SearchBar            from "./components/SearchBar.vue"
-import CartDropDown         from "./components/CartDropDown.vue"
+import ListSettingsHeader   from "./components/ListSettingsHeader.vue"
 import NotificationDropDown from "./components/NotificationDropDown.vue"
 import ProfileDropDown      from "./components/ProfileDropDown.vue"
-
+import Clock                from "./components/Clock.vue"
 
 
 export default {
@@ -60,13 +65,13 @@ export default {
     },
   },
   components: {
-    Clock,
     Bookmarks,
     I18n,
     SearchBar,
-    CartDropDown,
+    ListSettingsHeader,
     NotificationDropDown,
     ProfileDropDown,
+    Clock,
   },
   computed: {
     navbarColorLocal() {
@@ -93,7 +98,7 @@ export default {
     showSidebar() {
       this.$store.commit('TOGGLE_IS_VERTICAL_NAV_MENU_ACTIVE', true);
     }
-  }
+  },
 }
 </script>
 

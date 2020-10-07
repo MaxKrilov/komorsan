@@ -1,13 +1,12 @@
 /*=========================================================================================
-  File Name: moduleAuthGetters.js
-  Description: Auth Module Getters
+  File Name: moduleAlarmHeaderState.js
+  Description: AlarmHeader Module State
   ----------------------------------------------------------------------------------------
-  Item Name: Vuejs Template
-  Author: Krylov
+ Item Name: Vuejs, HTML Template
+ Author: Krylov
 ==========================================================================================*/
 
+export default { //displaying all unacknowledged
+  isResponseUnacknowledged               : [],
 
-export default { // set the display of Name for User
-  // isDisplayAuthenticated:    s =>  s.isResponseDisplayAuthenticated,
 }
-

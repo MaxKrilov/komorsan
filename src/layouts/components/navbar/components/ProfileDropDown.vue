@@ -1,14 +1,15 @@
 <template>
-  <div class="the-navbar__user-meta flex items-center" v-if="activeUserInfo.displayName">
-
+  <div class="the-navbar__user-meta flex items-center" v-if="statusAuthorization.username">
+<!--    v-if="statusAuthorization.username-->
     <div class="text-right leading-tight hidden sm:block">
-      <p class="font-semibold">{{ activeUserInfo.displayName }}</p>
-      <small>Скромный программист</small>
+      <p class="font-semibold">{{ isDisplayAuthenticated['authorizationLoginName']}}</p>
+      <small>{{isDisplayAuthenticated['authorizationLoginRole']}}</small>
     </div>
 
     <vs-dropdown vs-custom-content vs-trigger-click class="cursor-pointer">
 
       <div class="con-img ml-3">
+<!--        <img v-if="" key="onlineImg" :src="" alt="user-img" width="40" height="40" class="rounded-full shadow-md cursor-pointer block" />-->
         <img v-if="activeUserInfo.photoURL" key="onlineImg" :src="activeUserInfo.photoURL" alt="user-img" width="40" height="40" class="rounded-full shadow-md cursor-pointer block" />
       </div>
 
@@ -46,7 +47,7 @@
 <script>
 import firebase from 'firebase/app'
 import 'firebase/auth'
-
+import {mapGetters, mapActions} from 'vuex'
 export default {
   data() {
     return {
@@ -54,12 +55,24 @@ export default {
     }
   },
   computed: {
+    ...mapGetters( 'auth', ['isDisplayAuthenticated']),
+    ...mapGetters( 'cartSettingsHeader', ['statusAuthorization', 'isDisplayAuthenticated']),
     activeUserInfo() {
+      // console.log('----- .22r');
+      // console.log(this.isDisplayAuthenticated());
+      // console.log('---- 22r');
+      // return this.$store.getters.isDisplayAuthenticated
       return this.$store.state.AppActiveUser
     }
   },
   methods: {
-    logout() {
+    ...mapActions( 'auth', ['logoutGet', 'getStatusAuth']  ),
+    async logout() {
+        // if user is logged in via sessionCookie
+        if (this.logoutGet()){
+          await this.logoutGet()
+          this.$router.push('/pages/login').catch(() => {})
+        }
 
         // if user is logged in via auth0
         if (this.$auth.profile) this.$auth.logOut();

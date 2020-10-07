@@ -36,6 +36,7 @@ Vue.use(Vuesax)
 // import Vue2Leaflet from 'vue2-leaflet';
 
 
+
 // axios
 import axios from "./axios.js"
 Vue.prototype.$http = axios
@@ -52,7 +53,6 @@ import '../themeConfig.js'
 
 // Firebase
 import '@/firebase/firebaseConfig'
-
 
 // Auth0 Plugin
 import AuthPlugin from "./plugins/auth";
@@ -87,7 +87,7 @@ import store from './store/store'
 import i18n from './i18n/i18n'
 
 
-// Vuexy Admin Filters
+// Vue Admin Filters
 import './filters/filters'
 
 

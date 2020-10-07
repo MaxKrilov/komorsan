@@ -315,7 +315,7 @@ export default {
           // If there's user data in response
            router.push(router.currentRoute.query.to || '/')
 
-          if(response.status == 200 || response.status == "Already logged in") {
+          if((response.status === 200) || (response.status === "Already logged in")) {
           // if(response.data.userData) {
             // Navigate User to homepage
             // axios.defaults.withCredentials = true;
@@ -342,39 +342,6 @@ export default {
         })
         .catch(error => { reject(error) })
     })
-
-
-      // return new Promise((resolve, reject) => {
-      //   commit('auth_request')
-      //   const path = 'http://10.10.20.12:8081/api/v1/login';
-      //   axios({
-      //     method: 'post',
-      //     url: path,
-      //     data: {
-      //       username: 'q',
-      //       password: 'q',
-      //     },
-      //   })
-      //     .then(resp => {
-      //       const token = resp.data.token
-      //       const user = resp.data.user
-      //       localStorage.setItem('token', token)
-      //       axios.defaults.headers.common['Authorization'] = token
-      //       commit('auth_success', token, user)
-      //       resolve(resp)
-      //       // let username = response.data.username;
-      //       console.log('---- accidentDirection---');
-      //       console.log(resp.data );
-      //       console.log( resp);
-      //       console.log('---- accidentDirection---');
-      //       router.push(router.currentRoute.query.to || '/dashboard/ag-grid-table')
-      //     })
-      //     .catch(err => {
-      //       commit('auth_error')
-      //       localStorage.removeItem('token')
-      //       reject(err)
-      //     })
-      // })
 
   },
 
@@ -436,5 +403,38 @@ export default {
       return new Promise((resolve) => {
         jwt.refreshToken().then(response => { resolve(response) })
       })
-    }
+    },
+  getStatusAuth ({ commit }) {
+    const newPromise = new Promise((resolve, reject) => {
+      const path = '/api/v1/auth_status';
+      axios.get(path, {headers: {"Content-Type": "application/json"}})
+        .then((res) => {
+          if(res.status === 200) {
+            commit('auth_status', res.data)
+          }
+          return resolve()
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+    return newPromise
+  },
+  logoutGet({ commit }) {
+    const newPromise = new Promise((resolve, reject) => {
+      const path = '/api/v1/logout';
+      axios.get(path, {headers: {"Content-Type": "application/json"}})
+        .then((res) => {
+          if(res.status === 200) {
+            // answer: "Logout Ok"   ||  status: "No session"
+            commit('logout_Get', res.data)
+          }
+          return resolve()
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  return newPromise
+  },
 }

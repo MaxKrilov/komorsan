@@ -39,7 +39,7 @@ const getUserInfo = () => {
 
   // Include properties from localStorage
   Object.keys(userInfoLocalStorage).forEach((key) => {
-    if(userInfo[key] == undefined && userInfoLocalStorage[key] != null) userInfo[key] = userInfoLocalStorage[key]
+    if(userInfo[key] === undefined && userInfoLocalStorage[key] != null) userInfo[key] = userInfoLocalStorage[key]
   })
 
   return userInfo

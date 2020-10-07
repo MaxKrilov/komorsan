@@ -4,7 +4,7 @@
     <div class="flex flex-wrap justify-between items-center mb-8">
       <div>
         <p>Account is connected with Google.</p>
-        <p class="font-medium mb-4">john@gmail.com</p>
+        <p class="font-medium mb-4">max@gmail.com</p>
       </div>
       <vs-button type="border" color="danger">Disconnect</vs-button>
     </div>

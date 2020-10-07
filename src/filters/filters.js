@@ -1,5 +1,6 @@
 import Vue from 'vue'
 
+
 Vue.filter('capitalize', function (value) {
 	if (!value) return ''
 	value = value.toString()
@@ -34,7 +35,7 @@ Vue.filter('tailing', function(value, tail) {
 })
 
 Vue.filter('time', function(value, is24HrFormat = false) {
-	if(value) {
+  if(value) {
 		const date = new Date(Date.parse(value));
 		let hours = date.getHours();
 		const min = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes()
@@ -43,8 +44,24 @@ Vue.filter('time', function(value, is24HrFormat = false) {
 			hours = hours % 12 || 12;
 			return hours + ':' + min + ' ' + time
 		}
-		return hours + ':' + min
+    return hours + ':' + min
 	}
+})
+Vue.filter('clock', function(value, format = 'date')  {
+  const options = {}
+
+  if (format.includes('date')) {
+    options.day = '2-digit'
+    options.month = 'long'
+    options.year = 'numeric'
+  }
+
+  if (format.includes('time')) {
+    options.hour = '2-digit'
+    options.minute = '2-digit'
+    options.second = '2-digit'
+  }
+  return new Intl.DateTimeFormat('ru-RU', options).format(new Date(value))
 })
 
 Vue.filter('date', function(value, fullDate = false) {
@@ -79,4 +96,72 @@ Vue.filter('filter_tags', function(value) {
 
 Vue.filter('k_formatter', function(num) {
 	return num > 999 ? (num/1000).toFixed(1) + 'k' : num
+})
+
+// locale event type
+Vue.filter('localizeEventType_', function(value, devT) {
+  window.language = 'RU'
+  if ( value === 'Alarm: Angles sensor' ) {
+    if ( window.language === 'RU' ) {
+      value = 'Сработал датчик воровства';
+    } else if ( window.language === 'EN' ) {
+      value = 'Theft sensor has triggered';
+    }
+  } else {
+    if ( window.language === 'RU' ) {
+      value = value.split(' ');
+
+      for ( let val of value ) {
+        console.log(val)
+        if ( val === 'Transient' ) {
+          val = 'Неустойчивое';
+        } else if ( val === 'permanent' ) {
+          val = 'устойчивое';
+        } else if ( val === 'PtP' ) {
+
+          if (devT === 1592) {
+
+            val = 'КЗ';
+
+          } else {
+            val = 'МФЗ';
+          }
+
+        } else if ( val === 'PtG' ) {
+          val = 'ОЗЗ';
+        } else if ( val === 'forward' ) {
+          val = ' вперед';
+        } else if ( val === 'backward' ) {
+          val = ' назад';
+        } else if ( val === 'A(forward)' ) {
+          val = 'А(вперед)';
+        } else if ( val === 'B(forward)' ) {
+          val = 'В(вперед)';
+        } else if ( val === 'C(forward)' ) {
+          val = 'С(вперед)';
+        } else if ( val === 'A(backward)' ) {
+          val = 'А(назад)';
+        } else if ( val === 'B(backward)' ) {
+          val = 'В(назад)';
+        } else if ( val === 'C(backward)' ) {
+          val = 'С(назад)';
+        } else if ( val === 'to' ) {
+          val = ' к';
+        } else if ( val === 'feeder' ) {
+          val = 'фидеру';
+        } else if ( val === 'line' ) {
+          val = 'линии';
+        } else if ( val === 'damaged_line' ) {
+          val = 'поврежденная линия';
+        } else if ( val === 'IntLock' ) {
+          val = 'Блокировка';
+        }else if ( val === 'transient') {
+          val = 'неустойчивое';
+        }
+      }
+
+      value = value.join(' ');  // преобразуем в строку
+    } else if ( window.language === 'EN' ) {}
+  }
+  return value;
 })

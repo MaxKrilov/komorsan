@@ -1,26 +1,28 @@
 <template>
   <!-- NOTIFICATIONS -->
   <vs-dropdown vs-custom-content vs-trigger-click class="cursor-pointer">
-    <feather-icon icon="BellIcon" class="cursor-pointer mt-1 sm:mr-6 mr-2" :badge="unreadNotifications.length" />
+    <feather-icon icon="BellIcon" class="cursor-pointer mt-1 sm:mr-6 mr-2" :badge="displayAllUnacknowledgedGetters.length" />
 
     <vs-dropdown-menu class="notification-dropdown dropdown-custom vx-navbar-dropdown">
 
       <div class="notification-top text-center p-5 bg-primary text-white">
-        <h3 class="text-white">{{ unreadNotifications.length }} New</h3>
-        <p class="opacity-75">App Notifications</p>
+        <h3 class="text-white">{{ displayAllUnacknowledgedGetters.length}} Events</h3>
+        <p class="opacity-75">Notifications</p>
       </div>
-
+      <!-- IF EVENTS HAVE ITEMS: HEADER -->
+      <template v-if="displayAllUnacknowledgedGetters.length  > 0 " >
       <VuePerfectScrollbar ref="mainSidebarPs" class="scroll-area--nofications-dropdown p-0 mb-10" :settings="settings" :key="$vs.rtl">
         <ul class="bordered-items">
-          <li v-for="ntf in unreadNotifications" :key="ntf.index" class="flex justify-between px-4 py-4 notification cursor-pointer">
+          <li v-for="ntf in displayAllUnacknowledgedGetters" :key="ntf.event_group_id" class="flex justify-between px-4 py-4 notification cursor-pointer">
             <div class="flex items-start">
-              <feather-icon :icon="ntf.icon" :svgClasses="[`text-${ntf.category}`, 'stroke-current mr-1 h-6 w-6']"></feather-icon>
+              <feather-icon  v-if="ntf.client_read === 0"  :key="unreadNotifications[1].index" :icon="unreadNotifications[1].icon" :svgClasses="[`text-success`, 'stroke-current mr-1 h-6 w-6']"></feather-icon>
+              <feather-icon  v-else  :key="unreadNotifications[1].index" :icon="unreadNotifications[1].icon" :svgClasses="[`text-danger`, 'stroke-current mr-1 h-6 w-6']"></feather-icon>
               <div class="mx-2">
-                <span class="font-medium block notification-title" :class="[`text-${ntf.category}`]">{{ ntf.title }}</span>
-                <small>{{ ntf.msg }}</small>
+                <span class="font-medium block notification-title" :class="[`text-${ntf.description.event_type}`]">{{ localizeEventTypeAll( ntf.description['event_type'] )  }}</span>
+                <small>{{ ntf.description.event_type  }}</small>
               </div>
             </div>
-            <small class="mt-1 whitespace-no-wrap">{{ elapsedTime(ntf.time) }}</small>
+            <small class="mt-1 whitespace-no-wrap">{{ localizeEventTypeAll( '' , ntf.first_event_time.String ) }}</small>
           </li>
         </ul>
       </VuePerfectScrollbar>
@@ -42,15 +44,25 @@
         border-solid
         d-theme-border-grey-light
         cursor-pointer">
-        <span>View All Notifications</span>
+        <span>Go to Event Notifications</span>
       </div>
+      </template>
+
+      <!-- No emergency events -- IF CART IS EMPTY -->
+      <template v-else>
+        <p class="p-4">No emergency events</p>
+      </template>
     </vs-dropdown-menu>
   </vs-dropdown>
 </template>
 
 <script>
-import VuePerfectScrollbar from 'vue-perfect-scrollbar'
 
+import localizeEndType from './../../../../locales/localizeEventType.js'
+import VuePerfectScrollbar from 'vue-perfect-scrollbar'
+import {mapGetters, mapActions} from 'vuex'
+ import HNavMenuGroup from "../../horizontal-nav-menu/HorizontalNavMenuGroup";
+ import HNavMenuItem from "../../horizontal-nav-menu/HorizontalNavMenuItem";
 export default {
   components: {
     VuePerfectScrollbar
@@ -58,19 +70,11 @@ export default {
   data() {
     return {
       unreadNotifications: [
-          {
-            index    : 0,
-            title    : 'New Message',
-            msg      : 'Alarm acknowledged?',
-            icon     : 'MessageSquareIcon',
-            time     : this.randomDate({sec: 10}),
-            category : 'primary'
-          },
           { index    : 1,
-            title    : '!!!!',
+            title    : 'Instrument alarm!',
             msg      : 'Successful Alarm acknowledged ',
-            icon     : 'PackageIcon',
-            time     : this.randomDate({sec: 40}),
+            icon     : 'AlertTriangleIcon',
+            time     : this.randomDate({min: 1}),
             category : 'success'
           },
           { index    : 2,
@@ -79,21 +83,7 @@ export default {
             icon     : 'AlertOctagonIcon',
             time     : this.randomDate({min: 1}),
             category : 'danger'
-          },
-          { index    : 3,
-            title    : '',
-            msg      : '',
-            icon     : 'MailIcon',
-            time     : this.randomDate({min: 6}),
-            category : 'primary'
-          },
-          { index    : 4,
-            title    : '',
-            msg      : '',
-            icon     : 'CalendarIcon',
-            time     : this.randomDate({hr: 2}),
-            category : 'warning'
-          },
+          }
       ],
       settings: {
         maxScrollbarLength: 60,
@@ -101,7 +91,26 @@ export default {
       },
     }
   },
-  methods: {
+
+  computed: {
+    // proof -- all displayed unacknowledged
+    ...mapGetters( 'cartAlarmNotificationsHeader', ['displayAllUnacknowledgedGetters']),
+
+    // displayAllUnacknowledgedGetters() {
+    //   return this.$store.getters.displayAllUnacknowledgedGetters;
+    // },
+  },
+  methods: { // checking -- all displayed unacknowledged
+    ...mapActions( 'cartAlarmNotificationsHeader', ['GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS']),
+    async currentlyDisplayAllUnacknowledged () {
+
+    },
+    localizeEventTypeAll(val, time){
+      if (val) return localizeEndType.localizeEventType(val)
+      else if (time) return localizeEndType.changeLanguageTimeOption2(time).replace('<br>', ' ')
+      else return  'empty -- no time and events'
+
+    },
     elapsedTime(startTime) {
       let x        = new Date(startTime)
       let now      = new Date()
@@ -146,6 +155,9 @@ export default {
 
       return date
     }
+  },
+  async mounted (){
+    await this.GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS()
   }
 }
 
