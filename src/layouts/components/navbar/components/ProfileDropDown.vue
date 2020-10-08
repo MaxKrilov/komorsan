@@ -9,7 +9,6 @@
     <vs-dropdown vs-custom-content vs-trigger-click class="cursor-pointer">
 
       <div class="con-img ml-3">
-<!--        <img v-if="" key="onlineImg" :src="" alt="user-img" width="40" height="40" class="rounded-full shadow-md cursor-pointer block" />-->
         <img v-if="activeUserInfo.photoURL" key="onlineImg" :src="activeUserInfo.photoURL" alt="user-img" width="40" height="40" class="rounded-full shadow-md cursor-pointer block" />
       </div>
 
@@ -55,12 +54,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters( 'auth', ['isDisplayAuthenticated']),
+    // ...mapGetters( 'auth', ['isDisplayAuthenticated']),
     ...mapGetters( 'cartSettingsHeader', ['statusAuthorization', 'isDisplayAuthenticated']),
     activeUserInfo() {
-      // console.log('----- .22r');
-      // console.log(this.isDisplayAuthenticated());
-      // console.log('---- 22r');
       // return this.$store.getters.isDisplayAuthenticated
       return this.$store.state.AppActiveUser
     }

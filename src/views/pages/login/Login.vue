@@ -24,10 +24,13 @@
 
                 <div class="vx-card__title mb-4">
                   <h4 class="mb-4">Login</h4>
-                  <p>Welcome back, please login to your account.</p>
+                  <p>Welcome back, please login to your account of Komorsan.</p>
                 </div>
-
                 <vs-tabs>
+                  <vs-tab label="Cookie">
+                    <login-cookie></login-cookie>
+                  </vs-tab>
+
                   <vs-tab label="JWT">
                     <login-jwt></login-jwt>
                   </vs-tab>
@@ -52,12 +55,14 @@
 
 
 <script>
+ import LoginCookie from "./LoginCookie.vue"
 import LoginJwt from "./LoginJWT.vue"
 import LoginFirebase from "./LoginFirebase.vue"
 import LoginAuth0 from "./LoginAuth0.vue"
 
 export default {
   components: {
+    LoginCookie,
     LoginJwt,
     LoginFirebase,
     LoginAuth0

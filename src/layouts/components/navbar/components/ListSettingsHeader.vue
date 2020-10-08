@@ -93,7 +93,8 @@
 
       async getCurrentlySelectedBase (itemBaseCurrent) {  // get the currently selected base
 
-          return await this.$store.dispatch('cartAlarmNotificationsHeader/GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS') && this.SET_CURRENT_USER_DATABASE(itemBaseCurrent) // await this.GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS()
+        this.SET_CURRENT_USER_DATABASE(itemBaseCurrent) // await this.GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS()
+        return await this.$store.dispatch('cartAlarmNotificationsHeader/GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS')
       },
       setCurrentlySelected(id) {
         // let vm = this;

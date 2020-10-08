@@ -307,7 +307,7 @@ export default {
       // };
       const path = '/api/v1/login';
       // const path = 'http://10.10.20.12:8081/api/v1/login';
-      const data = 'username=' + payload.userDetails.email + '&' + 'password=' +  payload.userDetails.password;
+      const data = 'username=' + payload.userDetails.displayName + '&' + 'password=' +  payload.userDetails.password;
 
         axios.post(path, data, {headers: {"Content-Type" : "application/x-www-form-urlencoded"}})
         .then(response => {
@@ -315,7 +315,8 @@ export default {
           // If there's user data in response
            router.push(router.currentRoute.query.to || '/')
 
-          if((response.status === 200) || (response.status === "Already logged in")) {
+          if(response.status === 200) {
+            // (response.status === "Already logged in")
           // if(response.data.userData) {
             // Navigate User to homepage
             // axios.defaults.withCredentials = true;
