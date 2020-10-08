@@ -18,11 +18,13 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
-import auth from "@/auth/authService";
-
+// import auth from "@/auth/authService";
+ import guest from './middleware/guest'
+ import auth from './middleware/auth'
+import middlewarePipeline from './middlewarePipeline'
 import firebase from 'firebase/app'
 import 'firebase/auth'
-
+import store from "./store/store.js"
 Vue.use(Router)
 
 const router = new Router({
@@ -52,6 +54,9 @@ const router = new Router({
                     name: 'dashboard-analytics',
                     component: () => import('./views/DashboardAnalytics.vue'),
                     meta: {
+                        middleware: [
+                           auth
+                          ],
                         rule: 'editor',
                     }
                 },
@@ -76,6 +81,9 @@ const router = new Router({
                   name: 'app-monitoring-list',
                   component: () => import('@/views/apps/monitoring/monitoring-list/MonitoringList.vue'),
                   meta: {
+                  middleware: [
+                     auth
+                    ],
                     breadcrumb: [
                       { title: 'Home', url: '/' },
                       { title: 'Devices' },
@@ -832,6 +840,9 @@ const router = new Router({
                     name: 'extra-component-charts-apex-charts',
                     component: () => import('@/views/charts-and-maps/charts/apex-charts/ApexCharts.vue'),
                     meta: {
+                     middleware: [
+                        auth
+                       ],
                         breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Charts & Maps' },
@@ -898,8 +909,6 @@ const router = new Router({
                   },
                 },
 
-
-
         // =============================================================================
         // EXTENSIONS
         // =============================================================================
@@ -943,7 +952,10 @@ const router = new Router({
                     name: 'page-login',
                     component: () => import('@/views/pages/login/Login.vue'),
                     meta: {
-                        rule: 'editor'
+                    middleware: [
+                       guest
+                      ],
+                      rule: 'editor'
                     }
                 },
                 {
@@ -1036,11 +1048,83 @@ router.afterEach(() => {
     }
 })
 
-router.beforeEach((to, from, next) => {
-    firebase.auth().onAuthStateChanged(() => {
+
+
+// router.beforeEach((to, from, next) => {
+  //
+  // if(to.matched.some(record => record.meta.requiresAuth)) {
+  //   console.log('--to-- .22r');
+  //   console.log(to.meta.requiresAuth);
+  //   console.log('--to-- 22r');
+
+  //   if (localStorage.getItem('jwt') == null) {
+  //     next({
+  //       path: '/login',
+  //       params: { nextUrl: to.fullPath }
+  //     })
+  //   } else {
+  //     let user = JSON.parse(localStorage.getItem('user'))
+  //     if(to.matched.some(record => record.meta.is_admin)) {
+  //       if(user.is_admin == 1){
+  //         next()
+  //       }
+  //       else{
+  //         next({ name: 'userboard'})
+  //       }
+  //     }else {
+  //       next()
+  //     }
+  //   }
+  // } else if(to.matched.some(record => record.meta.guest)) {
+  //   if(localStorage.getItem('jwt') == null){
+  //     next()
+  //   }
+  //   else{
+  //     next({ name: 'userboard'})
+  //   }
+  // }else {
+  //   next()
+  // }
+// })
+
+
+
+// router.beforeEach((to, from, next) => {
+//
+//   console.log('--to-- .22r');
+//   // console.log(to.meta.requiresAuth);
+//   // console.log(store.getters.statusAuthorization['username']);
+//   // console.log(store.getters['cartSettingsHeader/isDisplayAuthenticated']['authorizationLoginName']);
+//   console.log(store.getters['cartSettingsHeader/isDisplayAuthenticated']['authorizationLoginName']);
+//   console.log('--to-- 22r');
+  //
+  // const currentUser = store.getters['cartSettingsHeader/isDisplayAuthenticated']['authorizationLoginName'];
+  // const requireAuth = to.matched.some(record => record.meta.requiresAuth);
+  // // if(requireAuth && !currentUser){
+  // //   // return next({
+  // //   //   name: 'apps/monitoring/monitoring-list'
+  // //   // })
+  // //   return router.push({ path: '/pages/login', query: { to: to.path } })
+  // // } else {
+  // //
+  // //   // return router.push({ path: 'apps/monitoring/monitoring-list', query: { to: to.path } })
+  // // }
+  // if(requireAuth && !currentUser){
+  //    next({name:'page-login'})
+  //    // router.push({ path: '/pages/login', query: { to: to.path } })
+  // }else{
+  //    // router.push({ path: 'apps/monitoring/monitoring-list', query: { to: to.path } })
+  //    // next({name:'app-monitoring-list'})
+  //   next()
+  // }
+
+
+  // return next()
+
+  // firebase.auth().onAuthStateChanged(() => {
 
         // get firebase current user
-        const firebaseCurrentUser = firebase.auth().currentUser
+        // const firebaseCurrentUser = firebase.auth().currentUser
 
         // if (
         //     to.path === "/pages/login" ||
@@ -1056,19 +1140,41 @@ router.beforeEach((to, from, next) => {
         // }
 
         // If auth required, check login. If login fails redirect to login page
-        if(to.meta.authRequired) {
-          if (!(auth.isAuthenticated() || firebaseCurrentUser)) {
-            router.push({ path: '/pages/login', query: { to: to.path } })
-          }
-        }
-
-        return next()
+        // if(to.meta.authRequired) {
+        //   if (!(auth.isAuthenticated() || firebaseCurrentUser)) {
+        //     router.push({ path: '/pages/login', query: { to: to.path } })
+        //   }
+        // }
+        //
+        // return next()
         // Specify the current path as the customState parameter, meaning it
         // will be returned to the application after auth
         // auth.login({ target: to.path });
 
-    });
+    // });
 
-});
+// });
+
+
+
+
+    router.beforeEach((to, from, next) => {
+       if (!to.meta.middleware) {
+         return next()
+        }
+        const middleware = to.meta.middleware
+        const context = {
+          to,
+          from,
+          next,
+          store
+        }
+       return middleware[0]({
+           ...context,
+           next: middlewarePipeline(context, middleware, 1)
+          })
+      })
+
+
 
 export default router

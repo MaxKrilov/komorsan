@@ -314,8 +314,20 @@ export default {
 
           // If there's user data in response
            router.push(router.currentRoute.query.to || '/')
-
+           if (response.status === "Already logged in") {
+             console.log('----2');
+             console.log(response.status);
+             console.log('---- 2');
+             // commit('cartSettingsHeader/AUTH_STATUS')
+             router.push( '/charts-and-maps/maps/leaflet-map' )
+           }
           if(response.status === 200) {
+            console.log('----1');
+            console.log(response.status);
+            console.log('---- 1');
+            // commit('AUTH_STATUS')
+            router.push( '/charts-and-maps/maps/leaflet-map' )
+            // commit('AUTH_STATUS', payload, {root: true})
             // (response.status === "Already logged in")
           // if(response.data.userData) {
             // Navigate User to homepage
@@ -337,11 +349,18 @@ export default {
             //
             // resolve(response)
           }else {
+
             reject({message: "Wrong Email or Password"})
           }
 
         })
-        .catch(error => { reject(error) })
+        .catch(error => {
+          // router.push( '/charts-and-maps/maps/leaflet-map' )
+          console.log('----3');
+          console.log(error);
+          console.log('---- 3');
+          reject(error)
+        })
     })
 
   },

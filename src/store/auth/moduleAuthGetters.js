@@ -9,5 +9,6 @@
 
 export default { // set the display of Name for User
   // isDisplayAuthenticated:    s =>  s.isResponseDisplayAuthenticated,
+
 }
 

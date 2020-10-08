@@ -107,7 +107,14 @@ export default {
       // let email = this.text
       // let password = this.password
       this.$store.dispatch('auth/loginCookie', payload)
-        .then(res => console.log(res))
+        .then(res => {
+          console.log('----auth1');
+          console.log(res);
+          console.log('----auth 1');
+
+          console.log(res)
+
+        })
         .catch(err => console.log(err))
     },
     loginJWT() {
