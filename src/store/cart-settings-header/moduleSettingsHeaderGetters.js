@@ -25,9 +25,9 @@ export default { // checking the selected BD
     }
 
   },
-  auth(s) {
-    return s.user
-  }
+  // auth(s) {
+  //   return s.user
+  // }
 }
 
 

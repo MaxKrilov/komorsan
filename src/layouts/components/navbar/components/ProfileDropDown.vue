@@ -54,7 +54,7 @@ export default {
     }
   },
   computed: {
-    // ...mapGetters( 'auth', ['isDisplayAuthenticated']),
+    ...mapGetters( 'auth', ['isAuthenticated']),
     ...mapGetters( 'cartSettingsHeader', ['statusAuthorization', 'isDisplayAuthenticated']),
     activeUserInfo() {
       // return this.$store.getters.isDisplayAuthenticated
@@ -67,6 +67,12 @@ export default {
         // if user is logged in via sessionCookie
         if (this.logoutGet()){
           await this.logoutGet()
+          console.log('-----await');
+          console.log(this.$store.getters['auth/isAuthenticated']['logged_In'] );
+          console.log('----await');
+          // this.isAuthenticated.user['logged_In'] = true
+          // this.$store.getters['auth/isAuthenticated']['logged_In']  = true
+          // this.$store.getters['auth/isAuthenticated']['logged_In'] = true
           this.$router.push('/pages/login').catch(() => {})
         }
 

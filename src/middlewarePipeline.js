@@ -17,7 +17,7 @@ function middlewarePipeline (context, middleware, index) {
         const nextPipeline = middlewarePipeline(
             context, middleware, index + 1
         )
-        nextMiddleware({ ...context, next: nextPipeline })
+        nextMiddleware({ ...context, nextMiddleware: nextPipeline })
     }
 }
 export default middlewarePipeline

@@ -6,11 +6,14 @@
 	Author : krylov
 ==========================================================================================*/
 
-
 export default function guest ({ next, store }){
-    // if(store.getters.auth.loggedIn){
-    //   if(store.getters['cartSettingsHeader/auth']['loggedIn']){
-        if(store.getters['cartSettingsHeader/statusAuthorization']['isResponseAuthStatus']){
+  if(store.getters['auth/isAuthenticated']['logged_In']){
+
+    console.log('----- guest ');
+    // console.log(store.getters['auth/isAuthenticated']['logged_In']);
+    console.log( store._actions['auth/logoutGet']);
+    console.log('---- guest ');
+
         return next({
            name: 'dashboard-analytics'
         })

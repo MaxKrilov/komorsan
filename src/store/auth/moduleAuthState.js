@@ -27,5 +27,8 @@ export default {
     },
     isResponseAuthStatus: '',
     isDisplayAuthenticated: '',
-
+    user: {
+      logged_In: '',
+      isSubscribed: false
+    }
 }

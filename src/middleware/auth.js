@@ -7,13 +7,20 @@
 ==========================================================================================*/
 
 
-export default function auth ({ next, store }){
- // if(!store.getters.auth.loggedIn){
- //   if(!store.getters['cartSettingsHeader/auth']['loggedIn']){
-     if(!store.getters['cartSettingsHeader/statusAuthorization']['isResponseAuthStatus']){
+import {mapActions} from "vuex";
+
+export default function authLogged ({ next, store, nextMiddleware }){
+  if(!store.getters['auth/isAuthenticated']['logged_In'] ){
+
+    console.log('---- auth ');
+    // console.log(store.getters['auth/isAuthenticated']['logged_In']);
+    console.log(store._actions['auth/logoutGet']);
+    console.log('---- auth ');
+
+
      return next({
         name: 'page-login'
      })
  }
- return next()
+  return nextMiddleware()
 }

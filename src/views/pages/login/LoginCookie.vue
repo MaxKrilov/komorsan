@@ -76,6 +76,10 @@ export default {
       }
       return true
     },
+    logOutAll(){
+      const path = '/api/v1/logout';
+      axios.get(path, {headers: {"Content-Type": "application/json"}})
+    },
     loginCookie() {
       // if (!this.checkLogin()) return
 
@@ -90,9 +94,16 @@ export default {
       }
       // let email = this.text
       // let password = this.password
+
+      // this.$router.push(this.$route.query.redirect)
       this.$store.dispatch('auth/loginCookie', payload)
         .then(res => console.log(res))
-        .catch(err => console.log(err))
+        .catch(err => {console.log(err)
+            this.logOutAll()
+            // window.location.href = '/dashboard/analytics';
+
+        }
+        )
     },
     loginJWT() {
 
@@ -126,6 +137,9 @@ export default {
       if (!this.checkLogin()) return
       this.$router.push('/pages/register').catch(() => {})
     }
+  },
+  mounted() {
+    this.logOutAll()
   }
 }
 
