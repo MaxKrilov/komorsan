@@ -1,0 +1,25 @@
+/*=========================================================================================
+  File Name: _mainCustomClasses.scss
+  Description: partial- this file containes custom helper classes
+  ----------------------------------------------------------------------------------------
+  Item Name: Vue_komorsan - Vuejs, HTML &  Dashboard Template
+	Author : krylov
+==========================================================================================*/
+
+
+// ======================================================================================
+// SIDEBAR for base switch control panel -- DATABASES
+// ======================================================================================
+
+
+//.vs-sidebar--item a{
+//  color: black !important;
+//}
+
+ .vs-sidebar--item a:visited, {
+  color: black !important;
+}
+ .vs-sidebar--item a:hover,    {
+  color: #ffffff !important;
+  background-color: #6cc89c;
+}
