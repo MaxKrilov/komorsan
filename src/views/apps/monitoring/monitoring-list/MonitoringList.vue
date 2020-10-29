@@ -131,8 +131,7 @@ import '@/assets/scss/vuexy/extraComponents/agGridStyleOverride.scss'
 import vSelect from 'vue-select'
 
 // Store Module
-import moduleMonitoringManagement from '@/store/monitoring-management/moduleMonitoringManagement.js'
-
+// import moduleListDevices from './../../../../store/frameListDevices/moduleListDevices.js'
 // Cell Renderer
 import CellRendererLink from "./cell-renderer/CellRendererLink.vue"
 import CellRendererStatus from "./cell-renderer/CellRendererStatus.vue"
@@ -241,11 +240,12 @@ export default {
     },
   },
   computed: {
-    ...mapGetters([
-      'DEVICES_LIST'
+    ...mapGetters('frameListDevices',[
+      'devicesList'
     ]),
     usersData() {
-      return this.$store.state.monitoringManagement.devices
+      // return this.$store.state.devices
+      return this.devicesList
     },
     paginationPageSize() {
       if(this.gridApi) return this.gridApi.paginationGetPageSize()
@@ -266,7 +266,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
+    ...mapActions('frameListDevices', [
       'GET_DEVICES_FROM_API'
     ]),
     setColumnFilter(column, val) {
@@ -302,7 +302,8 @@ export default {
     }
   },
   beforeMount() {
-    this.$store.dispatch("frameListDevices/GET_DEVICES_FROM_API")
+    this.GET_DEVICES_FROM_API()
+    // this.$store.dispatch("frameListDevices/GET_DEVICES_FROM_API")
       .then(result => result.data)
       .then(rowData => {
           this.rowData = rowData;
@@ -327,12 +328,11 @@ export default {
     }
   },
   created() {
-
-    if(!moduleMonitoringManagement.isRegistered) {
-      this.$store.registerModule('monitoringManagement', moduleMonitoringManagement)
-      moduleMonitoringManagement.isRegistered = true
-    }
-    this.$store.dispatch("monitoringManagement/fetchUsers").catch(err => { console.error(err) })
+    // if(!moduleListDevices.isRegistered) {
+    //   this.$store.registerModule('frameListDevices', moduleListDevices)
+    //   moduleListDevices.isRegistered = true
+    // }
+    // this.$store.dispatch("monitoringManagement/fetchUsers").catch(err => { console.error(err) })
   }
 }
 

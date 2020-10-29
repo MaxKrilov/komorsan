@@ -1,11 +1,13 @@
 /*=========================================================================================
-  File Name: moduleMonitoringState.js
-  Description: Monitoring Module State
+  File Name: moduleEventsGetters.js
+  Description: events Module Getters
   ----------------------------------------------------------------------------------------
- Item Name: Vuejs, HTML Template
- Author: Krylov
+  Item Name: Vuejs, HTML Template
+  Author: Krylov
 ==========================================================================================*/
 
+
 export default {
-  devices: [],
+  fetchEventsList  : s =>  s.events,
+  fetchEventsGroup : s =>  s.eventsGroup,
 }
