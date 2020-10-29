@@ -314,34 +314,31 @@ export default {
 
           // If there's user data in response
            router.push(router.currentRoute.query.to || '/')
-
+           if (response.status === "Already logged in") {
+             console.log('---- Already logged in')
+             console.log(response.status)
+             console.log('---- Already logged in')
+             // commit('cartSettingsHeader/AUTH_STATUS')
+             // router.push( '/charts-and-maps/maps/leaflet-map' )
+              router.push(router.currentRoute.query.to || '/')
+           }
           if(response.status === 200) {
-            // (response.status === "Already logged in")
-          // if(response.data.userData) {
-            // Navigate User to homepage
-            // axios.defaults.withCredentials = true;
-            // const path = 'http://10.10.20.12:8081/api/v1/devices';
-            // axios.get(path).then(function (response) {
-            //   console.log(response);
-            // });
-            // router.push(router.currentRoute.query.to || '/')
-            //
-            // // Set accessToken
-            // localStorage.setItem("accessToken", response.data.accessToken)
-            //
-            // // Update user details
+
+            commit('logged_In_Get', true )
+            router.push( '/charts-and-maps/maps/leaflet-map' )
+            // commit('AUTH_STATUS', payload, {root: true})
+            // Update user details
             // commit('UPDATE_USER_INFO', response.data.userData, {root: true})
             //
-            // // Set bearer token in axios
-            // commit("SET_BEARER", response.data.accessToken)
-            //
-            // resolve(response)
+           return resolve(response)
           }else {
             reject({message: "Wrong Email or Password"})
           }
 
         })
-        .catch(error => { reject(error) })
+        .catch(error => {
+          reject(error)
+        })
     })
 
   },
@@ -429,6 +426,7 @@ export default {
           if(res.status === 200) {
             // answer: "Logout Ok"   ||  status: "No session"
             commit('logout_Get', res.data)
+            commit('logged_In_Get', false )
           }
           return resolve()
         })

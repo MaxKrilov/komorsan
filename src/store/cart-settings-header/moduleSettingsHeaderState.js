@@ -10,4 +10,9 @@ export default {
   allDataBases               : [],
   isResponseAuthStatus       : '',
   isDataBaseCurrentOfName    : '',
+
 }
+// user: {
+//   logged_In: false,
+//   isSubscribed: false
+// }

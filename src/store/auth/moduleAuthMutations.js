@@ -21,7 +21,14 @@ export default {
   },
   logout_Get(state, isLogoutGet){
     state.isLogoutGet = isLogoutGet
+    // state.user['logged_In'] = true
+
   },
+  logged_In_Get(state, logged_In){
+    state.user.logged_In = logged_In
+
+  },
+
   auth_success(state, token, user){
     state.status = 'success'
     state.token = token

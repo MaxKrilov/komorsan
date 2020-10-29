@@ -18,11 +18,13 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
-import auth from "@/auth/authService";
-
+// import auth from "@/auth/authService";
+ import guest from './middleware/guest'
+ import authLogged  from './middleware/auth'
+import middlewarePipeline from './middlewarePipeline'
 import firebase from 'firebase/app'
 import 'firebase/auth'
-
+import store from "./store/store.js"
 Vue.use(Router)
 
 const router = new Router({
@@ -52,6 +54,9 @@ const router = new Router({
                     name: 'dashboard-analytics',
                     component: () => import('./views/DashboardAnalytics.vue'),
                     meta: {
+                        middleware: [
+                          authLogged
+                        ],
                         rule: 'editor',
                     }
                 },
@@ -60,6 +65,9 @@ const router = new Router({
                   name: 'devices-table',
                   component: () => import('./views/devices-table/DevicesTable.vue'),
                   meta: {
+                    middleware: [
+                      authLogged
+                    ],
                     breadcrumb: [
                       { title: 'Home', url: '/' },
                       { title: 'device Table', active: true },
@@ -76,6 +84,9 @@ const router = new Router({
                   name: 'app-monitoring-list',
                   component: () => import('@/views/apps/monitoring/monitoring-list/MonitoringList.vue'),
                   meta: {
+                    middleware: [
+                      authLogged
+                    ],
                     breadcrumb: [
                       { title: 'Home', url: '/' },
                       { title: 'Devices' },
@@ -95,6 +106,9 @@ const router = new Router({
                     name: 'data-list-list-view',
                     component: () => import('@/views/ui-elements/data-list/list-view/DataListListView.vue'),
                     meta: {
+                        middleware: [
+                          authLogged
+                        ],
                         breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Data List'},
@@ -109,6 +123,9 @@ const router = new Router({
                     name: 'data-list-thumb-view',
                     component: () => import('@/views/ui-elements/data-list/thumb-view/DataListThumbView.vue'),
                     meta: {
+                        middleware: [
+                          authLogged
+                        ],
                         breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Data List'},
@@ -123,6 +140,9 @@ const router = new Router({
                     name: 'grid-vuesax',
                     component: () => import('@/views/ui-elements/grid/vuesax/GridVuesax.vue'),
                     meta: {
+                      middleware: [
+                        authLogged
+                      ],
                         breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Grid'},
@@ -137,6 +157,9 @@ const router = new Router({
                     name: 'grid-tailwind',
                     component: () => import('@/views/ui-elements/grid/tailwind/GridTailwind.vue'),
                     meta: {
+                        middleware: [
+                          authLogged
+                        ],
                         breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Grid'},
@@ -151,7 +174,10 @@ const router = new Router({
                     name: 'colors',
                     component: () => import('./views/ui-elements/colors/Colors.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Colors', active: true },
                         ],
@@ -164,7 +190,10 @@ const router = new Router({
                     name: 'basic-cards',
                     component: () => import('./views/ui-elements/card/CardBasic.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Card' },
                             { title: 'Basic Cards', active: true },
@@ -178,7 +207,10 @@ const router = new Router({
                     name: 'statistics-cards',
                     component: () => import('./views/ui-elements/card/CardStatistics.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Card' },
                             { title: 'Statistics Cards', active: true },
@@ -192,7 +224,10 @@ const router = new Router({
                     name: 'analytics-cards',
                     component: () => import('./views/ui-elements/card/CardAnalytics.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Card' },
                             { title: 'Analytics Card', active: true },
@@ -220,7 +255,10 @@ const router = new Router({
                     name: 'card-colors',
                     component: () => import('./views/ui-elements/card/CardColors.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Card' },
                             { title: 'Card Colors', active: true },
@@ -234,7 +272,10 @@ const router = new Router({
                     name: 'table',
                     component: () => import('./views/ui-elements/table/Table.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Table', active: true },
                         ],
@@ -247,7 +288,10 @@ const router = new Router({
                     name: 'ag-grid-table',
                     component: () => import('./views/ui-elements/ag-grid-table/AgGridTable.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'agGrid Table', active: true },
                         ],
@@ -264,7 +308,10 @@ const router = new Router({
                     name: 'component-alert',
                     component: () => import('@/views/components/vuesax/alert/Alert.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Alert', active: true },
@@ -292,7 +339,10 @@ const router = new Router({
                     name: 'component-breadcrumb',
                     component: () => import('@/views/components/vuesax/breadcrumb/Breadcrumb.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Breadcrumb', active: true },
@@ -306,7 +356,10 @@ const router = new Router({
                     name: 'component-button',
                     component: () => import('@/views/components/vuesax/button/Button.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Button', active: true },
@@ -334,7 +387,10 @@ const router = new Router({
                     name: 'component-chip',
                     component: () => import('@/views/components/vuesax/chip/Chip.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Chip', active: true },
@@ -348,7 +404,10 @@ const router = new Router({
                     name: 'component-collapse',
                     component: () => import('@/views/components/vuesax/collapse/Collapse.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Collapse', active: true },
@@ -362,7 +421,10 @@ const router = new Router({
                     name: 'component-dialog',
                     component: () => import('@/views/components/vuesax/dialogs/Dialogs.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Dialogs', active: true },
@@ -376,7 +438,10 @@ const router = new Router({
                     name: 'component-divider',
                     component: () => import('@/views/components/vuesax/divider/Divider.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Divider', active: true },
@@ -390,7 +455,10 @@ const router = new Router({
                     name: 'component-drop-down',
                     component: () => import('@/views/components/vuesax/dropdown/Dropdown.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Dropdown', active: true },
@@ -404,7 +472,10 @@ const router = new Router({
                     name: 'component-list',
                     component: () => import('@/views/components/vuesax/list/List.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'List', active: true },
@@ -418,7 +489,10 @@ const router = new Router({
                     name: 'component-loading',
                     component: () => import('@/views/components/vuesax/loading/Loading.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Loading', active: true },
@@ -432,7 +506,10 @@ const router = new Router({
                     name: 'component-navbar',
                     component: () => import('@/views/components/vuesax/navbar/Navbar.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Navbar', active: true },
@@ -446,7 +523,10 @@ const router = new Router({
                     name: 'component-notifications',
                     component: () => import('@/views/components/vuesax/notifications/Notifications.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Notifications', active: true },
@@ -460,7 +540,10 @@ const router = new Router({
                     name: 'component-pagination',
                     component: () => import('@/views/components/vuesax/pagination/Pagination.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Pagination', active: true },
@@ -474,7 +557,10 @@ const router = new Router({
                     name: 'component-popup',
                     component: () => import('@/views/components/vuesax/popup/Popup.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Popup', active: true },
@@ -488,7 +574,10 @@ const router = new Router({
                     name: 'component-progress',
                     component: () => import('@/views/components/vuesax/progress/Progress.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Progress', active: true },
@@ -502,7 +591,10 @@ const router = new Router({
                     name: 'component-sidebar',
                     component: () => import('@/views/components/vuesax/sidebar/Sidebar.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Sidebar', active: true },
@@ -516,7 +608,10 @@ const router = new Router({
                     name: 'component-slider',
                     component: () => import('@/views/components/vuesax/slider/Slider.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Slider', active: true },
@@ -530,7 +625,10 @@ const router = new Router({
                     name: 'component-tabs',
                     component: () => import('@/views/components/vuesax/tabs/Tabs.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Tabs', active: true },
@@ -544,7 +642,10 @@ const router = new Router({
                     name: 'component-tooltip',
                     component: () => import('@/views/components/vuesax/tooltip/Tooltip.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Tooltip', active: true },
@@ -558,7 +659,10 @@ const router = new Router({
                     name: 'component-upload',
                     component: () => import('@/views/components/vuesax/upload/Upload.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Components' },
                             { title: 'Upload', active: true },
@@ -581,7 +685,10 @@ const router = new Router({
                     name: 'form-element-switch',
                     component: () => import('./views/forms/form-elements/switch/Switch.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Form Elements' },
                             { title: 'Switch', active: true },
@@ -595,7 +702,10 @@ const router = new Router({
                     name: 'form-element-checkbox',
                     component: () => import('./views/forms/form-elements/checkbox/Checkbox.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Form Elements' },
                             { title: 'Checkbox', active: true },
@@ -609,7 +719,10 @@ const router = new Router({
                     name: 'form-element-radio',
                     component: () => import('./views/forms/form-elements/radio/Radio.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Form Elements' },
                             { title: 'Radio', active: true },
@@ -623,7 +736,10 @@ const router = new Router({
                     name: 'form-element-input',
                     component: () => import('./views/forms/form-elements/input/Input.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Form Elements' },
                             { title: 'Input', active: true },
@@ -637,7 +753,10 @@ const router = new Router({
                     name: 'form-element-number-input',
                     component: () => import('./views/forms/form-elements/number-input/NumberInput.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Form Elements' },
                             { title: 'Number Input', active: true },
@@ -651,7 +770,10 @@ const router = new Router({
                     name: 'form-element-textarea',
                     component: () => import('./views/forms/form-elements/textarea/Textarea.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Form Elements' },
                             { title: 'Textarea', active: true },
@@ -666,7 +788,10 @@ const router = new Router({
                     name: 'forms-form-layouts',
                     component: () => import('@/views/forms/FormLayouts.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Forms' },
                             { title: 'Form Layouts', active: true },
@@ -680,7 +805,10 @@ const router = new Router({
                     name: 'extra-component-form-wizard',
                     component: () => import('@/views/forms/form-wizard/FormWizard.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Extra Components' },
                             { title: 'Form Wizard', active: true },
@@ -708,7 +836,10 @@ const router = new Router({
                   name: 'extra-component-form-input-group',
                   component: () => import('@/views/forms/form-input-group/FormInputGroup.vue'),
                   meta: {
-                      breadcrumb: [
+                    middleware: [
+                      authLogged
+                    ],
+                    breadcrumb: [
                           { title: 'Home', url: '/' },
                           { title: 'Extra Components' },
                           { title: 'Form Input Group', active: true },
@@ -727,7 +858,10 @@ const router = new Router({
                     name: 'page-user-settings',
                     component: () => import('@/views/pages/user-settings/UserSettings.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Pages' },
                             { title: 'User Settings', active: true },
@@ -741,7 +875,10 @@ const router = new Router({
                     name: 'page-faq',
                     component: () => import('@/views/pages/Faq.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Pages' },
                             { title: 'FAQ', active: true },
@@ -755,7 +892,10 @@ const router = new Router({
                     name: 'page-knowledge-base',
                     component: () => import('@/views/pages/KnowledgeBase.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Pages' },
                             { title: 'KnowledgeBase', active: true },
@@ -769,7 +909,10 @@ const router = new Router({
                     name: 'page-knowledge-base-category',
                     component: () => import('@/views/pages/KnowledgeBaseCategory.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Pages' },
                             { title: 'KnowledgeBase', url: '/pages/knowledge-base' },
@@ -784,7 +927,10 @@ const router = new Router({
                     name: 'page-knowledge-base-category-question',
                     component: () => import('@/views/pages/KnowledgeBaseCategoryQuestion.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Pages' },
                             { title: 'KnowledgeBase', url: '/pages/knowledge-base' },
@@ -800,7 +946,10 @@ const router = new Router({
                     name: 'page-search',
                     component: () => import('@/views/pages/Search.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Pages' },
                             { title: 'Search', active: true },
@@ -814,7 +963,10 @@ const router = new Router({
                     name: 'page-invoice',
                     component: () => import('@/views/pages/Invoice.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Pages' },
                             { title: 'Invoice', active: true },
@@ -832,6 +984,9 @@ const router = new Router({
                     name: 'extra-component-charts-apex-charts',
                     component: () => import('@/views/charts-and-maps/charts/apex-charts/ApexCharts.vue'),
                     meta: {
+                     middleware: [
+                       authLogged
+                     ],
                         breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Charts & Maps' },
@@ -846,7 +1001,10 @@ const router = new Router({
                     name: 'extra-component-charts-chartjs',
                     component: () => import('@/views/charts-and-maps/charts/chartjs/Chartjs.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Charts & Maps' },
                             { title: 'chartjs', active: true },
@@ -860,7 +1018,10 @@ const router = new Router({
                     name: 'extra-component-charts-echarts',
                     component: () => import('@/views/charts-and-maps/charts/echarts/Echarts.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Charts & Maps' },
                             { title: 'echarts', active: true },
@@ -874,7 +1035,10 @@ const router = new Router({
                     name: 'extra-component-maps-google-map',
                     component: () => import('@/views/charts-and-maps/maps/google-map/GoogleMap.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Charts & Maps' },
                             { title: 'Google Map', active: true },
@@ -888,6 +1052,9 @@ const router = new Router({
                   name: 'extra-component-maps-leaflet-map',
                   component: () => import('@/views/charts-and-maps/maps/leaflet-map/LeafletMap.vue'),
                   meta: {
+                    middleware: [
+                      authLogged
+                    ],
                     breadcrumb: [
                       { title: 'Home', url: '/' },
                       { title: 'Charts & Maps' },
@@ -898,8 +1065,6 @@ const router = new Router({
                   },
                 },
 
-
-
         // =============================================================================
         // EXTENSIONS
         // =============================================================================
@@ -909,7 +1074,10 @@ const router = new Router({
                     name: 'extra-component-i18n',
                     component: () => import('@/views/components/extra-components/I18n.vue'),
                     meta: {
-                        breadcrumb: [
+                      middleware: [
+                        authLogged
+                      ],
+                      breadcrumb: [
                             { title: 'Home', url: '/' },
                             { title: 'Extensions' },
                             { title: 'I18n', active: true },
@@ -935,7 +1103,10 @@ const router = new Router({
                     name: 'auth-callback',
                     component: () => import('@/views/Callback.vue'),
                     meta: {
-                        rule: 'editor'
+                      middleware: [
+                        guest
+                      ],
+                      rule: 'editor'
                     }
                 },
                 {
@@ -943,7 +1114,10 @@ const router = new Router({
                     name: 'page-login',
                     component: () => import('@/views/pages/login/Login.vue'),
                     meta: {
-                        rule: 'editor'
+                    middleware: [
+                      guest
+                      ],
+                      rule: 'editor'
                     }
                 },
                 {
@@ -951,7 +1125,10 @@ const router = new Router({
                     name: 'page-register',
                     component: () => import('@/views/pages/register/Register.vue'),
                     meta: {
-                        rule: 'editor'
+                      middleware: [
+                        guest
+                      ],
+                      rule: 'editor'
                     }
                 },
                 {
@@ -959,7 +1136,10 @@ const router = new Router({
                     name: 'page-forgot-password',
                     component: () => import('@/views/pages/ForgotPassword.vue'),
                     meta: {
-                        rule: 'editor'
+                      middleware: [
+                        guest
+                      ],
+                      rule: 'editor'
                     }
                 },
                 {
@@ -967,7 +1147,10 @@ const router = new Router({
                     name: 'page-reset-password',
                     component: () => import('@/views/pages/ResetPassword.vue'),
                     meta: {
-                        rule: 'editor'
+                      middleware: [
+                        guest
+                      ],
+                      rule: 'editor'
                     }
                 },
                 {
@@ -975,7 +1158,10 @@ const router = new Router({
                     name: 'page-lock-screen',
                     component: () => import('@/views/pages/LockScreen.vue'),
                     meta: {
-                        rule: 'editor'
+                      middleware: [
+                        guest
+                      ],
+                      rule: 'editor'
                     }
                 },
                 {
@@ -983,7 +1169,10 @@ const router = new Router({
                     name: 'page-coming-soon',
                     component: () => import('@/views/pages/ComingSoon.vue'),
                     meta: {
-                        rule: 'editor'
+                      middleware: [
+                        guest
+                      ],
+                      rule: 'editor'
                     }
                 },
                 {
@@ -991,7 +1180,10 @@ const router = new Router({
                     name: 'page-error-404',
                     component: () => import('@/views/pages/Error404.vue'),
                     meta: {
-                        rule: 'editor'
+                      middleware: [
+                        guest
+                      ],
+                      rule: 'editor'
                     }
                 },
                 {
@@ -999,7 +1191,10 @@ const router = new Router({
                     name: 'page-error-500',
                     component: () => import('@/views/pages/Error500.vue'),
                     meta: {
-                        rule: 'editor'
+                      middleware: [
+                        guest
+                      ],
+                      rule: 'editor'
                     }
                 },
                 {
@@ -1007,7 +1202,10 @@ const router = new Router({
                     name: 'page-not-authorized',
                     component: () => import('@/views/pages/NotAuthorized.vue'),
                     meta: {
-                        rule: 'editor'
+                      middleware: [
+                        guest
+                      ],
+                      rule: 'editor'
                     }
                 },
                 {
@@ -1015,7 +1213,10 @@ const router = new Router({
                     name: 'page-maintenance',
                     component: () => import('@/views/pages/Maintenance.vue'),
                     meta: {
-                        rule: 'editor'
+                      middleware: [
+                        guest
+                      ],
+                      rule: 'editor'
                     }
                 },
             ]
@@ -1036,11 +1237,83 @@ router.afterEach(() => {
     }
 })
 
-router.beforeEach((to, from, next) => {
-    firebase.auth().onAuthStateChanged(() => {
+
+
+// router.beforeEach((to, from, next) => {
+  //
+  // if(to.matched.some(record => record.meta.requiresAuth)) {
+  //   console.log('--to-- .22r');
+  //   console.log(to.meta.requiresAuth);
+  //   console.log('--to-- 22r');
+
+  //   if (localStorage.getItem('jwt') == null) {
+  //     next({
+  //       path: '/login',
+  //       params: { nextUrl: to.fullPath }
+  //     })
+  //   } else {
+  //     let user = JSON.parse(localStorage.getItem('user'))
+  //     if(to.matched.some(record => record.meta.is_admin)) {
+  //       if(user.is_admin == 1){
+  //         next()
+  //       }
+  //       else{
+  //         next({ name: 'userboard'})
+  //       }
+  //     }else {
+  //       next()
+  //     }
+  //   }
+  // } else if(to.matched.some(record => record.meta.guest)) {
+  //   if(localStorage.getItem('jwt') == null){
+  //     next()
+  //   }
+  //   else{
+  //     next({ name: 'userboard'})
+  //   }
+  // }else {
+  //   next()
+  // }
+// })
+
+
+
+// router.beforeEach((to, from, next) => {
+//
+//   console.log('--to-- .22r');
+//   // console.log(to.meta.requiresAuth);
+//   // console.log(store.getters.statusAuthorization['username']);
+//   // console.log(store.getters['cartSettingsHeader/isDisplayAuthenticated']['authorizationLoginName']);
+//   console.log(store.getters['cartSettingsHeader/isDisplayAuthenticated']['authorizationLoginName']);
+//   console.log('--to-- 22r');
+  //
+  // const currentUser = store.getters['cartSettingsHeader/isDisplayAuthenticated']['authorizationLoginName'];
+  // const requireAuth = to.matched.some(record => record.meta.requiresAuth);
+  // // if(requireAuth && !currentUser){
+  // //   // return next({
+  // //   //   name: 'apps/monitoring/monitoring-list'
+  // //   // })
+  // //   return router.push({ path: '/pages/login', query: { to: to.path } })
+  // // } else {
+  // //
+  // //   // return router.push({ path: 'apps/monitoring/monitoring-list', query: { to: to.path } })
+  // // }
+  // if(requireAuth && !currentUser){
+  //    next({name:'page-login'})
+  //    // router.push({ path: '/pages/login', query: { to: to.path } })
+  // }else{
+  //    // router.push({ path: 'apps/monitoring/monitoring-list', query: { to: to.path } })
+  //    // next({name:'app-monitoring-list'})
+  //   next()
+  // }
+
+
+  // return next()
+
+  // firebase.auth().onAuthStateChanged(() => {
 
         // get firebase current user
-        const firebaseCurrentUser = firebase.auth().currentUser
+        // const firebaseCurrentUser = firebase.auth().currentUser
 
         // if (
         //     to.path === "/pages/login" ||
@@ -1056,19 +1329,41 @@ router.beforeEach((to, from, next) => {
         // }
 
         // If auth required, check login. If login fails redirect to login page
-        if(to.meta.authRequired) {
-          if (!(auth.isAuthenticated() || firebaseCurrentUser)) {
-            router.push({ path: '/pages/login', query: { to: to.path } })
-          }
-        }
-
-        return next()
+        // if(to.meta.authRequired) {
+        //   if (!(auth.isAuthenticated() || firebaseCurrentUser)) {
+        //     router.push({ path: '/pages/login', query: { to: to.path } })
+        //   }
+        // }
+        //
+        // return next()
         // Specify the current path as the customState parameter, meaning it
         // will be returned to the application after auth
         // auth.login({ target: to.path });
 
-    });
+    // });
 
-});
+// });
+
+
+
+
+    router.beforeEach((to, from, next) => {
+       if (!to.meta.middleware) {
+         return next()
+        }
+        const middleware = to.meta.middleware
+        const context = {
+          to,
+          from,
+          next,
+          store
+        }
+       return middleware[0]({
+           ...context,
+           nextMiddleware: middlewarePipeline(context, middleware, 1)
+          })
+      })
+
+
 
 export default router
