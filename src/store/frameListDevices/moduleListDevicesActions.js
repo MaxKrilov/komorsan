@@ -22,6 +22,7 @@ export default {
       const path = '/api/v1/devices';
       axios.get(path, {headers: {"Content-Type": "application/json"}})
         .then((response) => {
+
           if(response.status === 200) {
             commit('SET_DEVICES_FROM_API', response)
             resolve(response)

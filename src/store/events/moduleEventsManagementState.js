@@ -1,10 +1,12 @@
 /*=========================================================================================
-  File Name: moduleMonitoringGetters.js
-  Description: Monitoring Module Getters
+  File Name: moduleEventsState.js
+  Description: events Module State
   ----------------------------------------------------------------------------------------
-  Item Name: Vuejs, HTML Template
-  Author: Krylov
+ Item Name: Vuejs, HTML Template
+ Author: Krylov
 ==========================================================================================*/
 
-
-export default {}
+export default {
+  events         : [],
+  eventsGroup    : [],
+}
