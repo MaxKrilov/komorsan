@@ -7,8 +7,10 @@
 ==========================================================================================*/
 
 export default {
-  devicesList : s =>  s.devices,
 
+  DEVICES_LIST(state){
+    return state.devices;
+  }
   // queriedTasks: state => state.tasks.filter((task) => {
   //   let isItemOfCurrentFilter = false
   //

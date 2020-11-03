@@ -23,7 +23,6 @@ import moduleListDevices from './frameListDevices/moduleListDevices.js'
 import moduleAuth from './auth/moduleAuth.js'
 import moduleSettingsHeader from './cart-settings-header/moduleSettingsHeader.js'
 import moduleAlarmHeader from './cart-alarm -notifications-header/moduleAlarmHeader.js'
-import moduleEventsManagement from './events/moduleEventsManagement.js'
 //
 // import mapModule from '@/views/charts-and-maps/maps/leaflet-map/map.js'
 
@@ -35,7 +34,6 @@ export default new Vuex.Store({
     state,
     actions,
     modules: {
-        events: moduleEventsManagement,
         map: moduleMapLeaflet,
         frameListDevices: moduleListDevices,
         auth: moduleAuth,
