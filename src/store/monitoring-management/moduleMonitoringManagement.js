@@ -8,10 +8,10 @@
 ==========================================================================================*/
 
 
-import state from './moduleEventsManagementState.js'
-import mutations from './moduleEventsManagementMutations.js'
-import actions from './moduleEventsManagementActions.js'
-import getters from './moduleEventsManagementGetters.js'
+import state from './moduleMonitoringManagementState.js'
+import mutations from './moduleMonitoringManagementMutations.js'
+import actions from './moduleMonitoringManagementActions.js'
+import getters from './moduleMonitoringManagementGetters.js'
 
 export default {
   isRegistered: false,
