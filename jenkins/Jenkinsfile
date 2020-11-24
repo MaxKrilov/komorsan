@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+    triggers {
+        pollSCM('*/1 * * * *')
+    }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '15'))
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                sh 'docker build -t vue_komorsan_2020:dev .'
+                sh 'docker tag vue_komorsan_2020:dev localhost:5000/vue_komorsan_2020:dev'
+            }
+        }
+        stage('Continuous Delivery') {
+            parallel {
+                stage('Recreate containers') {
+                    steps {
+                        echo 'Recreate containers..'
+                        dir ('jenkins') {
+                            sh 'bash stage_recreate_dev.sh'
+                        }
+                    }
+                }
+                stage('Push') {
+                    steps {
+                        echo 'Pushing..'
+                        sh 'docker tag vue_komorsan_2020:dev komorsan.antraks.ru:5000/vue_komorsan_2020:dev'
+                        sh 'docker push komorsan.antraks.ru:5000/vue_komorsan_2020:dev'
+                    }
+                }
+            }
+        }
+    }
+    post { 
+        always {
+            echo 'Cleaning....'
+            deleteDir()
+        }
+        failure {
+            echo 'Sending mail..'
+            mail to: 'a.filippov@antraks.ru',
+                 subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Something is wrong with ${env.BUILD_URL}"
+            emailext body: "Jenkins Pipeline ${JOB_NAME}: ${currentBuild.currentResult}", subject: currentBuild.currentResult, to: 'a.filippov@antraks.ru'
+        }
+    }
+}
