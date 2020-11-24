@@ -24,6 +24,7 @@ import moduleAuth from './auth/moduleAuth.js'
 import moduleSettingsHeader from './cart-settings-header/moduleSettingsHeader.js'
 import moduleAlarmHeader from './cart-alarm -notifications-header/moduleAlarmHeader.js'
 import moduleEventsManagement from './events/moduleEventsManagement.js'
+import moduleDataList from './data-list/moduleDataList.js'
 //
 // import mapModule from '@/views/charts-and-maps/maps/leaflet-map/map.js'
 
@@ -41,6 +42,7 @@ export default new Vuex.Store({
         auth: moduleAuth,
         cartSettingsHeader: moduleSettingsHeader,
         cartAlarmNotificationsHeader: moduleAlarmHeader,
+        dataList: moduleDataList,
     },
     // strict: process.env.NODE_ENV !== 'production'
 })

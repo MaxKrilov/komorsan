@@ -306,7 +306,6 @@ export default {
       //   'Content-Type': 'application/x-www-form-urlencoded'
       // };
       const path = '/api/v1/login';
-      // const path = 'http://10.10.20.12:8081/api/v1/login';
       const data = 'username=' + payload.userDetails.displayName + '&' + 'password=' +  payload.userDetails.password;
 
         axios.post(path, data, {headers: {"Content-Type" : "application/x-www-form-urlencoded"}})

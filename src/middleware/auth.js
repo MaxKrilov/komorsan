@@ -18,9 +18,9 @@ export default function authLogged ({ next, store, nextMiddleware }){
     console.log('---- auth ');
 
 
-     return next({
-        name: 'page-login'
-     })
+     // return next({
+     //    name: 'page-login'
+     // })
  }
   return nextMiddleware()
 }

@@ -11,7 +11,7 @@
 
     <data-view-sidebar :isSidebarActive="addNewDataSidebar" @closeSidebar="toggleDataSidebar" :data="sidebarData" />
 
-    <vs-table ref="table" multiple v-model="selected" pagination :max-items="itemsPerPage" search :data="products">
+    <vs-table ref="table" multiple v-model="selected" pagination :max-items="itemsPerPage" search :data="deviceIcons">
 
       <div slot="header" class="flex flex-wrap-reverse items-center flex-grow justify-between">
 
@@ -68,7 +68,7 @@
         <!-- ITEMS PER PAGE -->
         <vs-dropdown vs-trigger-click class="cursor-pointer mb-4 mr-4 items-per-page-handler">
           <div class="p-4 border border-solid d-theme-border-grey-light rounded-full d-theme-dark-bg cursor-pointer flex items-center justify-between font-medium">
-            <span class="mr-2">{{ currentPage * itemsPerPage - (itemsPerPage - 1) }} - {{ products.length - currentPage * itemsPerPage > 0 ? currentPage * itemsPerPage : products.length }} of {{ queriedItems }}</span>
+            <span class="mr-2">{{ currentPage * itemsPerPage - (itemsPerPage - 1) }} - {{ deviceIcons.length - currentPage * itemsPerPage > 0 ? currentPage * itemsPerPage : deviceIcons.length }} of {{ queriedItems }}</span>
             <feather-icon icon="ChevronDownIcon" svgClasses="h-4 w-4" />
           </div>
           <!-- <vs-button class="btn-drop" type="line" color="primary" icon-pack="feather" icon="icon-chevron-down"></vs-button> -->
@@ -91,41 +91,56 @@
       </div>
 
       <template slot="thead">
-        <vs-th sort-key="name">Name</vs-th>
-        <vs-th sort-key="category">Category</vs-th>
-        <vs-th sort-key="popularity">Popularity</vs-th>
-        <vs-th sort-key="order_status">Order Status</vs-th>
-        <vs-th sort-key="price">Price</vs-th>
-        <vs-th>Action</vs-th>
+        <vs-th></vs-th>
+        <vs-th sort-key="name">ВРЕМЯ СОБЫТИЯ</vs-th>
+        <vs-th sort-key="category">УСТРОЙСТВО</vs-th>
+        <vs-th sort-key="popularity">ЛОКАЦИЯ</vs-th>
+        <vs-th sort-key="order_status">СОБЫТИЕ</vs-th>
+        <vs-th></vs-th>
       </template>
 
         <template slot-scope="{data}">
           <tbody>
             <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
-
               <vs-td>
-                <p class="product-name font-medium truncate">{{ tr.name }}</p>
+                <p class="device-time font-medium truncate">{{ tr.id }}</p>
               </vs-td>
-
               <vs-td>
-                <p class="product-category">{{ tr.category | title }}</p>
+                <p class="device-time font-medium truncate">{{ tr["date_time"] }}</p>
               </vs-td>
-
               <vs-td>
-                <vs-progress :percent="Number(tr.popularity)" :color="getPopularityColor(Number(tr.popularity))" class="shadow-md" />
-              </vs-td>
+                <div class="flex items-center">
+                    <vs-avatar :src="getImgUrl( tr.is_online )"  color="" class="flex-shrink-0 mr-2" size="30px"  />
+                  <div class="flex device-column">
+                    <div>
+                      <p class="device-name" style="color: rgb(110,104,147); font-size: 13px; font-weight: 500">{{ tr.device_name | title }}</p>
+                    </div>
+                    <br>
+                    <div>
+                      <p class="device-name" style="color: rgb(110,104,147); font-size: 13px; font-weight: 400">{{ tr.description | title }}</p>
+                    </div>
+                  </div>
+                </div>
 
-              <vs-td>
-                <vs-chip :color="getOrderStatusColor(tr.order_status)" class="product-order-status">{{ tr.order_status | title }}</vs-chip>
               </vs-td>
-
-              <vs-td>
-                <p class="product-price">${{ tr.price }}</p>
+              <vs-td class="td-position-below">
+                <vs-chip :color="getSupportPillarColor()" style="color: rgb(110,104,147); font-size: 13px; font-weight: 500" class="device-order-status">{{ tr.pillar | title }}</vs-chip>
+                <div >
+                  <p style="color: rgb(110,104,147); font-size: 13px; font-weight: 500">{{ tr.coords }}</p>
+                </div>
               </vs-td>
-
+              <vs-td class="td-position-below-dev">
+                <div class="flex device-column"  style="align-items: flex-start;">
+                <vs-chip :color="getOrderStatusColor(tr.order_status)" class="device-order-status" >{{ tr.order_status | title }}</vs-chip>
+                 <div>
+                  <p class="device-coords">${{ tr.coords }}</p>
+                </div>
+               </div>
+              </vs-td>
               <vs-td class="whitespace-no-wrap">
-                <feather-icon icon="EditIcon" svgClasses="w-5 h-5 hover:text-primary stroke-current" @click.stop="editData(tr)" />
-                <feather-icon icon="TrashIcon" svgClasses="w-5 h-5 hover:text-danger stroke-current" class="ml-2" @click.stop="deleteData(tr.id)" />
+                <p style="font-size: 13px; font-weight: 500" >{{ "Подробности" }}</p>
+                <feather-icon icon="MoreVerticalIcon" svgClasses="w-5 h-5 hover:text-primary stroke-current" @click.stop="editData(tr)" />
+<!--                <feather-icon icon="TrashIcon" svgClasses="w-5 h-5 hover:text-danger stroke-current" class="ml-2" @click.stop="deleteData(tr.id)" />-->
               </vs-td>
 
             </vs-tr>
@@ -138,6 +153,7 @@
 <script>
 import DataViewSidebar from '../DataViewSidebar.vue'
 import moduleDataList from "@/store/data-list/moduleDataList.js"
+import {mapActions} from "vuex";
 
 export default {
   components: {
@@ -145,9 +161,10 @@ export default {
   },
   data() {
     return {
+      pics: null,
       selected: [],
       // products: [],
-      itemsPerPage: 4,
+      itemsPerPage: 3,
       isMounted: false,
 
       // Data Sidebar
@@ -156,20 +173,36 @@ export default {
     }
   },
   computed: {
+
     currentPage() {
       if(this.isMounted) {
         return this.$refs.table.currentx
       }
       return 0
     },
-    products() {
-      return this.$store.state.dataList.products
+    deviceIcons() {
+      return this.$store.state.dataList.deviceIcon
     },
     queriedItems() {
-      return this.$refs.table ? this.$refs.table.queriedResults.length : this.products.length
+      return this.$refs.table ? this.$refs.table.queriedResults.length : this.deviceIcons.length
     }
   },
   methods: {
+    ...mapActions('dataList', [
+      'fetchDataListItems'
+    ]),
+    getImgUrl(val) {
+      const generateImg = colorDevice => {
+        if (colorDevice === "C") return 'ИКЗ-С'
+        else if ( colorDevice === "B" ) return 'ИКЗ-В'
+        else if ( colorDevice === "A" )  return 'ИКЗ-А'
+        else return 'ИКЗ-А'
+      }
+
+      let colorDevice = val
+      let images = require['context']('@/assets/images/devices-icon/', false, /\.svg$/)
+      return images('./' + generateImg(colorDevice) + ".svg")
+    },
     addNewData() {
       this.sidebarData = {}
       this.toggleDataSidebar(true)
@@ -183,36 +216,48 @@ export default {
       this.toggleDataSidebar(true)
     },
     getOrderStatusColor(status) {
-      if(status == 'on_hold') return "warning"
-      if(status == 'delivered') return "success"
-      if(status == 'canceled') return "danger"
+      if(status === 'сообщение') return "warning"
+      if(status === 'авария') return "danger"
       return "primary"
     },
-    getPopularityColor(num) {
-      if(num > 90) return "success"
-      if(num >70) return "primary"
-      if(num >= 50) return "warning"
-      if(num < 50) return "danger"
-      return "primary"
+    getSupportPillarColor() {
+      let pillar = 'rgb(230,230,242)'
+      return pillar
     },
     toggleDataSidebar(val=false) {
       this.addNewDataSidebar = val
     }
   },
   created() {
-    if(!moduleDataList.isRegistered) {
-      this.$store.registerModule('dataList', moduleDataList)
-      moduleDataList.isRegistered = true
-    }
-    this.$store.dispatch("dataList/fetchDataListItems")
+    // if(!moduleDataList.isRegistered) {
+    //   this.$store.registerModule('dataList', moduleDataList)
+    //   moduleDataList.isRegistered = true
+    // }
+    // this.$store.dispatch("dataList/fetchDataListItems")
+
+
   },
   mounted() {
+    this.fetchDataListItems()
+    // this.$store.dispatch("dataList/fetchDataListItems")
     this.isMounted = true;
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" >
+.device-column {
+  flex-direction: column;
+}
+.whitespace-no-wrap span{
+  display: flex;
+  color: rgb(110,104,147);
+  font-size: 11px;
+  font-weight: 600;
+}
+.td-position-below-dev {
+
+}
 #data-list-list-view {
   .vs-con-table {
 
@@ -250,7 +295,7 @@ export default {
       }
     }
 
-    .product-name {
+    .device-time {
       max-width: 23rem;
     }
 
@@ -283,12 +328,14 @@ export default {
     }
 
     .vs-table {
-      border-collapse: separate;
+      /*border-collapse: separate;*/
       border-spacing: 0 1.3rem;
       padding: 0 1rem;
+      border-bottom: #5b3cc4;
 
       tr{
           box-shadow: 0 4px 20px 0 rgba(0,0,0,.05);
+          border-bottom: 2px solid #eceaf5;
           td{
             padding: 20px;
             &:first-child{
@@ -301,22 +348,35 @@ export default {
             }
           }
           td.td-check{
+            display: none;
             padding: 20px !important;
           }
+          td.td-position-below {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+          }
+      }
+      &:hover {
+        border-bottom: 1px solid #eceaf5;
       }
     }
 
     .vs-table--thead{
+      background: #8fcc90;
+      height: 5vh;
       th {
         padding-top: 0;
         padding-bottom: 0;
 
         .vs-table-text{
+          color: #2e3a59;
           text-transform: uppercase;
           font-weight: 600;
         }
       }
       th.td-check{
+        display: none;
         padding: 0 15px !important;
       }
       tr{
@@ -327,6 +387,22 @@ export default {
 
     .vs-table--pagination {
       justify-content: center;
+    }
+  }
+  --custom-noСonnection:252,185,54;  /* yellow */
+  --custom-crash:215,26,26;         /* red */
+
+  .device-order-status {
+    &.vs-chip-warning { /*custom-no-connection-warning */
+      background: rgba(var(--custom-noСonnection),.35);
+      color: rgba(var(--custom-noСonnection), 1) !important;
+      font-weight: 500;
+    }
+
+   &.vs-chip-danger {  /*custom-crash-danger*/
+      background: rgba(var(--vs-danger), .15);
+      color: rgba(var(--vs-danger), 1) !important;
+      font-weight: 500;
     }
   }
 }

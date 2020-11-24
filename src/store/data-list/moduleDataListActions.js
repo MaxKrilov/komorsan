@@ -21,9 +21,9 @@ export default {
   },
   fetchDataListItems({ commit }) {
     return new Promise((resolve, reject) => {
-      axios.get("/api/data-list/products")
+      axios.get('/api/data-list/products')
         .then((response) => {
-          commit('SET_PRODUCTS', response.data)
+          commit('SET_DEVICE_ICON', response.data)
           resolve(response)
         })
         .catch((error) => { reject(error) })
@@ -43,7 +43,7 @@ export default {
     return new Promise((resolve, reject) => {
       axios.post(`/api/data-list/products/${item.id}`, {item: item})
         .then((response) => {
-          commit('UPDATE_PRODUCT', response.data)
+          commit('UPDATE_DEVICE_ICON', response.data)
           resolve(response)
         })
         .catch((error) => { reject(error) })
