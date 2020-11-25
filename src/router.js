@@ -79,45 +79,60 @@ const router = new Router({
         // =============================================================================
         // Application Routes
         // =============================================================================
+        //         {
+        //           path: '/apps/monitoring/monitoring-list',
+        //           name: 'app-monitoring-list',
+        //           component: () => import('@/views/apps/monitoring/monitoring-list/MonitoringList.vue'),
+        //           meta: {
+        //             middleware: [
+        //               authLogged
+        //             ],
+        //             breadcrumb: [
+        //               { title: 'Home', url: '/' },
+        //               { title: 'Devices' },
+        //               { title: 'List', active: true },
+        //             ],
+        //             pageTitle: 'Monitoring List',
+        //             rule: 'editor'
+        //           },
+        //         },
                 {
-                  path: '/apps/monitoring/monitoring-list',
-                  name: 'app-monitoring-list',
-                  component: () => import('@/views/apps/monitoring/monitoring-list/MonitoringList.vue'),
+                  path: '/apps/monitoring/list-view',
+                  name: 'monitoring',
+                  component: () => import('@/views/apps/monitoring/list-view/DataMonitoringListListView.vue'),
                   meta: {
                     middleware: [
                       authLogged
                     ],
                     breadcrumb: [
                       { title: 'Home', url: '/' },
-                      { title: 'Devices' },
-                      { title: 'List', active: true },
+                      { title: 'List View', active: true },
                     ],
-                    pageTitle: 'Monitoring List',
+                    pageTitle: 'Monitoring',
                     rule: 'editor'
                   },
                 },
 
-
         // =============================================================================
         // UI ELEMENTS
         // =============================================================================
-                {
-                    path: '/ui-elements/data-list/list-view',
-                    name: 'data-list-list-view',
-                    component: () => import('@/views/ui-elements/data-list/list-view/DataListListView.vue'),
-                    meta: {
-                        middleware: [
-                          authLogged
-                        ],
-                        breadcrumb: [
-                            { title: 'Home', url: '/' },
-                            { title: 'Data List'},
-                            { title: 'List View', active: true },
-                        ],
-                        pageTitle: 'List View',
-                        rule: 'editor'
-                    },
-                },
+        //         {
+        //             path: '/ui-elements/data-list/list-view',
+        //             name: 'data-list-list-view',
+        //             component: () => import('@/views/ui-elements/data-list/list-view/DataListListView.vue'),
+        //             meta: {
+        //                 middleware: [
+        //                   authLogged
+        //                 ],
+        //                 breadcrumb: [
+        //                     { title: 'Home', url: '/' },
+        //                     { title: 'Data List'},
+        //                     { title: 'List View', active: true },
+        //                 ],
+        //                 pageTitle: 'List View',
+        //                 rule: 'editor'
+        //             },
+        //         },
                 {
                     path: '/ui-elements/data-list/thumb-view',
                     name: 'data-list-thumb-view',
@@ -1229,13 +1244,7 @@ const router = new Router({
     ],
 })
 
-router.afterEach(() => {
-  // Remove initial loading
-  const appLoading = document.getElementById('loading-bg')
-    if (appLoading) {
-        appLoading.style.display = "none";
-    }
-})
+
 
 
 
@@ -1345,7 +1354,18 @@ router.afterEach(() => {
 // });
 
 
+    router.afterEach(() => {
 
+      console.log('---- astore ');
+      // console.log(store.getters['auth/isAuthenticated']['logged_In']);
+      console.log(store);
+      console.log('---- store ');
+      // Remove initial loading
+      const appLoading = document.getElementById('loading-bg')
+      if (appLoading) {
+        appLoading.style.display = "none";
+      }
+    })
 
     router.beforeEach((to, from, next) => {
        if (!to.meta.middleware) {

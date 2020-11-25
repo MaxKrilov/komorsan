@@ -2,14 +2,14 @@
   File Name: themeConfig.js
   Description: Theme configuration
   ----------------------------------------------------------------------------------------
-  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+  Item Name: Vuejs, HTML Template
   Author: krylov
 ==========================================================================================*/
 
 // MAIN COLORS - VUESAX THEME COLORS
 let colors = {
 	// '#7367F0'
-  primary : '#6cc89c',
+  primary : '#8fcc90',
 	success : '#28C76F',
 	danger  : '#EA5455',
 	warning : '#FF9F43',
@@ -29,11 +29,11 @@ const themeConfig = {
   rtl               : false,       // options[Boolean] : true, false(default)
   sidebarCollapsed  : false,       // options[Boolean] : true, false(default)
   theme             : "light",     // options[String]  : "light"(default), "dark", "semi-dark"
-
+// #f0f0f3
   // Not required yet - WIP
   userInfoLocalStorageKey: "userInfo",
 
-  // NOTE: themeTour will be disabled in screens < 1200. Please refer docs for more info.
+  // NOTE: themeTour will be disabled in screens < 1200. .
 }
 
 import Vue from 'vue'

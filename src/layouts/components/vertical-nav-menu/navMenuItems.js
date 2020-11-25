@@ -67,8 +67,14 @@ export default [
         icon: "MonitorIcon",
         i18n: "Monitoring",
         submenu: [
+          // {
+          //   url: '/apps/monitoring/monitoring-list',
+          //   name: "List",
+          //   slug: "app-monitoring-list",
+          //   i18n: "List",
+          // },
           {
-            url: '/apps/monitoring/monitoring-list',
+            url: '/apps/monitoring/list-view',
             name: "List",
             slug: "app-monitoring-list",
             i18n: "List",

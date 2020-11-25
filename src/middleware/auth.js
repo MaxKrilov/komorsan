@@ -12,15 +12,17 @@ import {mapActions} from "vuex";
 export default function authLogged ({ next, store, nextMiddleware }){
   if(!store.getters['auth/isAuthenticated']['logged_In'] ){
 
-    console.log('---- auth ');
-    // console.log(store.getters['auth/isAuthenticated']['logged_In']);
-    console.log(store._actions['auth/logoutGet']);
-    console.log('---- auth ');
+    // console.log('---- auth ');
+    // // console.log(store.getters['auth/isAuthenticated']['logged_In']);
+    // console.log(store._actions['auth/logoutGet']);
+    // console.log('---- auth ');
 
 
-     // return next({
-     //    name: 'page-login'
-     // })
+     return next({
+        name: 'page-login'
+     })
+
  }
+
   return nextMiddleware()
 }

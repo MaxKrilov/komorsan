@@ -3,7 +3,7 @@
   Description: Template Customizer
   Component Name: TheCustomizer
   ----------------------------------------------------------------------------------------
-  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+  Item Name: Vuejs, HTML Template
   Author: krylov
 ========================================================================================== -->
 
