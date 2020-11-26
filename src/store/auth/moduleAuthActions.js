@@ -302,47 +302,28 @@ export default {
    loginCookie({ commit }, payload) {
     axios.defaults.withCredentials = false;
     return new Promise((resolve,reject) => {
-      // const headers = {
-      //   'Content-Type': 'application/x-www-form-urlencoded'
-      // };
+      const headers = {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      };
       const path = '/api/v1/login';
-      // const path = 'http://10.10.20.12:8081/api/v1/login';
       const data = 'username=' + payload.userDetails.displayName + '&' + 'password=' +  payload.userDetails.password;
-
-        axios.post(path, data, {headers: {"Content-Type" : "application/x-www-form-urlencoded"}})
+        axios.post(path, data, { headers })
         .then(response => {
-
-          // If there's user data in response
-           router.push(router.currentRoute.query.to || '/')
            if (response.status === "Already logged in") {
-             console.log('---- Already logged in')
-             console.log(response.status)
-             console.log('---- Already logged in')
-             // commit('cartSettingsHeader/AUTH_STATUS')
-             // router.push( '/charts-and-maps/maps/leaflet-map' )
-              router.push(router.currentRoute.query.to || '/')
+             // If there's user data in response
+             router.push(router.currentRoute.query.to || '/')
            }
           if(response.status === 200) {
-
             commit('logged_In_Get', true )
-            router.push( '/charts-and-maps/maps/leaflet-map' )
-            // commit('AUTH_STATUS', payload, {root: true})
-            // Update user details
-            // commit('UPDATE_USER_INFO', response.data.userData, {root: true})
-            //
-           return resolve(response)
-          }else {
-            reject({message: "Wrong Email or Password"})
+            router.push( '/apps/monitoring/list-view' )
+           return Promise.resolve(response)
           }
-
         })
         .catch(error => {
-          reject(error)
+          return reject(error)
         })
     })
-
   },
-
     // JWT
     loginJWT({ commit }, payload) {
       return new Promise((resolve,reject) => {
@@ -408,9 +389,12 @@ export default {
       axios.get(path, {headers: {"Content-Type": "application/json"}})
         .then((res) => {
           if(res.status === 200) {
+
+            commit('logged_In_Get', true )
             commit('auth_status', res.data)
+
           }
-          return resolve()
+          return resolve(res)
         })
         .catch((error) => {
           reject(error)
@@ -423,12 +407,13 @@ export default {
       const path = '/api/v1/logout';
       axios.get(path, {headers: {"Content-Type": "application/json"}})
         .then((res) => {
-          if(res.status === 200) {
-            // answer: "Logout Ok"   ||  status: "No session"
-            commit('logout_Get', res.data)
+          if(res.status === 200) { // answer: "Logout Ok"   ||  status: "No session"
+
+            // commit('logout_Get', res.data)
             commit('logged_In_Get', false )
+
           }
-          return resolve()
+          return resolve(res.data)
         })
         .catch((error) => {
           reject(error)

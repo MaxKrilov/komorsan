@@ -6,17 +6,17 @@
 	Author : krylov
 ==========================================================================================*/
 
+import router from "../router";
+
 export default function guest ({ next, store }){
-  if(store.getters['auth/isAuthenticated']['logged_In']){
 
-    console.log('----- guest ');
-    // console.log(store.getters['auth/isAuthenticated']['logged_In']);
-    console.log( store._actions['auth/logoutGet']);
-    console.log('---- guest ');
+  if(store.getters['auth/isAuthenticated']['logged_In'] !== false){
 
-        return next({
-           name: 'dashboard-analytics'
-        })
+
+    return next({
+      name: 'monitoring'
+    })
+
     }
 
     return next()

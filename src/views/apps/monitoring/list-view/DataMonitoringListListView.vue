@@ -1,6 +1,6 @@
 <!-- =========================================================================================
-  File Name: DataListListView.vue
-  Description: Data List - List View
+  File Name: DataMonitoringListListView.vue
+  Description: Data Monitoring List - List View
   ----------------------------------------------------------------------------------------
   Item Name: Vuejs Template
   Author: Krylov
@@ -17,65 +17,24 @@
 
         <div class="flex flex-wrap-reverse items-center data-list-btn-container">
 
-          <!-- ACTION - DROPDOWN -->
-          <vs-dropdown vs-trigger-click class="dd-actions cursor-pointer mr-4 mb-4">
-
-            <div class="p-4 shadow-drop rounded-lg d-theme-dark-bg cursor-pointer flex items-center justify-center text-lg font-medium w-32 w-full">
-              <span class="mr-2">Actions</span>
-              <feather-icon icon="ChevronDownIcon" svgClasses="h-4 w-4" />
-            </div>
-
-            <vs-dropdown-menu>
-
-              <vs-dropdown-item>
-                <span class="flex items-center">
-                  <feather-icon icon="TrashIcon" svgClasses="h-4 w-4" class="mr-2" />
-                  <span>Delete</span>
-                </span>
-              </vs-dropdown-item>
-
-              <vs-dropdown-item>
-                <span class="flex items-center">
-                  <feather-icon icon="ArchiveIcon" svgClasses="h-4 w-4" class="mr-2" />
-                  <span>Archive</span>
-                </span>
-              </vs-dropdown-item>
-
-              <vs-dropdown-item>
-                <span class="flex items-center">
-                  <feather-icon icon="FileIcon" svgClasses="h-4 w-4" class="mr-2" />
-                  <span>Print</span>
-                </span>
-              </vs-dropdown-item>
-
-              <vs-dropdown-item>
-                <span class="flex items-center">
-                  <feather-icon icon="SaveIcon" svgClasses="h-4 w-4" class="mr-2" />
-                  <span>Another Action</span>
-                </span>
-              </vs-dropdown-item>
-
-            </vs-dropdown-menu>
-          </vs-dropdown>
-
           <!-- ADD NEW -->
           <div class="btn-add-new p-3 mb-4 mr-4 rounded-lg cursor-pointer flex items-center justify-center text-lg font-medium text-base text-primary border border-solid border-primary" @click="addNewData">
               <feather-icon icon="PlusIcon" svgClasses="h-4 w-4" />
-              <span class="ml-2 text-base text-primary">Add New</span>
+              <span class="ml-2 text-base text-primary">Добавить прибор</span>
           </div>
         </div>
 
         <!-- ITEMS PER PAGE -->
         <vs-dropdown vs-trigger-click class="cursor-pointer mb-4 mr-4 items-per-page-handler">
           <div class="p-4 border border-solid d-theme-border-grey-light rounded-full d-theme-dark-bg cursor-pointer flex items-center justify-between font-medium">
-            <span class="mr-2">{{ currentPage * itemsPerPage - (itemsPerPage - 1) }} - {{ deviceIcons.length - currentPage * itemsPerPage > 0 ? currentPage * itemsPerPage : deviceIcons.length }} of {{ queriedItems }}</span>
+            <span class="mr-2">{{ currentPage * itemsPerPage - (itemsPerPage - 1) }} - {{ deviceIcons.length - currentPage * itemsPerPage > 0 ? currentPage * itemsPerPage : deviceIcons.length }} из {{ queriedItems }}</span>
             <feather-icon icon="ChevronDownIcon" svgClasses="h-4 w-4" />
           </div>
-          <!-- <vs-button class="btn-drop" type="line" color="primary" icon-pack="feather" icon="icon-chevron-down"></vs-button> -->
+<!--           <vs-button class="btn-drop" type="line" color="primary" icon-pack="feather" icon="icon-chevron-down"></vs-button>-->
           <vs-dropdown-menu>
 
-            <vs-dropdown-item @click="itemsPerPage=4">
-              <span>4</span>
+            <vs-dropdown-item @click="itemsPerPage=3">
+              <span>3</span>
             </vs-dropdown-item>
             <vs-dropdown-item @click="itemsPerPage=10">
               <span>10</span>
@@ -92,10 +51,10 @@
 
       <template slot="thead">
         <vs-th></vs-th>
-        <vs-th sort-key="name">ВРЕМЯ СОБЫТИЯ</vs-th>
-        <vs-th sort-key="category">УСТРОЙСТВО</vs-th>
-        <vs-th sort-key="popularity">ЛОКАЦИЯ</vs-th>
-        <vs-th sort-key="order_status">СОБЫТИЕ</vs-th>
+        <vs-th sort-key="date_time">ВРЕМЯ СОБЫТИЯ</vs-th>
+        <vs-th sort-key="device_name">УСТРОЙСТВО</vs-th>
+        <vs-th sort-key="coords">ЛОКАЦИЯ</vs-th>
+        <vs-th sort-key="is_online">СОБЫТИЕ</vs-th>
         <vs-th></vs-th>
       </template>
 
@@ -138,7 +97,7 @@
                </div>
               </vs-td>
               <vs-td class="whitespace-no-wrap">
-                <p style="font-size: 13px; font-weight: 500" >{{ "Подробности" }}</p>
+                <p style="font-size: 13px; font-weight: 500" @click.stop="editData(tr)">{{ "Подробности" }}</p>
                 <feather-icon icon="MoreVerticalIcon" svgClasses="w-5 h-5 hover:text-primary stroke-current" @click.stop="editData(tr)" />
 <!--                <feather-icon icon="TrashIcon" svgClasses="w-5 h-5 hover:text-danger stroke-current" class="ml-2" @click.stop="deleteData(tr.id)" />-->
               </vs-td>
@@ -151,7 +110,7 @@
 </template>
 
 <script>
-import DataViewSidebar from '../DataViewSidebar.vue'
+import DataViewSidebar from '../DataMonitoringViewSidebar.vue'
 import moduleDataList from "@/store/data-list/moduleDataList.js"
 import {mapActions} from "vuex";
 
@@ -365,7 +324,7 @@ export default {
     }
 
     .vs-table--thead{
-      background: #8fcc90;
+      background: rgba(var(--vs-primary), .85);
       height: 5vh;
       th {
         padding-top: 0;

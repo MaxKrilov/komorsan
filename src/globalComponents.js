@@ -2,7 +2,7 @@
   File Name: globalComponents.js
   Description: Here you can register components globally
   ----------------------------------------------------------------------------------------
-  Item Name: Vue_komorsan - Vuejs, HTML &  Dashboard Template
+  Item Name: Vue_komorsan - Vuejs, HTML Template
 	Author : krylov
 ==========================================================================================*/
 

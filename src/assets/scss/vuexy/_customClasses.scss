@@ -455,7 +455,9 @@
   .d-theme-dark-border {
     border-color: $theme-dark-border-color;
   }
-
+  .d-theme-border-dark-monitoring-light {
+    border-color: $theme-dark-monitoring-border-color;
+  }
   // Table Inverted
   .vs-con-table{
     &.table-dark-inverted {

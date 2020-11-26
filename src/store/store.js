@@ -39,6 +39,7 @@ export default new Vuex.Store({
         auth: moduleAuth,
         cartSettingsHeader: moduleSettingsHeader,
         cartAlarmNotificationsHeader: moduleAlarmHeader,
+        dataList: moduleDataList,
     },
     // strict: process.env.NODE_ENV !== 'production'
 })

@@ -18,15 +18,14 @@ export default {
   },
   auth_status(state, isResponseAuthStatus){
     state.isResponseAuthStatus = isResponseAuthStatus
+    state.user.logged_In = true
   },
-  logout_Get(state, isLogoutGet){
-    state.isLogoutGet = isLogoutGet
-    // state.user['logged_In'] = true
-
-  },
+  // logout_Get(state, isLogoutGet){
+  //   state.isLogoutGet = isLogoutGet
+  //   state.user.logged_In = false
+  // },
   logged_In_Get(state, logged_In){
     state.user.logged_In = logged_In
-
   },
 
   auth_success(state, token, user){

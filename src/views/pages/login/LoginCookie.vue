@@ -40,6 +40,7 @@
 
 <script>
 import axios from "../../../axios";
+import {mapActions} from "vuex";
 
 export default {
   data() {
@@ -56,13 +57,33 @@ export default {
     },
   },
   methods: {
-
+    ...mapActions( 'auth', ['getStatusAuth']),
     checkLogin() {
+      // Loading
+      this.$vs.loading()
+      if (this.$store.state.auth.user.logged_In) return
+
+      this.getStatusAuth().then(() => {
+        // Close animation if passed as payload
+        this.$vs.loading.close()
+        this.$vs.notify({
+          title: 'Success',
+          text: 'Успешный вход',
+          iconPack: 'feather',
+          icon: 'icon-alert-circle',
+          color: 'primary'
+        })
+        let vm = this
+        vm.$router.push('apps/monitoring/list-view')
+
+      }).catch(() => // Close animation if passed as payload
+        this.$vs.loading.close())
+
       // If user is already logged in notify
       if (this.$store.state.auth.isUserLoggedIn()) {
 
         // Close animation if passed as payload
-        // this.$vs.loading.close()
+        this.$vs.loading.close()
 
         this.$vs.notify({
           title: 'Login Attempt',
@@ -76,34 +97,39 @@ export default {
       }
       return true
     },
-    logOutAll(){
-      const path = '/api/v1/logout';
-      axios.get(path, {headers: {"Content-Type": "application/json"}})
-    },
     loginCookie() {
-      // if (!this.checkLogin()) return
 
-      // Loading
-      // this.$vs.loading()
-      const payload = {
-        checkbox_remember_me: this.checkbox_remember_me,
-        userDetails: {
-          displayName: this.displayName,
-          password: this.password
+      if (!this.checkLogin()) return
+
+      if (this.checkLogin()) {
+
+        const payload = {
+          checkbox_remember_me: this.checkbox_remember_me,
+          userDetails: {
+            displayName: this.displayName,
+            password: this.password
+          }
         }
-      }
-      // let email = this.text
-      // let password = this.password
+        // let email = this.text
+        // let password = this.password
+        // this.$router.push(this.$route.query.redirect)
 
-      // this.$router.push(this.$route.query.redirect)
-      this.$store.dispatch('auth/loginCookie', payload)
-        .then(res => console.log(res))
-        .catch(err => {console.log(err)
-            this.logOutAll()
-            // window.location.href = '/dashboard/analytics';
-
+        this.$store.dispatch('auth/loginCookie', payload)
+          .then(res => {
+            console.log('response', res)
+          })
+          .catch(error => {
+            console.log('error message', error)
+            this.$vs.loading.close()
+            this.$vs.notify({
+              title: 'Error',
+              text: error.message,
+              iconPack: 'feather',
+              icon: 'icon-alert-circle',
+              color: 'danger'
+            })
+          })
         }
-        )
     },
     loginJWT() {
 
@@ -138,8 +164,12 @@ export default {
       this.$router.push('/pages/register').catch(() => {})
     }
   },
+  created () {
+    this.checkLogin()
+  },
   mounted() {
-    this.logOutAll()
+
+
   }
 }
 
