@@ -1,0 +1,13 @@
+/*=========================================================================================
+  File Name: _mainCustomClasses.scss
+  Description: partial- this file containes custom helper classes
+  ----------------------------------------------------------------------------------------
+  Item Name: Vue_komorsan - Vuejs, HTML &  Dashboard Template
+	Author : krylov
+==========================================================================================*/
+
+
+
+.vs-sidebar--item a{
+  color: black !important;
+}
