@@ -29,10 +29,10 @@
               :port="item.port"
               icon="storage"
               :style="setCurrentlySelected(item.id)"
-              :class="{
-              'color-custom-blue': +item.id === +statusAuthorization.database,
-              'color-custom-black': +item.id !== +statusAuthorization.database
-              }"
+              :class="[
+              {'color-custom-blue': +item.id === +statusAuthorization.database  },
+              {'color-custom-black': +item.id !== +statusAuthorization.database }
+             ]"
                @click="getCurrentlySelectedBase(item.id)"
             >
               <VuePerfectScrollbar >{{ `${item.id} ${item.db_name} ${item.host} : ${item.port}` }}</VuePerfectScrollbar>

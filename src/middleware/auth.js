@@ -2,27 +2,19 @@
   File Name: auth.js
   Description: auth.js vue(js) file
   ----------------------------------------------------------------------------------------
-  Item Name: Vue_komorsan - Vuejs, HTML &  Dashboard Template
+  Item Name: Vue_komorsan - Vuejs, HTML Template
 	Author : krylov
 ==========================================================================================*/
 
 
-import {mapActions} from "vuex";
-
 export default function authLogged ({ next, store, nextMiddleware }){
-  if(!store.getters['auth/isAuthenticated']['logged_In'] ){
 
-    // console.log('---- auth ');
-    // // console.log(store.getters['auth/isAuthenticated']['logged_In']);
-    // console.log(store._actions['auth/logoutGet']);
-    // console.log('---- auth ');
+  if(store.getters['auth/isAuthenticated']['logged_In'] === false){
 
-
-     return next({
-        name: 'page-login'
-     })
+    return next({
+      name: 'page-login'
+    })
 
  }
-
-  return nextMiddleware()
+    return nextMiddleware()
 }

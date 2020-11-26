@@ -1355,11 +1355,7 @@ const router = new Router({
 
 
     router.afterEach(() => {
-
-      console.log('---- astore ');
-      // console.log(store.getters['auth/isAuthenticated']['logged_In']);
-      console.log(store);
-      console.log('---- store ');
+      // store.getters['auth/isAuthenticated']['logged_In'] = true
       // Remove initial loading
       const appLoading = document.getElementById('loading-bg')
       if (appLoading) {
