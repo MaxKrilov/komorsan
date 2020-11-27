@@ -26,16 +26,12 @@ import moduleSettingsHeader from './cart-settings-header/moduleSettingsHeader.js
 import moduleAlarmHeader from './cart-alarm -notifications-header/moduleAlarmHeader.js'
 
 
-
-
-
 export default new Vuex.Store({
     getters,
     mutations,
     state,
     actions,
     modules: {
-        events: moduleEventsManagement,
         map: moduleMapLeaflet,
         frameListDevices: moduleListDevices,
         auth: moduleAuth,
