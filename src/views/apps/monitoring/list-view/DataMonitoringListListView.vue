@@ -111,7 +111,6 @@
 
 <script>
 import DataViewSidebar from '../DataMonitoringViewSidebar.vue'
-import moduleDataList from "@/store/data-list/moduleDataList.js"
 import {mapActions} from "vuex";
 
 export default {
