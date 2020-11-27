@@ -27,17 +27,18 @@ import moduleAlarmHeader from './cart-alarm -notifications-header/moduleAlarmHea
 
 
 export default new Vuex.Store({
-    getters,
-    mutations,
-    state,
-    actions,
-    modules: {
-        map: moduleMapLeaflet,
-        frameListDevices: moduleListDevices,
-        auth: moduleAuth,
-        cartSettingsHeader: moduleSettingsHeader,
-        cartAlarmNotificationsHeader: moduleAlarmHeader,
-        dataList: moduleDataList, // test -- add in repo
-    },
-    // strict: process.env.NODE_ENV !== 'production'
+  getters,
+  mutations,
+  state,
+  actions,
+  modules: {
+    // events: moduleEventsManagement,
+    map: moduleMapLeaflet,
+    frameListDevices: moduleListDevices,
+    auth: moduleAuth,
+    cartSettingsHeader: moduleSettingsHeader,
+    cartAlarmNotificationsHeader: moduleAlarmHeader,
+    dataList: moduleDataList, // test -- add in repo
+  },
+  // strict: process.env.NODE_ENV !== 'production'
 })
