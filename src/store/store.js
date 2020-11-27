@@ -17,7 +17,7 @@ import actions from "./actions"
 
 Vue.use(Vuex)
 // export const strict = false
-import moduleEventsManagement from './events/moduleEventsManagement.js'
+// import moduleEventsManagement from './events/moduleEventsManagement.js'
 import moduleDataList from './data-list/moduleDataList.js'
 import moduleMapLeaflet from './map/moduleMapLeaflet.js'
 import moduleListDevices from './frameListDevices/moduleListDevices.js'
