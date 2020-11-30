@@ -1,11 +1,11 @@
 server {
     listen       80;
     server_name  localhost;
-    
+
     location / {
         root   /usr/share/nginx/html;
         index  index.html index.htm;
-        rewrite ^/([^\.]+)$ /$1.html break;
+        rewrite ^/([^\.]+)$ /$1 break;
         add_header 'Access-Control-Allow-Origin' 'http://${BACKEND_ADDR}:${BACKEND_PORT}';
     }
 
