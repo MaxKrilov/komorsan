@@ -13,5 +13,5 @@ services:
       # BACKEND_PORT: 8081
     volumes:
       # - /home/max/komorsan_2020/komorsan_web/frontend/:/usr/share/nginx/html
-    - ./full-version/dist/:/usr/share/nginx/html
+    - ./full-version-back/dist/:/usr/share/nginx/html
     - ./nginx/conf.d:/etc/nginx/conf.d
