@@ -5,7 +5,7 @@ server {
     location / {
         root   /usr/share/nginx/html;
         index  index.html index.htm;
-        rewrite ^/([^\.]+)$ /$1 break;
+        rewrite ^/(.*)$ / #/$1 break;
         add_header 'Access-Control-Allow-Origin' 'http://${BACKEND_ADDR}:${BACKEND_PORT}';
     }
 
