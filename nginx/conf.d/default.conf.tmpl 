@@ -3,20 +3,15 @@ server {
     server_name  localhost;
 
 
-    root   /usr/share/nginx/html;
-    index  index.html index.htm;
-    #add_header 'Access-Control-Allow-Origin' 'http://${BACKEND_ADDR}:${BACKEND_PORT}'
-
-   location / {
+    location / {
       try_files $uri $uri/ @fallback;
     }
 
     location @fallback {
-      rewrite ^/([^\.]+)$ /$1 break;
+      rewrite ^(.*) /api$1 break;
       proxy_set_header "Accept" "text/html";
-      proxy_pass  http://${BACKEND_ADDR}:${BACKEND_PORT};
+      proxy_pass http://localhost:8000;
     }
-
 
 
 
