@@ -19,13 +19,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import auth from "@/auth/authService";
- import guest from './middleware/guest'
- import authLogged  from './middleware/auth'
+import guest from './middleware/guest'
+import authLogged  from './middleware/auth'
 import middlewarePipeline from './middlewarePipeline'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import store from "./store/store.js"
+import axios from "./axios";
 Vue.use(Router)
+
+
 
 const router = new Router({
     // mode: 'history',
@@ -1238,8 +1241,14 @@ const router = new Router({
         },
         // Redirect to 404 page, if no match found
         {
-            path: '*',
-            redirect: '/pages/error-404'
+          path: '*',
+          redirect: '/pages/error-404',
+          meta: {
+            middleware: [
+              guest
+            ],
+            rule: 'editor'
+          }
         }
     ],
 })
@@ -1355,7 +1364,6 @@ const router = new Router({
 
 
     router.afterEach(() => {
-      // store.getters['auth/isAuthenticated']['logged_In'] = true
       // Remove initial loading
       const appLoading = document.getElementById('loading-bg')
       if (appLoading) {
@@ -1364,8 +1372,20 @@ const router = new Router({
     })
 
     router.beforeEach((to, from, next) => {
-       if (!to.meta.middleware) {
-         return next()
+
+      const publicPages = [
+          "/pages/login",
+          "/pages/forgot-password",
+          "/pages/error-404",
+          "/pages/error-500",
+          "/pages/register" ,
+          "/callback"
+      ]
+
+      const authRequired = !publicPages.includes(to.path)
+
+      if (!to.meta.middleware && authRequired) {
+        return next('/pages/login')
         }
         const middleware = to.meta.middleware
         const context = {
@@ -1374,12 +1394,12 @@ const router = new Router({
           next,
           store
         }
-       return middleware[0]({
-           ...context,
-           nextMiddleware: middlewarePipeline(context, middleware, 1)
-          })
+
+        return middleware[0]({
+          ...context,
+          nextMiddleware: middlewarePipeline(context, middleware, 1)
+        })
+
       })
-
-
 
 export default router

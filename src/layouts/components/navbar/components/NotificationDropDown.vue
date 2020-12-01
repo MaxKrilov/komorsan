@@ -63,6 +63,7 @@ import VuePerfectScrollbar from 'vue-perfect-scrollbar'
 import {mapGetters, mapActions} from 'vuex'
  import HNavMenuGroup from "../../horizontal-nav-menu/HorizontalNavMenuGroup";
  import HNavMenuItem from "../../horizontal-nav-menu/HorizontalNavMenuItem";
+import firebase from "firebase";
 export default {
   components: {
     VuePerfectScrollbar
@@ -102,8 +103,25 @@ export default {
   },
   methods: { // checking -- all displayed unacknowledged
     ...mapActions( 'cartAlarmNotificationsHeader', ['GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS']),
+    ...mapActions( 'auth', ['logoutGet', 'getStatusAuth']  ),
     async currentlyDisplayAllUnacknowledged () {
 
+    },
+    checkLogin() {
+      this['getStatusAuth']().then(() => {
+      }).catch(() =>{})
+      return true
+    },
+    async logout() {
+
+      // if user is logged in via sessionCookie
+      if (this['logoutGet']()){
+        await this['logoutGet']()
+
+      }
+
+      // logout -> redirect
+      this.$router.push('/pages/login').catch(() => {})
     },
     localizeEventTypeAll(val, time){
       if (val) return localizeEndType.localizeEventType(val)
@@ -154,6 +172,11 @@ export default {
       if (sec) date.setSeconds(date.getSeconds() - sec)
 
       return date
+    }
+  },
+  created () {
+    if(!this.checkLogin()){
+      this.logout()
     }
   },
   async mounted (){

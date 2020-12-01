@@ -391,7 +391,7 @@ export default {
           if(res.status === 200) {
 
             commit('logged_In_Get', true )
-            commit('auth_status', res.data)
+            // commit('auth_status', res.data)
 
           }
           return resolve(res)
@@ -407,7 +407,7 @@ export default {
       const path = '/api/v1/logout';
       axios.get(path, {headers: {"Content-Type": "application/json"}})
         .then((res) => {
-          if(res.status === 200) { // answer: "Logout Ok"   ||  status: "No session"
+          if(res.status === 200) { // answer: "Logout Ok"   ||  status: "Yes session"
 
             // commit('logout_Get', res.data)
             commit('logged_In_Get', false )

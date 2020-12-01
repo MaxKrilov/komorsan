@@ -25,10 +25,10 @@ export default {
 
         return (localStorage.getItem('userInfo') && isAuthenticated)
     },
-    isResponseAuthStatus: '',
+    // isResponseAuthStatus: '',
     isDisplayAuthenticated: '',
     user: {
-      logged_In: false,
+      isLoggedIn: false,
       isSubscribed: false
     }
 }

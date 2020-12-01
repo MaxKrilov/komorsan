@@ -8,8 +8,8 @@
 
 
 export default { // set the display of Name for User
-  // isDisplayAuthenticated:    s =>  s.isResponseDisplayAuthenticated,
-    isResponseAuthenticated:    s =>  s.isResponseAuthStatus,
+  //    isDisplayAuthenticated:    s =>  s.isResponseDisplayAuthenticated,
+  //   isResponseAuthenticated:    s =>  s.isResponseAuthStatus,
     isAuthenticated:    s =>  s.user,
 }
 
