@@ -7,12 +7,14 @@ server {
     index  index.html index.htm;
     #add_header 'Access-Control-Allow-Origin' 'http://${BACKEND_ADDR}:${BACKEND_PORT}'
 
-	location ^~ / {
-	    index  index.html index.htm;
-	    try_files $uri $uri/ @rewrites;
-	}
-    location @rewrites {
-     rewrite ^.*$ /index.html last;
+   location / {
+      try_files $uri $uri/ @fallback;
+    }
+
+    location @fallback {
+      rewrite ^(.*) api/v1$1 break;
+      proxy_set_header "Accept" "text/html";
+      proxy_pass  http://${BACKEND_ADDR}:${BACKEND_PORT};
     }
 
 
