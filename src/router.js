@@ -31,7 +31,7 @@ Vue.use(Router)
 
 
 const router = new Router({
-    mode: 'history',
+    mode: 'history', // "hash" | "history" | "abstract"
     base: process.env.BASE_URL,
     scrollBehavior () {
         return { x: 0, y: 0 }
