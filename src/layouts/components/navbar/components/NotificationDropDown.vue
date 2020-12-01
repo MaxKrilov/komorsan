@@ -61,9 +61,9 @@
 import localizeEndType from './../../../../locales/localizeEventType.js'
 import VuePerfectScrollbar from 'vue-perfect-scrollbar'
 import {mapGetters, mapActions} from 'vuex'
- import HNavMenuGroup from "../../horizontal-nav-menu/HorizontalNavMenuGroup";
- import HNavMenuItem from "../../horizontal-nav-menu/HorizontalNavMenuItem";
-import firebase from "firebase";
+import HNavMenuGroup from "../../horizontal-nav-menu/HorizontalNavMenuGroup";
+import HNavMenuItem from "../../horizontal-nav-menu/HorizontalNavMenuItem";
+
 export default {
   components: {
     VuePerfectScrollbar
