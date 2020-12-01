@@ -14,4 +14,4 @@ services:
     volumes:
       # - /home/max/komorsan_2020/komorsan_web/frontend/:/usr/share/nginx/html
     - ./full-version-back/dist/:/usr/share/nginx/html
-    - ./nginx/conf.d:/etc/nginx/conf.d
+    - ./full-version-back/nginx/conf.d:/etc/nginx/conf.d
