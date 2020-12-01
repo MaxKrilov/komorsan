@@ -63,40 +63,24 @@ export default {
   },
   methods: {
     ...mapActions( 'auth', ['logoutGet', 'getStatusAuth']  ),
+    checkLogin() {
+      this['getStatusAuth']().then(() => {
+      }).catch(() =>{})
+      return true
+    },
     async logout() {
         // if user is logged in via sessionCookie
-        if (this.logoutGet()){
-          await this.logoutGet()
-          // this.isAuthenticated.user['logged_In'] = true
-          // this.$store.getters['auth/isAuthenticated']['logged_In']  = true
-          // this.$store.getters['auth/isAuthenticated']['logged_In'] = true
-          this.$router.push('/pages/login').catch(() => {})
+        if (this['logoutGet']()){
+          await this['logoutGet']()
         }
-
-        // if user is logged in via auth0
-        if (this.$auth.profile) this.$auth.logOut();
-
-        // if user is logged in via firebase
-        const firebaseCurrentUser = firebase.auth().currentUser
-
-        if (firebaseCurrentUser) {
-            firebase.auth().signOut().then(() => {
-                this.$router.push('/pages/login').catch(() => {})
-            })
-        }
-        // If JWT login
-        if(localStorage.getItem("accessToken")) {
-          localStorage.removeItem("accessToken")
-          this.$router.push('/pages/login').catch(() => {})
-        }
-
-        // Change role on logout. Same value as initialRole of acj.js
-        this.$acl.change('admin')
-        localStorage.removeItem('userInfo')
-
-        // This is just for demo Purpose. If user clicks on logout -> redirect
+        // logout -> redirect
         this.$router.push('/pages/login').catch(() => {})
     },
-  }
+  },
+  created () {
+    if(!this.checkLogin()){
+      this.logout()
+    }
+  },
 }
 </script>

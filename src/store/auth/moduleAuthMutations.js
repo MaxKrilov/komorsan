@@ -16,16 +16,16 @@ export default {
   auth_request(state){
     state.status = 'loading'
   },
-  auth_status(state, isResponseAuthStatus){
-    state.isResponseAuthStatus = isResponseAuthStatus
-    state.user.logged_In = true
-  },
+  // auth_status(state, isResponseAuthStatus){
+  //   state.isResponseAuthStatus = isResponseAuthStatus
+  //   state.user.logged_In = true
+  // },
   // logout_Get(state, isLogoutGet){
   //   state.isLogoutGet = isLogoutGet
   //   state.user.logged_In = false
   // },
-  logged_In_Get(state, logged_In){
-    state.user.logged_In = logged_In
+  logged_In_Get(state, loggedIn){
+    state.user.isLoggedIn = loggedIn
   },
 
   auth_success(state, token, user){

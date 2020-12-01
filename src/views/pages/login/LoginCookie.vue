@@ -61,9 +61,9 @@ export default {
     checkLogin() {
       // Loading
       this.$vs.loading()
-      if (this.$store.state.auth.user.logged_In) return
+      if (this.$store.state.auth.user.isLoggedIn) return
 
-      this.getStatusAuth().then(() => {
+      this['getStatusAuth']().then(() => {
         // Close animation if passed as payload
         this.$vs.loading.close()
         this.$vs.notify({
@@ -73,8 +73,8 @@ export default {
           icon: 'icon-alert-circle',
           color: 'primary'
         })
-        let vm = this
-        vm.$router.push('apps/monitoring/list-view')
+
+        this.$router.push('apps/monitoring/list-view')
 
       }).catch(() => // Close animation if passed as payload
         this.$vs.loading.close())
@@ -168,8 +168,6 @@ export default {
     this.checkLogin()
   },
   mounted() {
-
-
   }
 }
 

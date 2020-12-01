@@ -10,14 +10,13 @@ import router from "../router";
 
 export default function guest ({ next, store }){
 
-  if(store.getters['auth/isAuthenticated']['logged_In'] !== false){
-
+  if(store.getters['auth/isAuthenticated']['isLoggedIn'] !== false){
 
     return next({
       name: 'monitoring'
     })
 
-    }
+  }
 
-    return next()
-   }
+  return next()
+}
