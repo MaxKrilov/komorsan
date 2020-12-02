@@ -12,9 +12,9 @@ server {
     }
 
     location @fallback {
-      rewrite ^(.*) api/v1$1 break;
+      rewrite ^(.*) $1 break;
       proxy_set_header "Accept" "text/html";
-      proxy_pass  http://${BACKEND_ADDR}:${BACKEND_PORT};
+
     }
 
 
