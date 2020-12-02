@@ -42,9 +42,11 @@ pipeline {
         failure {
             echo 'Sending mail..'
             mail to: 'a.filippov@antraks.ru',
-                 subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName}",
+                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
                  body: "Something is wrong with ${env.BUILD_URL}"
-            emailext body: "Jenkins Pipeline ${JOB_NAME}: ${currentBuild.currentResult}", subject: currentBuild.currentResult, to: 'a.filippov@antraks.ru'
+            mail to: 'm.krylov@antraks.ru',
+                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Something is wrong with ${env.BUILD_URL}"
         }
     }
 }
