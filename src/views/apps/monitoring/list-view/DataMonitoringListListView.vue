@@ -7,6 +7,7 @@
 ========================================================================================== -->
 
 <template>
+
   <div id="data-list-list-view" class="data-list-container">
 
     <data-view-sidebar :isSidebarActive="addNewDataSidebar" @closeSidebar="toggleDataSidebar" :data="sidebarData" />
@@ -106,16 +107,22 @@
           </tbody>
         </template>
     </vs-table>
+
+    <leaflet-map></leaflet-map>
   </div>
+
+
 </template>
 
 <script>
 import DataViewSidebar from '../DataMonitoringViewSidebar.vue'
 import {mapActions} from "vuex";
+import LeafletMap from './../../../../views/charts-and-maps/maps/leaflet-map/LeafletMap.vue'
 
 export default {
   components: {
-    DataViewSidebar
+    DataViewSidebar,
+    'leafletMap' : LeafletMap
   },
   data() {
     return {

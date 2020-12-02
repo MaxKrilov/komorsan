@@ -25,14 +25,13 @@
 
 
 
-<!--  import { mapState, mapMutations, mapActions } from 'vuex';-->
 
 
 <template>
-  <div class="home" :style="gridStyle">
-<!--    <nav-bar :styleObj="leftStyle" />-->
-    <l-map :styleObj="rightStyle" />
+  <div>                      <!--    :style="gridStyle"-->
+    <l-map/>                 <!--    :styleObj="rightStyle"-->
   </div>
+
 </template>
 
 <script>
