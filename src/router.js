@@ -82,23 +82,23 @@ const router = new Router({
         // =============================================================================
         // Application Routes
         // =============================================================================
-        //         {
-        //           path: '/apps/monitoring/monitoring-list',
-        //           name: 'app-monitoring-list',
-        //           component: () => import('@/views/apps/monitoring/monitoring-list/MonitoringList.vue'),
-        //           meta: {
-        //             middleware: [
-        //               authLogged
-        //             ],
-        //             breadcrumb: [
-        //               { title: 'Home', url: '/' },
-        //               { title: 'Devices' },
-        //               { title: 'List', active: true },
-        //             ],
-        //             pageTitle: 'Monitoring List',
-        //             rule: 'editor'
-        //           },
-        //         },
+                {
+                  path: '/apps/monitoring/monitoring-list',
+                  name: 'app-monitoring-list',
+                  component: () => import('@/views/apps/monitoring/monitoring-list/MonitoringList.vue'),
+                  meta: {
+                    middleware: [
+                      authLogged
+                    ],
+                    breadcrumb: [
+                      { title: 'Home', url: '/' },
+                      { title: 'Devices' },
+                      { title: 'List', active: true },
+                    ],
+                    pageTitle: 'Monitoring List',
+                    rule: 'editor'
+                  },
+                },
                 {
                   path: '/apps/monitoring/list-view',
                   name: 'monitoring',
