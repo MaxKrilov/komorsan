@@ -9,7 +9,7 @@
 <template>
 
   <div id="data-list-list-view" class="data-list-container">
-
+    <div class="vx-card p-6">
     <data-view-sidebar :isSidebarActive="addNewDataSidebar" @closeSidebar="toggleDataSidebar" :data="sidebarData" />
 
     <vs-table ref="table" multiple v-model="selected" pagination :max-items="itemsPerPage" search :data="deviceIcons">
@@ -50,13 +50,15 @@
         </vs-dropdown>
       </div>
 
-      <template slot="thead">
+      <template  slot="thead">
+
         <vs-th></vs-th>
         <vs-th sort-key="date_time">ВРЕМЯ СОБЫТИЯ</vs-th>
         <vs-th sort-key="device_name">УСТРОЙСТВО</vs-th>
         <vs-th sort-key="coords">ЛОКАЦИЯ</vs-th>
         <vs-th sort-key="is_online">СОБЫТИЕ</vs-th>
         <vs-th></vs-th>
+
       </template>
 
         <template slot-scope="{data}">
@@ -109,6 +111,7 @@
     </vs-table>
 
     <leaflet-map></leaflet-map>
+    </div>
   </div>
 
 
@@ -203,8 +206,8 @@ export default {
 
   },
   mounted() {
-    this.fetchDataListItems()
-    // this.$store.dispatch("dataList/fetchDataListItems")
+    this['fetchDataListItems']( /* this.$store.dispatch("dataList/fetchDataListItems")*/)
+
     this.isMounted = true;
   }
 }
@@ -224,6 +227,10 @@ export default {
 
 }
 #data-list-list-view {
+  .vs-con-tbody .vs-table--tbody{
+    height: 15rem;
+  }
+
   font-weight: 500;
   color: #000c;
   .vs-con-table {
@@ -261,7 +268,16 @@ export default {
         }
       }
     }
-
+    @media screen and (max-height: 15px) {
+      tr {
+        height: calc(var(--vh, 4vh) * 10 - 3rem);
+      }
+    }
+    @media (min-width: 689px) {
+      tr {
+        height: calc(var(--vh, 4vh) * 10 - 3rem);
+      }
+    }
     .device-time {
       max-width: 23rem;
     }
@@ -329,9 +345,9 @@ export default {
       }
     }
 
+
     .vs-table--thead{
       background: rgba(var(--vs-primary), .85);
-      height: 5vh;
       th {
         padding-top: 0;
         padding-bottom: 0;

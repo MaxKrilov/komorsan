@@ -10,14 +10,14 @@
 
   <div id="page-monitoring-list">
 
-<!--    <vx-card ref="filterCard" title="Filters" class="user-list-filters mb-8" actionButtons @refresh="resetColFilters" @remove="resetColFilters">-->
-<!--      <div class="vx-row">-->
-<!--        <div class="vx-col md:w-1/4 sm:w-1/2 w-full">-->
-<!--          <label class="text-sm opacity-75">Status of Device</label>-->
-<!--          <v-select :options="statusDevicesOptions" :clearable="false" :dir="$vs.rtl ? 'rtl' : 'ltr'" v-model="statusDevicesFilter" class="mb-4 md:mb-0" />-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </vx-card>-->
+    <vx-card ref="filterCard" title="Filters" class="user-list-filters mb-8" actionButtons @refresh="resetColFilters" @remove="resetColFilters">
+      <div class="vx-row">
+        <div class="vx-col md:w-1/4 sm:w-1/2 w-full">
+          <label class="text-sm opacity-75">Status of Device</label>
+          <v-select :options="statusDevicesOptions" :clearable="false" :dir="$vs.rtl ? 'rtl' : 'ltr'" v-model="statusDevicesFilter" class="mb-4 md:mb-0" />
+        </div>
+      </div>
+    </vx-card>
 
     <div class="vx-card p-6">
 
