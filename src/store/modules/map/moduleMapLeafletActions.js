@@ -6,7 +6,7 @@
   Author: Krylov
 ==========================================================================================*/
 
-import axios from "../../axios.js"
+import axios from "../../../axios.js"
 const moduleMapLeafletActions = {
   GET_MAP_INSTANCE ({ commit, payload }) {
     commit('SET_MAP_INSTANCE', payload)

@@ -89,11 +89,28 @@
     methods: {
        ...mapActions( 'cartSettingsHeader', ['GET_DATA_BASE_ALL_INSTANCE', 'GET_STATUS_AUTH', 'SET_CURRENT_USER_DATABASE']  ),
        // ...mapActions( 'cartAlarmNotificationsHeader', ['GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS']  ),
+      ...mapActions( 'auth', ['logoutGet', 'getStatusAuth']  ),
+      checkLogin() {
+        this['getStatusAuth']().then(() => {
+        }).catch(() =>{})
+        return true
+      },
+      async logout() {
+
+        // if user is logged in via sessionCookie
+        if (this['logoutGet']()){
+          await this['logoutGet']()
+
+        }
+
+        // logout -> redirect
+        this.$router.push('/pages/login').catch(() => {})
+      },
 
 
-      async getCurrentlySelectedBase (itemBaseCurrent) {  // get the currently selected base
+      async getCurrentlySelectedBase (itemBaseCurrent  /* get the currently selected base */  ) {
 
-        this.SET_CURRENT_USER_DATABASE(itemBaseCurrent) // await this.GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS()
+        this['SET_CURRENT_USER_DATABASE'](itemBaseCurrent) /* await this.GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS()*/
         return await this.$store.dispatch('cartAlarmNotificationsHeader/GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS')
       },
       setCurrentlySelected(id) {
@@ -104,10 +121,14 @@
         }
       },
   },
-    async mounted (){
-      await this.GET_DATA_BASE_ALL_INSTANCE()
-      await this.GET_STATUS_AUTH()
-      // this.$store.dispatch('GET_DATA_BASE_ALL_INSTANCE')
+     mounted (){
+      if(!this.checkLogin()){
+        this.logout()
+      } else {
+
+        this.GET_DATA_BASE_ALL_INSTANCE( /* get the currently this.$store.dispatch('GET_DATA_BASE_ALL_INSTANCE') */)
+        this.GET_STATUS_AUTH()
+      }
     }
   }
 
