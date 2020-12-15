@@ -16,58 +16,49 @@ import mutations from "./mutations"
 import actions from "./actions"
 
 Vue.use(Vuex)
-// export const strict = false
+/*   export const strict = false    */
 // import moduleEventsManagement from './events/moduleEventsManagement.js'
-// import moduleDataList from './modules/data-list/moduleDataList.js'
-// import moduleMapLeaflet from './modules/map/moduleMapLeaflet.js'
-// import moduleListDevices from './modules/frameListDevices/moduleListDevices.js'
-// import moduleAuth from './modules/auth/moduleAuth.js'
-// import moduleSettingsHeader from './modules/cart-settings-header/moduleSettingsHeader.js'
-// import moduleAlarmHeader from './modules/cart-alarm -notifications-header/moduleAlarmHeader.js'
-// import mod from './modules/index.js'
-// const requireContext = mod
+import moduleDataList from './data-list/moduleDataList.js'
+import moduleMapLeaflet from './map/moduleMapLeaflet.js'
+import moduleListDevices from './frameListDevices/moduleListDevices.js'
+import moduleAuth from './auth/moduleAuth.js'
+import moduleSettingsHeader from './cart-settings-header/moduleSettingsHeader.js'
+import moduleAlarmHeader from './cart-alarm -notifications-header/moduleAlarmHeader.js'
 
-const mod = {
 
-  auth: 'moduleAuth',
 
-}
 
-const modules = requireContext.keys()
-// const modules = Object.keys(mod)
-  .map(file => {
-    console.log('---file');
-    console.log(require.context('./modules', true, /.*\.js$/).keys());
-    console.log('--file');
-    console.log('---file');
-    console.log(Object.keys(mod));
-    console.log('--file');
-    // return ['moduleAuth', require.context('./modules', true, /.*\.js$/) ]
-    [file.replace(/(^.\/)|(\.js$)/g, ''), requireContext(file)]
-  })
-  .reduce((modules, [name, module]) => {
+/*
+    ==== there is a problem using ===
 
-    if (module.namespaced === undefined) {
-      module.namespaced = true
-    }
+    const modules = requireContext.keys()
+      .map(file => {
+        [file.replace(/(^.\/)|(\.js$)/g, ''), requireContext(file)]
+      })
+      .reduce((modules, [name, module]) => {
 
-    return { ...modules, [name]: module }
-  }, {})
+        if (module.namespaced === undefined) {
+          module.namespaced = true
+        }
+
+        return { ...modules, [name]: module }
+      }, {})
+*/
 
 export default new Vuex.Store({
   getters,
   mutations,
   state,
   actions,
-  modules
-  // modules: {
-  //   // events: moduleEventsManagement,
-  //   map: moduleMapLeaflet,
-  //   frameListDevices: moduleListDevices,
-  //   auth: moduleAuth,
-  //   cartSettingsHeader: moduleSettingsHeader,
-  //   cartAlarmNotificationsHeader: moduleAlarmHeader,
-  //   dataList: moduleDataList, // test -- add in repo
-  // },
+  // modules
+  modules: {
+    // events: moduleEventsManagement,
+    map: moduleMapLeaflet,
+    frameListDevices: moduleListDevices,
+    auth: moduleAuth,
+    cartSettingsHeader: moduleSettingsHeader,
+    cartAlarmNotificationsHeader: moduleAlarmHeader,
+    dataList: moduleDataList,
+  },
   // strict: process.env.NODE_ENV !== 'production'
 })

@@ -12,7 +12,7 @@ import jwt from "../../http/requests/auth/jwt/index.js"
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import router from '@/router'
-import axios from "../../../axios";
+import axios from "../../axios";
 
 export default {
     loginAttempt({ dispatch }, payload) {

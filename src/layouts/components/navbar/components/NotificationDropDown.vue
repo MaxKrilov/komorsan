@@ -103,26 +103,7 @@ export default {
   },
   methods: { // checking -- all displayed unacknowledged
     ...mapActions( 'cartAlarmNotificationsHeader', ['GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS']),
-    ...mapActions( 'auth', ['logoutGet', 'getStatusAuth']  ),
-    async currentlyDisplayAllUnacknowledged () {
 
-    },
-    checkLogin() {
-      this['getStatusAuth']().then(() => {
-      }).catch(() =>{})
-      return true
-    },
-    async logout() {
-
-      // if user is logged in via sessionCookie
-      if (this['logoutGet']()){
-        await this['logoutGet']()
-
-      }
-
-      // logout -> redirect
-      this.$router.push('/pages/login').catch(() => {})
-    },
     localizeEventTypeAll(val, time){
       if (val) return localizeEndType.localizeEventType(val)
       else if (time) return localizeEndType.changeLanguageTimeOption2(time).replace('<br>', ' ')
@@ -174,11 +155,7 @@ export default {
       return date
     }
   },
-  created () {
-    if(!this.checkLogin()){
-      this.logout()
-    }
-  },
+
   async mounted (){
     await this.GET_ALL_DISPLAY_UNACKNOWLEDGED_EVENTS()
   }

@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import BuyNow from '../../components/BuyNow.vue'
+// import BuyNow from '../../components/BuyNow.vue'
 import Logo                 from "./Logo.vue"
 
 

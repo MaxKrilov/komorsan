@@ -29,6 +29,7 @@ export default function authLogged ({ to, from, next, store, nextMiddleware }){
   }
 
   if(store.getters['auth/isAuthenticated']['isLoggedIn'] === false){
+    /*  if ( store.dispatch('auth/getStatusAuth', null, {root:true})) */
     guard(to, from, next)
 
  }
