@@ -10,9 +10,10 @@
 
   <div id="data-list-list-view" class="data-list-container">
     <div class="vx-card p-6">
-    <data-view-sidebar :isSidebarActive="addNewDataSidebar" @closeSidebar="toggleDataSidebar" :data="sidebarData" />
+    <data-view-sidebar :isSidebarActive="addNewDataSidebar"   @closeSidebar="toggleDataSidebar" :data="sidebarData" />
 
-    <vs-table ref="table" multiple v-model="selected" pagination :max-items="itemsPerPage" search :data="deviceIcons">
+    <vs-table @selected="mouseSelected"  ref="table" multiple v-model="selected" pagination :max-items="itemsPerPage" search :data="deviceIcons">
+
 
       <div slot="header" class="flex flex-wrap-reverse items-center flex-grow justify-between">
 
@@ -63,7 +64,12 @@
 
         <template slot-scope="{data}">
           <tbody>
-            <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
+            <vs-tr
+              :data="tr"
+              :key="indextr"
+              :indextr="indextr"
+              v-for="(tr, indextr) in data"
+            >
               <vs-td>
                 <p class="device-time font-medium truncate">{{ tr.id }}</p>
               </vs-td>
@@ -120,12 +126,14 @@
 <script>
 import DataViewSidebar from '../DataMonitoringViewSidebar.vue'
 import {mapActions} from "vuex";
-import LeafletMap from './../../../../views/charts-and-maps/maps/leaflet-map/LeafletMap.vue'
-
+// import LeafletMap from './../../../../views/charts-and-maps/maps/leaflet-map/LeafletMap.vue'
+import Map from '@/views/charts-and-maps/maps/leaflet-map/map/Map.vue'
 export default {
   components: {
     DataViewSidebar,
-    'leafletMap' : LeafletMap
+    // 'leafletMap' : LeafletMap,
+    'leafletMap' : Map,
+
   },
   data() {
     return {
@@ -159,6 +167,18 @@ export default {
     ...mapActions('dataList', [
       'fetchDataListItems'
     ]),
+    mouseSelected(ind){
+      // this.$emit('mouse-selected', ind.id)
+      console.log('---error');
+      console.log(ind.id);
+      console.log('---error');
+    },
+    // mouseOver: function(index){
+    //    // this.$emit('mouse-over-index-tr', index)
+    //  },
+    // mouseLeave: function(index){
+    //   // this.$emit('mouse-leave-index-tr', index)
+    // },
     getImgUrl(val) {
       const generateImg = colorDevice => {
         if (colorDevice === "C") return 'ИКЗ-С'

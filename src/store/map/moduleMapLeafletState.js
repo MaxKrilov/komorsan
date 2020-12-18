@@ -8,6 +8,6 @@
 
 export default {
   mapInstance        : null,
-  fetchingLocations  : '',
+  fetchingLocations  : [],
   locations          : [],
 }

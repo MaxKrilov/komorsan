@@ -19,7 +19,7 @@ const moduleMapLeafletActions = {
           .then((locations) => {
             if (locations.status === 200) {
               commit('SET_LOCATIONS', locations.data)
-              commit('SET_FETCHING_LOCATIONS', null)
+              // commit('SET_FETCHING_LOCATIONS', null)
             }
             return resolve(locations.data)
           })
@@ -31,7 +31,7 @@ const moduleMapLeafletActions = {
       return newPromise
     }
   },
-  FETCHING_DEFAULT ({ dispatch, commit, state }) {
+  FETCHING_DEFAULT ({ dispatch, commit, state}) {
     if (state.fetchingLocations) {
       return state.fetchingLocations
     }

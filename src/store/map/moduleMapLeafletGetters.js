@@ -8,10 +8,7 @@
 
 
 export default {
-  locationAll (state, locations) {
-    // console.log('----- GETTER');
-    // console.log(state.locations);
-    // console.log('----  GETTER');
+  locationAll (state) {
     return state.locations
   },
   getStatusAuthorization: s => s.isResponseAuthStatus,
