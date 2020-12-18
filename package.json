@@ -115,10 +115,5 @@
       "**/*.{js,vue}",
       "!**/node_modules/**"
     ]
-  },
-  "eslintConfig": {
-    "rules": {
-      "no-console": "off"
-    }
   }
 }
