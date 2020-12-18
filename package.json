@@ -9,7 +9,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@babel/core": "^7.12.10",
     "@chenfengyuan/vue-countdown": "^1.1.5",
     "ag-grid-community": "^21.2.2",
     "ag-grid-vue": "^21.2.2",
@@ -72,6 +71,7 @@
     "xlsx": "^0.15.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
     "@babel/helper-create-regexp-features-plugin": "^7.10.4",
     "@babel/plugin-transform-named-capturing-groups-regex": "^7.10.4",
     "@babel/plugin-transform-regenerator": "^7.10.4",
