@@ -17,7 +17,7 @@
 import themeConfig from '@/../themeConfig.js'
 import jwt         from "@/http/requests/auth/jwt/index.js"
 
-
+import {mapActions} from 'vuex'
 
 export default {
   data() {
@@ -34,6 +34,23 @@ export default {
     }
   },
   methods: {
+    ...mapActions( 'auth', ['logoutGet', 'getStatusAuth']  ),
+    checkLogin() {
+      this['getStatusAuth']().then(() => {
+      }).catch(() =>{})
+      return true
+    },
+    async logout() {
+
+      // if user is logged in via sessionCookie
+      if (this['logoutGet']()){
+        await this['logoutGet']()
+
+      }
+
+      // logout -> redirect
+      this.$router.push('/pages/login').catch(() => {})
+    },
     toggleClassInBody(className) {
       if (className == 'dark') {
         if (document.body.className.match('theme-semi-dark')) document.body.classList.remove('theme-semi-dark')
@@ -70,7 +87,9 @@ export default {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   },
   async created() {
-
+    if(!this.checkLogin()){
+      await this.logout()
+    }
     // jwt
     jwt.init()
 

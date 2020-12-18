@@ -11,25 +11,27 @@ const moduleMapLeafletActions = {
   GET_MAP_INSTANCE ({ commit, payload }) {
     commit('SET_MAP_INSTANCE', payload)
   },
-  FETCH_LOCATIONS({commit}) {
-    const newPromise = new Promise((resolve, reject) => {
-      const path = '/api/v1/graph_nodes';
-      axios.get(path, {headers: {"Content-Type": "application/json"}})
-        .then((locations) => {
-          if(locations.status === 200) {
-            commit('SET_LOCATIONS', locations.data)
-            commit('SET_FETCHING_LOCATIONS', null)
-          }
-          return resolve()
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    })
-    commit('SET_FETCHING_LOCATIONS', newPromise)
-    return newPromise
+  FETCH_LOCATIONS({commit, dispatch}) {
+    if ( dispatch('auth/getStatusAuth', null, {root:true}) ){
+      const newPromise = new Promise((resolve, reject) => {
+        const path = '/api/v1/graph_nodes';
+        axios.get(path, {headers: {"Content-Type": "application/json"}})
+          .then((locations) => {
+            if (locations.status === 200) {
+              commit('SET_LOCATIONS', locations.data)
+              // commit('SET_FETCHING_LOCATIONS', null)
+            }
+            return resolve(locations.data)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
+      commit('SET_FETCHING_LOCATIONS', newPromise)
+      return newPromise
+    }
   },
-  FETCHING_DEFAULT ({ dispatch, commit, state }) {
+  FETCHING_DEFAULT ({ dispatch, commit, state}) {
     if (state.fetchingLocations) {
       return state.fetchingLocations
     }

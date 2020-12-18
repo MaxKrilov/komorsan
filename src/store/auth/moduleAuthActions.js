@@ -390,12 +390,14 @@ export default {
         .then((res) => {
           if(res.status === 200) {
 
-            commit('logged_In_Get', true )
+
             // commit('auth_status', res.data)
 
           }
-          return resolve(res)
-        })
+          return resolve(true)
+        }) .then((resp) => {
+        commit('logged_In_Get', resp)
+      })
         .catch((error) => {
           reject(error)
         })

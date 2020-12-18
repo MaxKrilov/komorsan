@@ -10,12 +10,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-// Vuesax Component Framework
-import Vuesax from 'vuesax'
-import 'material-icons/iconfont/material-icons.css' //Material Icons
-import 'vuesax/dist/vuesax.css'; // Vuesax
-import VueSessionStorage from 'vue-sessionstorage'
-import { L } from 'vue2-leaflet';
+
+
+// import { L } from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 
@@ -27,6 +24,13 @@ Icon.Default.mergeOptions({
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
+
+// Vuesax Component Framework
+import Vuesax from 'vuesax'
+import 'material-icons/iconfont/material-icons.css' //Material Icons
+import 'vuesax/dist/vuesax.css'; // Vuesax
+import VueSessionStorage from 'vue-sessionstorage'
+
 
 
 Vue.use(VueSessionStorage)

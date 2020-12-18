@@ -28,7 +28,7 @@
 
   import deviceIcon from '../../../../render-Ui/map-leaflet/main.js'
 
-  // import moduleMapLeaflet from '../../../../store/map/moduleMapLeaflet.js'
+  // import moduleMapLeaflet from '../../../../store/map/moduleMapLeaflet.js'...mapActions( ['map/FETCHING_DEFAULT']),
   // import store from '../../../../store/store.js'
   // store.registerModule('mapModule', moduleMapLeaflet)
   export default {
@@ -107,10 +107,10 @@
           {id: 'mapbox.streets', attribution: mbAttr}
         );
         // подключаем слой карты mapbox.satellite
-                let mapboxSatellite = L.tileLayer(
-                  'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
-                  {id: 'mapbox.satellite', attribution: mbAttr}
-                );
+        let mapboxSatellite = L.tileLayer(
+          'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
+          {id: 'mapbox.satellite', attribution: mbAttr}
+        );
         // подключаем слой карты mapbox.light
         var mapboxLight = L.tileLayer(
           'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
@@ -192,10 +192,10 @@
 
       },
       renderMarkers (loc, devType){
-        const checkDevTypeForSvg = () => {
-          if (devType === 2593 || devType === 2593) return createDeviceIconOnMap_2593()
-          else return createDeviceIconOnMapIKZ()
-        }
+        // const checkDevTypeForSvg = () => {
+        //   if (devType === 2593 || devType === 2593) return createDeviceIconOnMap_2593()
+        //   else return createDeviceIconOnMapIKZ()
+        // }
         // добавляем иконку в слой devices
         const marker = L.marker([
           loc.graph_node_describe.gps_lat,
@@ -205,7 +205,7 @@
             // className: 'ship-div-icon ' + 'map__' + loc.uuid,
             className: 'ship-div-icon',
             iconAnchor: [15, 15],
-            html: deviceIcon.createDeviceIconOnMap(loc, devType).outerHTML
+            html: deviceIcon.createDeviceIconOnMap(loc, devType)
           }),
           title: "localeNameOfDevice " + ': ' + loc.device_name.String,
           zIndexOffset: 30000,
