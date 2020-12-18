@@ -6,7 +6,6 @@
 	Author : krylov
 ==========================================================================================*/
 
-import router from "../router";
 
 export default function guest ({ next, store }){
 

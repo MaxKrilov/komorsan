@@ -22,10 +22,10 @@ import Router from 'vue-router'
 import guest from './middleware/guest'
 import authLogged  from './middleware/auth'
 import middlewarePipeline from './middlewarePipeline'
-import firebase from 'firebase/app'
+// import firebase from 'firebase/app'
 import 'firebase/auth'
 import store from "./store/store.js"
-import axios from "./axios";
+// import axios from "./axios";
 Vue.use(Router)
 
 

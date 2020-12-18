@@ -71,7 +71,7 @@
     },
     mounted () {
       this.$store.dispatch('map/FETCHING_DEFAULT')
-        .then(res => {
+        .then(() => {
         })
     }
   }
