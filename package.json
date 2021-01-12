@@ -19,7 +19,6 @@
     "chart.js": "^2.9.3",
     "core-js": "^3.8.1",
     "echarts": "^4.8.0",
-    "eslint-loader": "^4.0.2",
     "file-saver": "^2.0.1",
     "firebase": "^8.1.2",
     "instantsearch.css": "^7.4.2",
@@ -95,7 +94,8 @@
     "tailwindcss": "^1.0.1",
     "vue-jest": "^3.0.7",
     "vue-template-compiler": "^2.6.10",
-    "vue-test-utils": "^1.0.0-beta.11"
+    "vue-test-utils": "^1.0.0-beta.11",
+    "eslint-loader": "^4.0.2"
   },
   "jest": {
     "moduleFileExtensions": [
