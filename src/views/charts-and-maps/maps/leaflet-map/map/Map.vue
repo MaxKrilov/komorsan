@@ -11,7 +11,7 @@
   <div>
     <l-map
       :locations="locations"
-
+      :polyline="polyline"
     > </l-map>
   </div>
 </template>
@@ -19,6 +19,7 @@
 <script>
 
   import MapLeaflet from './MapLeaflet.vue'
+  import {mapActions} from "vuex";
   export default {
     name: 'leafletMap',
     components: {
@@ -26,19 +27,33 @@
     },
     data () {
       return {
-        locations : []
+        locations : [],
+        polyline  : [],
       }
     },
     methods: {
+      ...mapActions( ['map/FETCH_POLYLINE']),
     },
     computed: {
 
     },
     mounted () {
+
       this.$store.dispatch('map/FETCH_LOCATIONS')
-        .then((res)=> {
-          this.locations = res
+        .then((locations)=> {
+          if (locations) this.locations = locations
+
         })
+
+      this['map/FETCH_POLYLINE']()
+        .then((polyline)=> {
+          if (polyline) {
+            this.polyline = polyline
+            // console.log('-1-FETCH_POLYLINE');
+            // console.log(this.polyline)
+            // console.log('-1-FETCH_POLYLINE');
+          }
+      })
     }
   }
 </script>

@@ -5,8 +5,7 @@
   Item Name: Vuejs, HTML Template
   Author: Krylov
 ==========================================================================================*/
-import Vue from 'vue'
-// import { SET_MAP_INSTANCE } from '../name_mutation.js'
+
 // export default
 const moduleMapLeafletMutations = {
   // Instance
@@ -29,6 +28,9 @@ SET_MAP_INSTANCE (state, mapInstance) {
     // })
     // index === -1 ? state.locations.push(locations) :  Vue.set(state.locations, index, locations);
     // Vue.set(state.locations, index, locations)
+  },
+  SET_POLYLINE: (state, polyline) => {
+    state.polyline = polyline
   },
 }
 export default moduleMapLeafletMutations

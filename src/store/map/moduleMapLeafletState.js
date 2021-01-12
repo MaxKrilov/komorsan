@@ -10,4 +10,5 @@ export default {
   mapInstance        : null,
   fetchingLocations  : [],
   locations          : [],
+  polyline           : [],
 }

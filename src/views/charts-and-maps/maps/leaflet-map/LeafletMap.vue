@@ -29,7 +29,7 @@
 
 <template>
   <div>                      <!--    :style="gridStyle"-->
-    <l-map/>                 <!--    :styleObj="rightStyle"-->
+    <l-map :polyline="polyline"/>                 <!--    :styleObj="rightStyle"-->
   </div>
 
 </template>
@@ -61,17 +61,26 @@
         rightStyle: {
           gridArea: '1 / 2 / 1 / 2'
         },
+        polyline  : [],
       }
     },
     methods: {
       ...mapActions( ['map/FETCHING_DEFAULT']),
+      ...mapActions( ['map/FETCH_POLYLINE']),
     },
     computed: {
       ...mapGetters( ['map/locationAll']),
     },
     mounted () {
+
       this.$store.dispatch('map/FETCHING_DEFAULT')
         .then(() => {
+        })
+      this['map/FETCH_POLYLINE']()
+        .then((polyline)=> {
+          if (polyline) {
+            this.polyline = polyline
+          }
         })
     }
   }

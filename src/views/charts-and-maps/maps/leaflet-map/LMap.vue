@@ -8,7 +8,7 @@
 
 <template>
   <div :style="styleObj" class="rel">
-    <div ref="mapContainer" :style="mapStyle" class="l-map"></div>
+    <div ref="mapContainer" id="map" :style="mapStyle" class="l-map"></div>
 
 <!--    <v-map  :zoom="zoom" :center="center">-->
 <!--      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>-->
@@ -27,16 +27,27 @@
   import L from 'leaflet'
 
   import deviceIcon from '../../../../render-Ui/map-leaflet/main.js'
+  // import {Polyline} from "leaflet/src/layer/vector/Polyline";
+  import {vertexPolyline} from "./map/VertexPolyline/VertexPolyline";
 
   // import moduleMapLeaflet from '../../../../store/map/moduleMapLeaflet.js'...mapActions( ['map/FETCHING_DEFAULT']),
   // import store from '../../../../store/store.js'
   // store.registerModule('mapModule', moduleMapLeaflet)
+
+  let substations = L.layerGroup();
+  let consumers = L.layerGroup();
+  let lines = L.layerGroup();
+  let linesDamaged = L.layerGroup();
+
   export default {
     name: 'LMap',
     props: {
       styleObj: {
         type: Object,
-      }
+      },
+      polyline: {
+        type: Array,
+      },
     },
     data () {
       return {
@@ -139,10 +150,6 @@
           }
         );
         // let devices = L.layerGroup();
-        let substations = L.layerGroup();
-        let consumers = L.layerGroup();
-        let lines = L.layerGroup();
-        let linesDamaged = L.layerGroup();
 
 
         var baseLayers = {
@@ -184,6 +191,118 @@
         // })
         //
         // map.addLayer(mapLayer)
+
+        console.log('---error');
+        console.log(lines);
+        console.log('---error');
+
+        // let container = L.DomUtil.get(this.$refs.mapContainer)
+        if (lines) {
+          for (const line of this.polyline) {
+
+            // let lines = new L.FeatureGroup().addTo(container)
+            // var lines = L.layerGroup();
+
+            let polyline =  L.polyline(line['graph_edge_describe'].coordinates, {
+              color: 'green',
+              weight: 2,
+              smoothFactor: 3
+            })
+              .addTo(lines);
+            console.log(polyline)
+            // var Vertex = L.Polyline.extend({
+           //  L.VertexPolyline = L.Polyline.extend({
+           //
+           //    options: {
+           //      clickable: false,
+           //      opacity: 0
+           //    },
+           //
+           //    __onAdd: L.Polyline.prototype.onAdd,
+           //
+           //    onAdd: function (map) {
+           //      this.__onAdd.call(this, map)
+           //      map.on('moveend', this.addVertices.bind(this));
+           //    },
+           //
+           //    __onRemove: L.Polyline.prototype.onRemove,
+           //
+           //    onRemove: function (map) {
+           //      this.__onRemove.call(this, map)
+           //      map.off('moveend', this.addVertices)
+           //    },
+           //
+           //    addVertices: function () {
+           //
+           //      if (this._vertices) this._path.parentElement.removeChild(this._vertices)
+           //
+           //      setTimeout(function () {
+           //
+           //        // SVG namespace needed when creating elements
+           //        var namespace = 'http://www.w3.org/2000/svg'
+           //
+           //        // Create SVG group to contain vertices
+           //        this._vertices = document.createElementNS(namespace, 'g')
+           //
+           //        // Append group to container
+           //        this._path.parentElement.appendChild(this._vertices)
+           //
+           //        // Get segments of path element
+           //        var list = this._parts[0];
+           //
+           //        console.log(list);
+           //
+           //        // Iterate segments
+           //        for (var i = 0; i < list.length; i++) {
+           //
+           //          // Create SVG rectangle element
+           //          let rectangle = document.createElementNS(namespace, 'rect')
+           //
+           //          // Set rectangle size attributes
+           //          rectangle.setAttributeNS(null, 'height', this.options.weight)
+           //          rectangle.setAttributeNS(null, 'width', this.options.weight)
+           //
+           //          // Set position attributes, compensate for size
+           //          rectangle.setAttributeNS(null, 'x', list[i].x - this.options.weight / 2)
+           //          rectangle.setAttributeNS(null, 'y', list[i].y - this.options.weight / 2)
+           //
+           //          // Set rectangle color
+           //          rectangle.setAttributeNS(null, 'fill', this.options.color)
+           //
+           //          // Append rectangle to group element
+           //          this._vertices.appendChild(rectangle)
+           //        }
+           //      }.bind(this), 0)
+           //    }
+           //  })
+           //  //  function vertex(latlngs, options) {
+           //  //   return new Vertex(latlngs, options);
+           //  // }
+           //
+           // var vertexPolyline = function (latlngs, options) {
+           //    return new L.VertexPolyline(latlngs, options);
+           //  }
+            // let container = L.DomUtil.get(this.$refs.mapContainer)
+            // let vertex = new L.FeatureGroup().addTo(container)
+            // for (let line in this.polyline) {
+            // new Vertex(line.graph_edge_describe.coordinates, {
+            //   'color': "#fff"
+            // })
+              // .addTo(lines)
+
+            vertexPolyline(line.graph_edge_describe.coordinates, {
+              'color': "#fff"
+            })
+              .addTo(lines)
+              // new L.VertexPolyline(line.graph_edge_describe.coordinates, {
+              //   'color': "#fff"
+              // })
+              //   .addTo(lines)
+            // }
+          }
+        }
+
+
         return map
       },
       renderMap () {
@@ -192,6 +311,7 @@
 
       },
       renderMarkers (loc, devType){
+
         // const checkDevTypeForSvg = () => {
         //   if (devType === 2593 || devType === 2593) return createDeviceIconOnMap_2593()
         //   else return createDeviceIconOnMapIKZ()
@@ -228,7 +348,9 @@
         }
       },
       addMarkers () {
+
         if (this.mapInstance) {
+
           for (const loc of this.locations) {
             if (loc['graph_node_describe'].gps_lat && loc['graph_node_describe'].gps_lng) {
               if (loc['graph_node_type'] === 1) {
@@ -276,8 +398,9 @@
         }
       }
     },
-    async mounted () {
+    mounted () {
       this.renderMap()
+
 
     },
     beforeDestroy () {
@@ -296,7 +419,8 @@
     },
     created () {
       // this.fixBug()
-    }
+    },
+
   }
 </script>
 

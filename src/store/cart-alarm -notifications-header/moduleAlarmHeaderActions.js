@@ -16,7 +16,6 @@ export default {
        let  data  =  await axios.get(path, {headers: {"Content-Type": "application/json"}})
        commit('SET_DISPLAY_UNACKNOWLEDGED_EVENTS', data.data)
      }
-
   },
 }
 

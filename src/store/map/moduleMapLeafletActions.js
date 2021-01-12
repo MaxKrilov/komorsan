@@ -39,6 +39,22 @@ const moduleMapLeafletActions = {
       commit('SET_FETCHING_LOCATIONS', res)
     })
   },
+  FETCH_POLYLINE: async ({commit}) => {
+    const newPromise = new Promise((resolve, reject) => {
+      const path = '/api/v1/graph_edges';
+      axios.get(path, {headers: {"Content-Type": "application/json"}})
+        .then((polyline) => {
+          if (polyline.status === 200) {
+            commit('SET_POLYLINE', polyline.data)
+          }
+          return resolve(polyline.data)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+    return newPromise
+  },
 }
 
 
