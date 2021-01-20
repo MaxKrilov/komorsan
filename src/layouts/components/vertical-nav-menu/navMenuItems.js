@@ -105,7 +105,7 @@ export default [
         url: null,
         name: "Charts",
         icon: "PieChartIcon",
-        tag: '6пше ',
+        tag: '7 графиков',
         tagColor: 'success',
         i18n: "Charts",
         submenu: [
