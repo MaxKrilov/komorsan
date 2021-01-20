@@ -95,14 +95,49 @@ export default [
       },
     ]
   },
-
-  /* ==="Charts & Maps" === */
+  /* ==="Test Charts " === */
   {
-    header: "Maps",
+    header: "Charts Test for Sergey",
     icon: "PieChartIcon",
     i18n: "Maps",
     items: [
-      // {
+      {
+        url: null,
+        name: "Charts",
+        icon: "PieChartIcon",
+        tag: '3',
+        tagColor: 'success',
+        i18n: "Charts",
+        submenu: [
+          {
+            url: '/charts-and-maps/charts/apex-charts-test',
+            name: "Apex Charts",
+            slug: "extra-component-charts-apex-charts",
+            i18n: "ApexCharts",
+          },
+          {
+            url: '/charts-and-maps/charts/chartjs',
+            name: "chartjs",
+            slug: "extra-component-charts-chartjs",
+            i18n: "chartjs",
+          },
+          {
+            url: '/charts-and-maps/charts/echarts-test',
+            name: "echarts",
+            slug: "extra-component-charts-echarts",
+            i18n: "echarts",
+          },
+        ]
+      },
+    ]
+  },
+  /* ==="Charts & Maps" === */
+  // {
+  //   header: "Maps",
+  //   icon: "PieChartIcon",
+  //   i18n: "Maps",
+  //   items: [
+  //     {
   //       url: null,
   //       name: "Charts",
   //       icon: "PieChartIcon",
@@ -137,15 +172,15 @@ export default [
   //       slug: "extra-component-maps-google-map",
   //       i18n: "GoogleMap",
   //     },
-      {
-        url: '/charts-and-maps/maps/leaflet-map',
-        name: "Leaflet Map",
-        icon: "MapIcon",
-        slug: "extra-component-maps-leaflet-map",
-        i18n: "LeafleteMap",
-      },
-    ]
-  },
+  //     {
+  //       url: '/charts-and-maps/maps/leaflet-map',
+  //       name: "Leaflet Map",
+  //       icon: "MapIcon",
+  //       slug: "extra-component-maps-leaflet-map",
+  //       i18n: "LeafleteMap",
+  //     },
+  //   ]
+  // },
   // /* ==="Others" === */
   // {
   //   header: "Others",

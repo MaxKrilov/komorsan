@@ -993,10 +993,46 @@ const router = new Router({
                         rule: 'editor'
                     },
                 },
-
-        // =============================================================================
-        // CHARTS & MAPS
-        // =============================================================================
+              // =============================================================================
+              // CHARTS TEST
+              // =============================================================================
+              {
+                path: '/charts-and-maps/charts/apex-charts-test',
+                name: 'extra-component-charts-apex-charts',
+                component: () => import('@/views/charts-and-maps/charts/apex-charts-test/ApexCharts.vue'),
+                meta: {
+                  middleware: [
+                    authLogged
+                  ],
+                  breadcrumb: [
+                    { title: 'Home', url: '/' },
+                    { title: 'Charts & Maps' },
+                    { title: 'Apex Charts', active: true },
+                  ],
+                  pageTitle: 'Apex Charts',
+                  rule: 'editor'
+                },
+              },
+              {
+                path: '/charts-and-maps/charts/echarts-test',
+                name: 'extra-component-charts-echarts-test',
+                component: () => import('@/views/charts-and-maps/charts/echarts-test/Echarts.vue'),
+                meta: {
+                  middleware: [
+                    authLogged
+                  ],
+                  breadcrumb: [
+                    { title: 'Home', url: '/' },
+                    { title: 'Charts & Maps' },
+                    { title: 'echarts', active: true },
+                  ],
+                  pageTitle: 'echarts',
+                  rule: 'editor'
+                },
+              },
+              // =============================================================================
+              // CHARTS & MAPS
+              // =============================================================================
                 {
                     path: '/charts-and-maps/charts/apex-charts',
                     name: 'extra-component-charts-apex-charts',
