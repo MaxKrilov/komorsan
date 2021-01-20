@@ -52,17 +52,17 @@ const router = new Router({
                     path: '/',
                     redirect: '/dashboard/analytics'
                 },
-                {
-                    path: '/dashboard/analytics',
-                    name: 'dashboard-analytics',
-                    component: () => import('./views/DashboardAnalytics.vue'),
-                    meta: {
-                        middleware: [
-                          authLogged
-                        ],
-                        rule: 'editor',
-                    }
-                },
+                // {
+                //     path: '/dashboard/analytics',
+                //     name: 'dashboard-analytics',
+                //     component: () => import('./views/DashboardAnalytics.vue'),
+                //     meta: {
+                //         middleware: [
+                //           authLogged
+                //         ],
+                //         rule: 'editor',
+                //     }
+                // },
                 {
                   path: '/dashboard/ag-grid-table',
                   name: 'devices-table',
@@ -1006,30 +1006,14 @@ const router = new Router({
                   ],
                   breadcrumb: [
                     { title: 'Home', url: '/' },
-                    { title: 'Charts & Maps' },
-                    { title: 'Apex Charts', active: true },
+                    { title: 'Тестовое задание' },
+                    { title: 'Графики', active: true },
                   ],
-                  pageTitle: 'Apex Charts',
+                  pageTitle: 'Графики',
                   rule: 'editor'
                 },
               },
-              {
-                path: '/charts-and-maps/charts/echarts-test',
-                name: 'extra-component-charts-echarts-test',
-                component: () => import('@/views/charts-and-maps/charts/echarts-test/Echarts.vue'),
-                meta: {
-                  middleware: [
-                    authLogged
-                  ],
-                  breadcrumb: [
-                    { title: 'Home', url: '/' },
-                    { title: 'Charts & Maps' },
-                    { title: 'echarts', active: true },
-                  ],
-                  pageTitle: 'echarts',
-                  rule: 'editor'
-                },
-              },
+
               // =============================================================================
               // CHARTS & MAPS
               // =============================================================================

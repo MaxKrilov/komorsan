@@ -8,7 +8,7 @@
 
 <template>
     <div id="extra-component-chartist-demo">
-        <p class="mb-4">Тестовое задание<a href="https://apexcharts.com/docs/installation/" target="_blank" rel="nofollow">here</a></p>
+        <p class="mb-4">Тестовое задание<a href="https://www.notion.so/ebce90fb566842a4a102d844d375045c" target="_blank" rel="nofollow">here</a></p>
 
        <div class="vx-row">
 
