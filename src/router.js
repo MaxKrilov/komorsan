@@ -50,7 +50,7 @@ const router = new Router({
         // =============================================================================
                 {
                     path: '/',
-                    redirect: '/dashboard/analytics'
+                    redirect: '/apps/monitoring/list-view'
                 },
                 // {
                 //     path: '/dashboard/analytics',
