@@ -56,15 +56,15 @@
            </vx-card>
          </div>
 
-         <!-- BSPI RSSI_СhartOptions Charts >Line Charts > Realtime -->
-<!--         <div class="vx-col md:w-1/3 w-full mb-base">-->
-<!--           <vx-card title="Уровень  RSSI БСПИ" code-toggler>-->
-<!--             <vue-apex-charts  height=350 :options="RSSI_СhartOptions" :series="RSSI_СhartOptions.series" />-->
-<!--           </vx-card>-->
-<!--         </div>-->
+      <!--          BSPI RSSI_СhartOptions Charts >Line Charts > Realtime-->
+         <div class="vx-col md:w-1/3 w-full mb-base">
+           <vx-card title="Уровень  RSSI БСПИ" code-toggler>
+             <vue-apex-charts  height=350 :options="RSSI_СhartOptions" :series="RSSI_СhartOptions.series" />
+           </vx-card>
+         </div>
 
         <!-- LINE AREA CHART -->
-            <div class="vx-col md:w-1/2 w-full mb-base">
+            <div class="vx-col md:w-1/3 w-full mb-base">
                 <vx-card title="Состояние индикации датчиков комплектов" code-toggler>
                     <vue-apex-charts type="area" height="350" :options="apexChatData.lineAreaChartSpline.chartOptions" :series="apexChatData.lineAreaChartSpline.series"></vue-apex-charts>
                     <template slot="codeContainer">
@@ -74,7 +74,7 @@
             </div>
 
             <!-- COLUMN CHART -->
-            <div class="vx-col md:w-1/2 w-full mb-base">
+            <div class="vx-col md:w-1/3 w-full mb-base">
                 <vx-card title="Состояние комплектов (есть / нет )" code-toggler>
                     <vue-apex-charts type="bar" height="350" :options="apexChatData.columnChart.chartOptions" :series="apexChatData.columnChart.series"></vue-apex-charts>
                     <template slot="codeContainer">
@@ -106,6 +106,89 @@ export default {
 
         return {
           apexChatData: apexChatData,
+
+          RSSI_СhartOptions : {
+            series: [{
+              name: 'RSSI',
+              data: [ 16, 18, 25, 26, 27, 5, 22,26]
+            }],
+            chart: {
+              height: 350,
+              type: 'bar',
+            },
+            plotOptions: {
+              bar: {
+                dataLabels: {
+                  position: 'top', // top, center, bottom
+                },
+              }
+            },
+            dataLabels: {
+              enabled: true,
+              formatter: function (val) {
+                return val + "%";
+              },
+              offsetY: -20,
+              style: {
+                fontSize: '12px',
+                colors: ["#304758"]
+              }
+            },
+
+            xaxis: {
+              type: 'datetime',
+              categories: ["2020-12-21T00:00:00Z", "2020-12-25T01:30:00Z", "2021-01-02T02:30:00Z",
+                "2021-01-07T03:30:00Z", "2021-01-12T04:30:00Z", "2021-01-17T05:30:00Z",
+                "2021-01-21T06:30:00Z", "2021-01-07T03:30:00Z", "2021-01-12T04:30:00Z", "2021-01-17T05:30:00Z",
+              ],
+              position: 'top',
+              axisBorder: {
+                show: false
+              },
+              axisTicks: {
+                show: false
+              },
+              crosshairs: {
+                fill: {
+                  type: 'gradient',
+                  gradient: {
+                    colorFrom: '#D8E3F0',
+                    colorTo: '#BED1E6',
+                    stops: [0, 100],
+                    opacityFrom: 0.4,
+                    opacityTo: 0.5,
+                  }
+                }
+              },
+              tooltip: {
+                enabled: true,
+              }
+            },
+            yaxis: {
+              axisBorder: {
+                show: false
+              },
+              axisTicks: {
+                show: false,
+              },
+              labels: {
+                show: false,
+                formatter: function (val) {
+                  return val + "%";
+                }
+              }
+
+            },
+            title: {
+              text: 'Уровень RSSI БСПИ за календарный месяц',
+              floating: true,
+              offsetY: 330,
+              align: 'center',
+              style: {
+                color: '#444'
+              }
+            }
+          },
           /*for CUSTOM  UI  for BSPI > Line Charts > Realtime*/
           realtimeOptionsUI : {
             series: [
