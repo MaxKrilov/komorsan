@@ -20,7 +20,7 @@
              <select @change="updateTheme">
                <option value="poss0">БСПИ Имя    1908381 </option>
                <option value="poss1">Имя прибора 1908378</option>
-               <option value="poss2">Имя прибора 1908380</option>
+               <option value="poss2">Имя прибора 1908379</option>
                <option value="poss3">Имя прибора 1908380</option>
              </select>
            </p>
@@ -393,7 +393,7 @@ export default {
 
           this.battery_СhartOptions = {
             series: [{
-              name: 'Inflation',
+              name: 'Батарея',
               data: [0, 25, 24, 16, 12, 26, 16, 18, 19, 22, 24, 26]
             }]
           };
@@ -402,7 +402,7 @@ export default {
             labels: ['БСПИ 1908381'],
           };
           this.apexChatData.radialBarChart.chartOptions = {
-            series: [ 20, 5, 23, 27, ]
+            series: [ 27, 0, 0, 0 ],
           };
           this.chartOptions = {
             series: [
@@ -416,7 +416,7 @@ export default {
         else if (e.target.value === "poss1")  {
           this.battery_СhartOptions = {
             series: [{
-              name: 'Inflation',
+              name: 'Батарея',
               data: [0, 25, 19, 22, 24, 26, 24, 16, 12, 26, 16, 18,]
             }]
           };
@@ -425,7 +425,7 @@ export default {
             labels: ['ИКЗ 1908378'],
           };
           this.apexChatData.radialBarChart.chartOptions = {
-            series: [ 20, 5, 0, 23, ]
+            series: [ 0, 23, 0, 0 ],
           };
           this.chartOptions = {
             series: [
@@ -438,7 +438,7 @@ export default {
         } else if (e.target.value === "poss2")  {
           this.battery_СhartOptions = {
             series: [{
-              name: 'Inflation',
+              name: 'Батарея',
               data: [0, 15, 39, 52, 4, 16, 14, 46, 12, 26, 36, 8,]
             }]
           };
@@ -447,7 +447,7 @@ export default {
             labels: ['ИКЗ 1908379'],
           };
           this.apexChatData.radialBarChart.chartOptions = {
-            series: [ 20, 5, 0, 16]
+            series: [0, 0, 16, 0 ],
           };
          this.chartOptions = {
            series: [
@@ -460,7 +460,7 @@ export default {
        } else if (e.target.value === "poss3")  {
           this.battery_СhartOptions = {
             series: [{
-              name: 'Inflation',
+              name: 'Батарея',
               data: [0, 15, 14, 46, 12, 26,39, 52, 4, 16, 36, 8,]
             }]
           };
@@ -469,7 +469,7 @@ export default {
             labels: ['ИКЗ 1908380'],
           };
           this.apexChatData.radialBarChart.chartOptions = {
-            series: [ 0, 9, 10, 2, ]
+            series: [ 0, 0, 0, 2 ],
           };
          this.chartOptions = {
            series: [

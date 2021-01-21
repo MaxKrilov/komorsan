@@ -810,7 +810,7 @@ export default {
     },
 
     radialBarChart: {
-        series: [ 20, 5, 23, 27, ],
+        series: [ 27, 23, 16, 2 ],
         chartOptions: {
             colors: themeColors,
             plotOptions: {
