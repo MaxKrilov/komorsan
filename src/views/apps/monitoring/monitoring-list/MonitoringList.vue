@@ -127,7 +127,7 @@
 
 <script>
 import { AgGridVue } from "ag-grid-vue"
-import '@/assets/scss/vuexy/extraComponents/agGridStyleOverride.scss'
+import '@/assets/scss/komorsan/extraComponents/agGridStyleOverride.scss'
 import vSelect from 'vue-select'
 
 // Store Module

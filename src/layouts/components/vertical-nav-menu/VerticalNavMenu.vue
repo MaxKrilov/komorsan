@@ -43,14 +43,14 @@
             </template>
 
             <!-- Toggle Buttons -->
-            <template v-else-if="!showCloseButton && !verticalNavMenuItemsMin">
-              <feather-icon
-                id="btnVNavMenuMinToggler"
-                class="mr-0 cursor-pointer"
-                :icon="reduce ? 'CircleIcon' : 'DiscIcon'"
-                svg-classes="stroke-current text-primary"
-                @click="toggleReduce(!reduce)" />
-            </template>
+<!--            <template v-else-if="!showCloseButton && !verticalNavMenuItemsMin">-->
+<!--              <feather-icon-->
+<!--                id="btnVNavMenuMinToggler"-->
+<!--                class="mr-0 cursor-pointer"-->
+<!--                :icon="reduce ? 'CircleIcon' : 'DiscIcon'"-->
+<!--                svg-classes="stroke-current text-primary"-->
+<!--                @click="toggleReduce(!reduce)" />-->
+<!--            </template>-->
           </div>
           <!-- /Menu Toggle Buttons -->
         </div>
@@ -328,5 +328,5 @@ export default {
 
 
 <style lang="scss">
-@import "src/assets/scss/vuexy/components/verticalNavMenu.scss"
+@import "src/assets/scss/komorsan/components/verticalNavMenu.scss"
 </style>

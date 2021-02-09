@@ -30,7 +30,7 @@ Author: Krylov
 
                 <vs-list-item title="Matt" subtitle="11 Points">
                     <template slot="avatar">
-                        <vs-avatar vs-text="Vuexy" />
+                        <vs-avatar vs-text="komorsan" />
                     </template>
                 </vs-list-item>
 
@@ -57,7 +57,7 @@ Author: Krylov
 
   &lt;vs-list-item title=&quot;Matt&quot; subtitle=&quot;11 Points&quot;&gt;
     &lt;template slot=&quot;avatar&quot;&gt;
-      &lt;vs-avatar vs-text=&quot;Vuexy&quot;/&gt;
+      &lt;vs-avatar vs-text=&quot;komorsan&quot;/&gt;
     &lt;/template&gt;
   &lt;/vs-list-item&gt;
 

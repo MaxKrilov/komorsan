@@ -72,7 +72,7 @@ export default {
         }
       }
 
-      this.isThemedark === "dark" ? color === "#fff" ? color = "#10163a" : color = "#262c49" : null
+      this.isThemedark === "dark" ? color === "#fff" ? color = "#2e3a59" : color = "#262c49" : null
 
       return color
     },

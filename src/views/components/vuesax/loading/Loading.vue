@@ -36,5 +36,5 @@ export default{
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/vuexy/pages/loading.scss";
+@import "@/assets/scss/komorsan/pages/loading.scss";
 </style>

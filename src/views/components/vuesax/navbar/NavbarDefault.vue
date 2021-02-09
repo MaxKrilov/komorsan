@@ -16,7 +16,7 @@
             <vs-navbar v-model="activeItem" class="p-2">
 
                 <div slot="title">
-                    <vs-navbar-title><span>Vuexy</span></vs-navbar-title>
+                    <vs-navbar-title><span>komorsan</span></vs-navbar-title>
                 </div>
 
                 <vs-navbar-item index="0">
@@ -39,7 +39,7 @@
 
     &lt;div slot=&quot;title&quot;&gt;
       &lt;vs-navbar-title&gt;
-        &lt;span&gt;Vuexy&lt;/span&gt;
+        &lt;span&gt;komorsan&lt;/span&gt;
       &lt;/vs-navbar-title&gt;
     &lt;/div&gt;
 

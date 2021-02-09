@@ -33,5 +33,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/vuexy/components/featherIcon.scss"
+@import "@/assets/scss/komorsan/components/featherIcon.scss"
 </style>

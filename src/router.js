@@ -107,11 +107,11 @@ const router = new Router({
                     middleware: [
                       authLogged
                     ],
-                    breadcrumb: [
-                      { title: 'Home', url: '/' },
-                      { title: 'List View', active: true },
-                    ],
-                    pageTitle: 'Monitoring',
+                    // breadcrumb: [
+                    //   { title: 'Home', url: '/' },
+                    //   { title: 'List View', active: true },
+                    // ],
+                    // pageTitle: 'Monitoring',
                     rule: 'editor'
                   },
                 },

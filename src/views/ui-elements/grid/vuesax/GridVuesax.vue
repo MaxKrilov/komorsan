@@ -8,7 +8,7 @@
 
 
 <template>
-    <div id="vuexy-grid-demo">
+    <div id="komorsan-grid-demo">
         <grid-overview></grid-overview>
         <grid-design-concept></grid-design-concept>
         <grid-column-offset></grid-column-offset>
@@ -42,5 +42,5 @@ export default{
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/vuexy/pages/grid.scss";
+@import "@/assets/scss/komorsan/pages/grid.scss";
 </style>

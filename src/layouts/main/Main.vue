@@ -10,10 +10,8 @@
 <template>
   <div class="layout--main" :class="[layoutTypeClass, navbarClasses, footerClasses, {'no-scroll': isAppPage}]">
 
-    <vx-tour :steps="steps" v-if="!disableThemeTour && (windowWidth >= 1200 && mainLayoutType === 'vertical' && verticalNavMenuWidth == 'default')" />
-
-    <the-customizer
-      v-if                    = "!disableCustomizer"
+  <the-customizer
+      v-if                    = "disableCustomizer"
       :footerType             = "footerType"
       :hideScrollToTop        = "hideScrollToTop"
       :navbarType             = "navbarType"
@@ -146,37 +144,6 @@ export default {
       navMenuItems      : navMenuItems,
       routerTransition  : themeConfig.routerTransition || 'none',
       routeTitle        : this.$route.meta.pageTitle,
-      steps: [{
-          target  : '#btnVNavMenuMinToggler',
-          content : 'Toggle Collapse Sidebar.'
-        },
-        {
-          target  : '.vx-navbar__starred-pages',
-          content : 'Create your own bookmarks. You can also re-arrange them using drag & drop.'
-        },
-        {
-          target  : '.i18n-locale',
-          content : 'You can change language from here.'
-        },
-        {
-          target  : '.navbar-fuzzy-search',
-          content : 'Try fuzzy search to visit pages in flash.'
-        },
-        {
-          target  : '.customizer-btn',
-          content : 'Customize template based on your preference',
-          params  : {
-            placement: 'left'
-          }
-        },
-        {
-          target  : '.vs-button.buy-now',
-          content : 'Buy this awesomeness at affordable price!',
-          params  : {
-            placement: 'top'
-          }
-        },
-      ],
     }
   },
   watch: {
@@ -184,7 +151,7 @@ export default {
       this.routeTitle = this.$route.meta.pageTitle
     },
     isThemeDark(val) {
-      const color = this.navbarColor == "#fff" && val ? "#10163a" : "#fff"
+      const color = this.navbarColor == "#fff" && val ? "#2e3a59" : "#fff"
       this.updateNavbarColor(color)
     },
     "$store.state.mainLayoutType"(val) {
@@ -232,7 +199,7 @@ export default {
       this.routeTitle = title
     },
     updateNavbar(val) {
-      if (val == "static") this.updateNavbarColor(this.isThemeDark ? "#10163a" : "#fff")
+      if (val == "static") this.updateNavbarColor(this.isThemeDark ? "#2e3a59" : "#fff")
       this.navbarType = val
     },
     updateNavbarColor(val) {
@@ -260,7 +227,7 @@ export default {
     }
   },
   created() {
-    const color = this.navbarColor == "#fff" && this.isThemeDark ? "#10163a" : this.navbarColor
+    const color = this.navbarColor == "#fff" && this.isThemeDark ? "#2e3a59" : this.navbarColor
     this.updateNavbarColor(color)
     this.setNavMenuVisibility(this.$store.state.mainLayoutType)
 

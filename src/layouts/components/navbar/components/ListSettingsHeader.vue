@@ -133,7 +133,7 @@
   }
 
 </script>
-<style lang="scss" src='../../../../assets/scss/vuexy/_mainCustomClasses.scss'></style>
+<style lang="scss" src='../../../../assets/scss/komorsan/_mainCustomClasses.scss'></style>
 <style lang="scss" scoped>
 
   .active_visible {

@@ -29,5 +29,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/vuexy/components/vxInputGroup.scss";
+@import "@/assets/scss/komorsan/components/vxInputGroup.scss";
 </style>

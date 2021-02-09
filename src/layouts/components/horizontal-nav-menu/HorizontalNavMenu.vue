@@ -65,7 +65,7 @@ export default {
   },
   computed: {
     navbarColor() {
-      return this.$store.state.theme === "dark" ? "#10163a" : "#fff"
+      return this.$store.state.theme === "dark" ? "#2e3a59" : "#fff"
     }
   },
   methods: {
@@ -89,5 +89,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/vuexy/components/horizontalNavMenu.scss"
+@import "@/assets/scss/komorsan/components/horizontalNavMenu.scss"
 </style>

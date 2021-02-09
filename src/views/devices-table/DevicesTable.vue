@@ -72,11 +72,11 @@
 </template>
 
 <script>
-import moduleListDevices from '@/store/frameListDevices/moduleListDevices.js'
+// import moduleListDevices from '@/store/frameListDevices/moduleListDevices.js'
 import { AgGridVue } from "ag-grid-vue"
 
-import axios from 'axios'
-import '@/assets/scss/vuexy/extraComponents/agGridStyleOverride.scss'
+// import axios from 'axios'
+import '@/assets/scss/komorsan/extraComponents/agGridStyleOverride.scss'
 import {mapActions, mapGetters} from 'vuex'
 export default {
   name: "DevicesTable.vue",

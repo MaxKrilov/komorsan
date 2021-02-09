@@ -67,5 +67,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/vuexy/components/horizontalNavMenuItem.scss";
+@import "@/assets/scss/komorsan/components/horizontalNavMenuItem.scss";
 </style>

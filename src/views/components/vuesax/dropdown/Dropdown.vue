@@ -36,5 +36,5 @@ export default{
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/vuexy/pages/dropdown.scss";
+@import "@/assets/scss/komorsan/pages/dropdown.scss";
 </style>

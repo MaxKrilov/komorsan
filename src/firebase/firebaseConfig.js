@@ -1,5 +1,5 @@
 // NOTE
-// Please use your own firebase details below. For more details visit: https://pixinvent.com/demo/vuexy-vuejs-admin-dashboard-template/documentation/development/firebaseIntegration.html
+// Please use your own firebase details below. For more details visit: https://pixinvent.com/demo/komorsan-vuejs-admin-dashboard-template/documentation/development/firebaseIntegration.html
 
 
 import firebase from 'firebase/app'

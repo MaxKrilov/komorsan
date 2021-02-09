@@ -327,5 +327,5 @@ export default{
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/vuexy/pages/search.scss";
+@import "@/assets/scss/komorsan/pages/search.scss";
 </style>

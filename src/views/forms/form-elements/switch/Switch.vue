@@ -36,5 +36,5 @@ export default{
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/vuexy/pages/switch.scss";
+@import "@/assets/scss/komorsan/pages/switch.scss";
 </style>

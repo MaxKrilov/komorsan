@@ -60,7 +60,7 @@ export default {
         &apos;GitHub&apos;,
         &apos;Behance&apos;,
         &apos;Vuejs&apos;,
-        &apos;Vuexy&apos;,
+        &apos;komorsan&apos;,
       ],
     }
   },
@@ -85,7 +85,7 @@ export default {
                 'GitHub',
                 'Behance',
                 'Vuejs',
-                'Vuexy',
+                'komorsan',
             ],
         }
     },

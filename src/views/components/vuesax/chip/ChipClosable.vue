@@ -38,7 +38,7 @@ export default {
         &apos;GitHub&apos;,
         &apos;Behance&apos;,
         &apos;Vuejs&apos;,
-        &apos;Vuexy&apos;,
+        &apos;komorsan&apos;,
       ],
     }
   },
@@ -49,7 +49,7 @@ export default {
         &apos;GitHub&apos;,
         &apos;Behance&apos;,
         &apos;Vuejs&apos;,
-        &apos;Vuexy&apos;,
+        &apos;komorsan&apos;,
       ]
     },
     remove (item) {
@@ -72,7 +72,7 @@ export default {
                 'GitHub',
                 'Behance',
                 'Vuejs',
-                'Vuexy',
+                'komorsan',
             ],
         }
     },
@@ -83,7 +83,7 @@ export default {
                 'GitHub',
                 'Behance',
                 'Vuejs',
-                'Vuexy',
+                'komorsan',
             ]
         },
         remove(item) {

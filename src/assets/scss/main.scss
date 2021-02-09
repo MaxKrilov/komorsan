@@ -1,30 +1,30 @@
 /*=========================================================================================
   File Name: main.scss
-  Description: Main scss file. Imports other scss partials from 'vuexy' folder
+  Description: Main scss file. Imports other scss partials from 'komorsan' folder
   ----------------------------------------------------------------------------------------
   Item Name: Vue_komorsan - Vuejs, HTML &  Dashboard Template
 	Author : krylov
 ==========================================================================================*/
 
-@import "vuexy/variables";
+@import "komorsan/variables";
 
-@import "vuexy/layout";
-@import "vuexy/typography";
-@import "vuexy/misc";
-@import "vuexy/extraComponents";
-@import "vuexy/themes";
-@import "vuexy/transitions";
+@import "komorsan/layout";
+@import "komorsan/typography";
+@import "komorsan/misc";
+@import "komorsan/extraComponents";
+@import "komorsan/themes";
+@import "komorsan/transitions";
 
-@import "vuexy/customClasses";
+@import "komorsan/customClasses";
 
 // Vuesax fixes and enhancments
-@import "vuexy/fixesVuesax";
+@import "komorsan/fixesVuesax";
 
 // Tailwind Fixes
-@import "vuexy/tailwindFix";
+@import "komorsan/tailwindFix";
 
 // rtl
-@import "vuexy/rtl";
+@import "komorsan/rtl";
 
 
 

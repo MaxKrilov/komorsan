@@ -39,5 +39,5 @@ export default{
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/vuexy/pages/colors.scss";
+@import "@/assets/scss/komorsan/pages/colors.scss";
 </style>

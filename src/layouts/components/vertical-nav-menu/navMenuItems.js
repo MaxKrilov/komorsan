@@ -19,41 +19,6 @@
 
 
 export default [
-  // {
-  //   url: "/apps/email",
-  //   name: "Email",
-  //   slug: "email",
-  //   icon: "MailIcon",
-  //   i18n: "Email",
-  // },
-  // {
-  //   url: null,
-  //   name: "Dashboard",
-  //   tag: "2",
-  //   tagColor: "warning",
-  //   icon: "HomeIcon",
-  //   i18n: "Dashboard",
-  //   submenu: [
-  //     {
-  //       url: '/dashboard/analytics',
-  //       name: "Analytics",
-  //       slug: "dashboard-analytics",
-  //       i18n: "Analytics",
-  //     },
-  //     // {
-  //     //   url: '/dashboard/ecommerce',
-  //     //   name: "eCommerce",
-  //     //   slug: "dashboard-ecommerce",
-  //     //   i18n: "eCommerce",
-  //     // },
-  //     {
-  //       url: '/dashboard/ag-grid-table',
-  //       name: "devices-table",
-  //       slug: "dashboard-devices",
-  //       i18n: "Devices",
-  //     },
-  //   ]
-  // },
   {
     header: "Apps",
     icon: "PackageIcon",
@@ -96,29 +61,29 @@ export default [
     ]
   },
   /* ==="Test Charts " === */
-  {
-    header: "Charts Test for Sergey",
-    icon: "PieChartIcon",
-    i18n: "Maps",
-    items: [
-      {
-        url: null,
-        name: "Charts",
-        icon: "PieChartIcon",
-        tag: '8 графиков',
-        tagColor: 'success',
-        i18n: "Charts",
-        submenu: [
-          {
-            url: '/charts-and-maps/charts/apex-charts-test',
-            name: "Тестовое задание",
-            slug: "extra-component-charts-apex-charts",
-            i18n: "Тестовое задание",
-          },
-        ]
-      },
-    ]
-  },
+  // {
+  //   header: "Charts Test for Sergey",
+  //   icon: "PieChartIcon",
+  //   i18n: "Maps",
+  //   items: [
+  //     {
+  //       url: null,
+  //       name: "Charts",
+  //       icon: "PieChartIcon",
+  //       tag: '8 графиков',
+  //       tagColor: 'success',
+  //       i18n: "Charts",
+  //       submenu: [
+  //         {
+  //           url: '/charts-and-maps/charts/apex-charts-test',
+  //           name: "Тестовое задание",
+  //           slug: "extra-component-charts-apex-charts",
+  //           i18n: "Тестовое задание",
+  //         },
+  //       ]
+  //     },
+  //   ]
+  // },
   /* ==="Charts & Maps" === */
   // {
   //   header: "Maps",

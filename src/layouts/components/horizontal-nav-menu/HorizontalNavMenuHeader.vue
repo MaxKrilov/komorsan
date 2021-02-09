@@ -130,5 +130,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/vuexy/components/horizontalNavMenuHeader.scss";
+@import "@/assets/scss/komorsan/components/horizontalNavMenuHeader.scss";
 </style>

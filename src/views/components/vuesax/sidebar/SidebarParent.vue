@@ -2,7 +2,7 @@
 	File Name: SidebarParent.vue
 	Description: Rendering of sidebar in parent
 	----------------------------------------------------------------------------------------
-	Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+	Item Name: komorsan - Vuejs, HTML & Laravel Admin Dashboard Template
 	Author: Pixinvent
 	Author URL: http://www.themeforest.net/user/pixinvent
 ========================================================================================== -->

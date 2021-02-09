@@ -42,5 +42,5 @@ export default{
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/vuexy/pages/sidebar.scss";
+@import "@/assets/scss/komorsan/pages/sidebar.scss";
 </style>
