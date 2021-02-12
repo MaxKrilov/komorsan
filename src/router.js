@@ -115,7 +115,22 @@ const router = new Router({
                     rule: 'editor'
                   },
                 },
-
+              {
+                path: '/apps/monitoring/list-view',
+                name: 'monitoring',
+                component: () => import('@/views/apps/monitoring/list-view/DataMonitoringListListView.vue'),
+                meta: {
+                  middleware: [
+                    authLogged
+                  ],
+                  // breadcrumb: [
+                  //   { title: 'Home', url: '/' },
+                  //   { title: 'List View', active: true },
+                  // ],
+                  // pageTitle: 'Monitoring',
+                  rule: 'editor'
+                },
+              },
 
         // =============================================================================
         // Pages Routes
