@@ -1,13 +1,13 @@
-import Vue from "vue"
-import { AclInstaller, AclCreate, AclRule } from "vue-acl"
-import router from "@/router"
+import Vue from "vue";
+import { AclInstaller, AclCreate, AclRule } from "vue-acl";
+import router from "@/router";
 
-Vue.use(AclInstaller)
+Vue.use(AclInstaller);
 
-let initialRole = "admin"
+let initialRole = "admin";
 
-let userInfo = JSON.parse(localStorage.getItem("userInfo"))
-if(userInfo && userInfo.userRole) initialRole = userInfo.userRole
+let userInfo = JSON.parse(localStorage.getItem("userInfo"));
+if (userInfo && userInfo.userRole) initialRole = userInfo.userRole;
 
 export default new AclCreate({
   initial: initialRole,
@@ -18,5 +18,5 @@ export default new AclCreate({
     admin: new AclRule("admin").generate(),
     editor: new AclRule("editor").or("admin").generate(),
     // public: new AclRule("public").or("admin").or("editor").generate(),
-  }
-})
+  },
+});

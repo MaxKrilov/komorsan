@@ -6,16 +6,12 @@
 	Author : krylov
 ==========================================================================================*/
 
-
-export default function guest ({ next, store }){
-
-  if(store.getters['auth/isAuthenticated']['isLoggedIn'] !== false){
-
+export default function guest({ next, store }) {
+  if (store.getters["auth/isAuthenticated"]["isLoggedIn"] !== false) {
     return next({
-      name: 'monitoring'
-    })
-
+      name: "monitoring",
+    });
   }
 
-  return next()
+  return next();
 }
